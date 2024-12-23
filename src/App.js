@@ -1,17 +1,25 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import LoginPage from './loginpage';
-import SignUpPage from './signup'; // Ensure you have this component created
+import LoginPage from './pages/loginpage'; // Ensure LoginPage component exists and is correctly exported
+import SignUpPage from './pages/signup'; // Ensure SignUpPage component exists and is correctly exported
+import './styles/index.css'; // Ensure the CSS file exists
 
 function App() {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleLogin = (email, password) => {
-    // Your login logic here (e.g., API call)
     console.log('Logging in with', email, password);
 
-    // If login fails, set an error message (optional)
-    setErrorMessage('Invalid credentials');
+    // Example logic for user authentication (temporary)
+    const storedUser = JSON.parse(localStorage.getItem('user')); // Retrieve user data from localStorage
+
+    if (storedUser && storedUser.email === email && storedUser.password === password) {
+      setErrorMessage(''); // Clear error message on success
+      console.log('Login successful!');
+      // Redirect or update state to show logged-in status here
+    } else {
+      setErrorMessage('Invalid credentials'); // Show error message
+    }
   };
 
   return (

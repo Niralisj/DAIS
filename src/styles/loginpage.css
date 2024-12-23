@@ -1,0 +1,147 @@
+ /* Ensure full height and remove margins */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Main container with background */
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  background-image: url('../bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Login box */
+.login-box {
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  padding: 2rem;
+  border-radius: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 350px;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Input fields */
+.input-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Checkbox group */
+.checkbox-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Align vertically */
+  margin-bottom: 1.5rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin: 0; /* Remove default checkbox spacing */
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center; /* Align checkbox and label on the same line */
+}
+.checkbox-group label {
+  margin-left: 0rem; /* Add spacing between checkbox and label */
+  align-items: center;
+  font-weight: normal; /* Optional: Adjust font weight */
+  font-size: 0.7rem;
+}
+
+.forgot-password-link {
+  color: #007bff; /* Adjust the color as needed */
+  text-decoration: underline; /* Always show underline */
+  cursor: pointer;
+}
+
+.forgot-password-link:hover {
+  color: #0056b3; /* Darker color on hover for a visual effect */
+}
+
+/* Login button */
+.login-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.login-button:hover {
+  background-color: #45a049;
+}
+
+/* Social login section */
+.social-login {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.social-btn {
+  padding: 0.7rem 1.5rem;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.facebook-btn {
+  background-color: #4267B2;
+}
+
+.google-btn {
+  background-color: #db4437;
+}
+
+.facebook-btn:hover {
+  background-color: #365899;
+}
+
+.google-btn:hover {
+  background-color: #c23325;
+}
+
+/* Forgot password and create account links */
+.checkbox-group a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.checkbox-group a:hover {
+  text-decoration: underline;
+}

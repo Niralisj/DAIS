@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
+//import './index.css'; // Ensure global styles exist
+import App from './App'; // Ensure App component is correctly implemented and exported
+import { onCLS, onFID, onLCP } from 'web-vitals'; // Import performance metrics
+
+// Create the root element
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -11,7 +13,8 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// For performance monitoring
+// Pass a logging function or connect it to an analytics tool if needed
+onCLS(console.log);  // Logs the Cumulative Layout Shift
+onFID(console.log);  // Logs the First Input Delay
+onLCP(console.log);  // Logs the Largest Contentful Paint
