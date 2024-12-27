@@ -1,20 +1,19 @@
+import reportWebVitals from './reportWebVitals'; 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
 
-//import './index.css'; // Ensure global styles exist
-import App from './App'; // Ensure App component is correctly implemented and exported
-import { onCLS, onFID, onLCP } from 'web-vitals'; // Import performance metrics
-
-// Create the root element
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter> {/* Only one BrowserRouter here */}
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
-// For performance monitoring
-// Pass a logging function or connect it to an analytics tool if needed
-onCLS(console.log);  // Logs the Cumulative Layout Shift
-onFID(console.log);  // Logs the First Input Delay
-onLCP(console.log);  // Logs the Largest Contentful Paint
+// Report web vitals (log to console for now)
+reportWebVitals((metric) => {
+  console.log(metric); // You can replace this with custom logic to send metrics to an analytics service
+});

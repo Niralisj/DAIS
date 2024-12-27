@@ -1,0 +1,203 @@
+/* General Reset */
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9; /* Light background color */
+  scroll-behavior: smooth; /* Smooth scrolling */
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #ff6f61; /* Coral color */
+}
+
+.navbar ul {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar ul li button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.navbar ul li button:hover {
+  color: #ff6f61;
+}
+
+/* Hero Section */
+.hero {
+  background-image: url('../hp1.jpeg');
+  background-size: cover; /* Ensures full coverage of the background */
+  background-position: center;
+  text-align: center;
+  padding: 50px 20px; /* Increased padding for more space */
+  height: 40vh; /* Hero height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.hero-button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  color: white;
+  background-color: #ff6f61;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: #cf1309;
+}
+
+/* General Section Styling */
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 60px 30px;
+  gap: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 50px auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+}
+
+.section > div {
+  width: 48%;
+}
+
+.section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.section p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+/* Full-Width Sections */
+.skin-quiz, .diy-remedies, .chat-forum {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px;
+  border-radius: 10px;
+  gap: 20px;
+}
+
+.skin-quiz {
+  background-color: #f0f8ff; /* Light blue background */
+  background-image: url('../1.jpg');
+  background-size: 600px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.diy-remedies {
+  background-color: #fef9e4; /* Light yellow background */
+}
+
+.chat-forum {
+  background-color: #e8f7ff; /* Light teal background */
+}
+
+/* Section Content */
+.skin-quiz > div, .diy-remedies > div, .chat-forum > div {
+  max-width: 600px;
+  text-align: left;
+}
+
+.skin-quiz img, .diy-remedies img, .chat-forum img {
+  width: 100%; /* Full width within the container */
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .section {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  .section img {
+    width: 80%;
+    margin: 0 auto 30px;
+  }
+
+  .hero {
+    height: auto;
+    padding: 30px 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .skin-quiz, .diy-remedies, .chat-forum {
+    flex-direction: column;
+    text-align: center;
+    height: auto;
+    padding: 20px;
+  }
+
+  .skin-quiz img, .diy-remedies img, .chat-forum img {
+    width: 80%;
+    margin: 20px 0;
+  }
+}
