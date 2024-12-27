@@ -8,9 +8,8 @@ Dais is a virtual skincare web application designed to provide personalized reco
 1. [Features](#features)
 2. [Installation](#installation)
 3. [Usage](#usage)
-4. [Project Structure](#project-structure)
-5. [Contributing](#contributing)
-6. [License](#license)
+4. [Contributing](#contributing)
+5. [License](#license)
 
 ---
 
