@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+# Dais - Your Virtual Skincare Friend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Dais is a virtual skincare web application designed to provide personalized recommendations, educational resources, and community support for skincare enthusiasts. Whether you're new to skincare or looking to refine your routine, Dais is here to help!
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Table of Contents
+1. [Features](#features)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Contributing](#contributing)
+5. [License](#license)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
+- **AI Skin Type Assessment** - Get customized skin analysis and recommendations.
+- **Custom Skincare Tips** - Personalized skincare routines tailored to your needs.
+- **Learn and Glow Module** - Access blogs, articles, and videos about skincare.
+- **DIY Skincare Remedies** - Discover homemade skincare solutions.
+- **Chat Forum** - Engage with the community to discuss skincare tips and tricks.
+- **Reminders & Notifications** - Stay on track with reminders for your skincare routine.
+- **Product Recommendations** - Receive suggestions for skincare products based on your profile.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the Repository:**
+```
+git clone https://github.com/Niraljs/DAIS---Project.git
+```
 
-### `npm run build`
+2. **Navigate to the Project Directory:**
+```
+cd DAIS---Project
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Install Dependencies:**
+```
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. **Start the Application:**
+```
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Usage
+1. **Sign Up or Log In** - Create an account to access personalized features.
+2. **Take the Skin Assessment Quiz** - Determine your skin type and concerns.
+3. **Explore Tips & Articles** - Learn more about skincare routines and tips.
+4. **Join the Community Forum** - Share experiences and ask questions.
+5. **Set Reminders** - Manage and track your skincare routine.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contributing
+Contributions are welcome! Please follow these steps:
+1. Fork the repository.
+2. Create a new branch:
+```
+git checkout -b feature/your-feature-name
+```
+3. Commit your changes:
+```
+git commit -m 'Add new feature'
+```
+4. Push to your branch:
+```
+git push origin feature/your-feature-name
+```
+5. Submit a pull request.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## License
+This project is licensed under the [MIT License](LICENSE).
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
