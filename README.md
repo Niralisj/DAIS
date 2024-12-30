@@ -21,7 +21,6 @@ Dais is a virtual skincare web application designed to provide personalized reco
 - **Chat Forum** - Engage with the community to discuss skincare tips and tricks.
 - **Reminders & Notifications** - Stay on track with reminders for your skincare routine.
 - **Product Recommendations** - Receive suggestions for skincare products based on your profile.
-- **Expert Advice Integration** - Connect with skincare experts for personalized consultations.
 
 ---
 
