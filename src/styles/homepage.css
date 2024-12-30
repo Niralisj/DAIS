@@ -109,6 +109,7 @@ a {
   margin: 50px auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   max-width: 1200px;
+  text-align: left; /* Ensures text alignment is left */
 }
 
 .section > div {
@@ -128,7 +129,8 @@ a {
 }
 
 /* Full-Width Sections */
-.skin-quiz, .diy-remedies, .chat-forum {
+
+.skin-quiz {
   height: 90vh;
   display: flex;
   align-items: center;
@@ -136,28 +138,48 @@ a {
   padding: 40px;
   border-radius: 10px;
   gap: 20px;
-}
-
-.skin-quiz {
-  background-color: #f0f8ff; /* Light blue background */
+  text-align: left; 
+  background-color: linear-gradient(to right, #ff9a9e, #fad0c4); /* Colors fade from pink to peach */
+  /* background-color: #f0f8ff; Light blue background */
   background-image: url('../1.jpg');
   background-size: 600px;
   background-repeat: no-repeat;
   background-position: right center;
 }
 
-.diy-remedies {
+
+.diy-remedies{
   background-color: #fef9e4; /* Light yellow background */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers content vertically */
+  padding: 40px;
+  text-align: left;
+  height: 90vh;
+  border-radius: 10px;
+  gap: 20px;
+  
+  /* background-image: url('../2.jpg');
+  background-size: 600px;
+  background-repeat: no-repeat;
+  background-position: right center; */
 }
 
 .chat-forum {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers content vertically */
+  padding: 40px;
+  text-align: left;
+  height: 90vh;
+  border-radius: 10px;
+  gap: 20px;
   background-color: #e8f7ff; /* Light teal background */
 }
 
 /* Section Content */
 .skin-quiz > div, .diy-remedies > div, .chat-forum > div {
   max-width: 600px;
-  text-align: left;
 }
 
 .skin-quiz img, .diy-remedies img, .chat-forum img {
@@ -171,7 +193,7 @@ a {
 @media (max-width: 768px) {
   .section {
     flex-direction: column;
-    text-align: center;
+    text-align: center; /* Temporarily centers text for small screens */
     padding: 30px 20px;
   }
 
@@ -191,7 +213,6 @@ a {
 
   .skin-quiz, .diy-remedies, .chat-forum {
     flex-direction: column;
-    text-align: center;
     height: auto;
     padding: 20px;
   }
@@ -199,5 +220,9 @@ a {
   .skin-quiz img, .diy-remedies img, .chat-forum img {
     width: 80%;
     margin: 20px 0;
+  }
+
+  .section {
+    text-align: left; /* Ensures left-alignment for text in small screens */
   }
 }
