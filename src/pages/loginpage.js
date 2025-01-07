@@ -1,31 +1,77 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link for navigation
-import '../styles/loginpage.css'; // Corrected path for the CSS file
+import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import { handleSuccess, handleError } from '../utils';
+import '../styles/loginpage.css';
 
-function LoginPage({ handleLogin, errorMessage }) {
-  // State for email and password
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+function LoginPage() {
+  const [loginInfo, setLoginInfo] = useState({
+    email: '',
+    password: '',
+  });
+  const navigate = useNavigate();
 
-  const onSubmit = (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
-    handleLogin(email, password); // Call the login handler passed from App.js
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setLoginInfo({
+      ...loginInfo,
+      [name]: value,
+    });
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const { email, password } = loginInfo;
+
+    if (!email || !password) {
+      return handleError('Email and password are required');
+    }
+
+    try {
+      const url = `http://localhost:8080/auth/login`; // Use http for local development
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(loginInfo),
+      });
+
+      const result = await response.json();
+      const { success, message, jwtToken, name, error } = result;
+
+      if (success) {
+        handleSuccess(message);
+        localStorage.setItem('token', jwtToken);
+        localStorage.setItem('loggedInUser', name);
+        setTimeout(() => {
+          navigate('/user-panel'); // Redirect to UserPanel
+        }, 1000); // Optional delay for UX
+      } else if (error) {
+        const details = error?.details?.[0]?.message || 'Login failed';
+        handleError(details);
+      } else {
+        handleError(message);
+      }
+    } catch (err) {
+      handleError('Something went wrong. Please try again later.');
+    }
   };
 
   return (
     <div className="login-container">
       <div className="login-box">
         <h2>Login</h2>
-        {/* Login form */}
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleLogin}>
           <div className="input-group">
             <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
+              name="email"
               placeholder="Enter your email"
-              value={email} // Bind email input value to state
-              onChange={(e) => setEmail(e.target.value)} // Update email state on input change
+              value={loginInfo.email}
+              onChange={handleChange}
               required
             />
           </div>
@@ -34,14 +80,13 @@ function LoginPage({ handleLogin, errorMessage }) {
             <input
               type="password"
               id="password"
+              name="password"
               placeholder="Enter your password"
-              value={password} // Bind password input value to state
-              onChange={(e) => setPassword(e.target.value)} // Update password state on input change
+              value={loginInfo.password}
+              onChange={handleChange}
               required
             />
           </div>
-          {/* Error message */}
-          {errorMessage && <p className="error-message">{errorMessage}</p>}
           <div className="checkbox-group">
             <div className="remember-me">
               <input type="checkbox" id="remember" />
@@ -67,6 +112,7 @@ function LoginPage({ handleLogin, errorMessage }) {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

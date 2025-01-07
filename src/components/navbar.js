@@ -1,6 +1,6 @@
 import React from "react";
 
-const Navbar = () => {
+const Navbar = ({ onUserIconClick }) => {
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
@@ -24,7 +24,24 @@ const Navbar = () => {
         <li>
           <button onClick={() => scrollToSection("chat-forum")}>Chat Forum</button>
         </li>
+        <li>
+          <button onClick={() => scrollToSection("learn-and-glow")}>Learn and Glow</button>
+        </li>
       </ul>
+      {/* User icon added here */}
+      <div
+        className="user-icon"
+        onClick={onUserIconClick}
+        style={{
+          cursor: "pointer",
+          marginLeft: "auto",
+          display: "flex",
+          alignItems: "center",
+          fontSize: "1.5rem",
+        }}
+      >
+        👤 {/* Replace this emoji with an actual icon or image */}
+      </div>
     </nav>
   );
 };

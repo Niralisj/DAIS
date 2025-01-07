@@ -59,7 +59,7 @@ a {
 
 /* Hero Section */
 .hero {
-  background-image: url('../hp1.jpeg');
+  background-image: url('../img/hp1.jpeg');
   background-size: cover; /* Ensures full coverage of the background */
   background-position: center;
   text-align: center;
@@ -109,7 +109,6 @@ a {
   margin: 50px auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   max-width: 1200px;
-  text-align: left; /* Ensures text alignment is left */
 }
 
 .section > div {
@@ -130,6 +129,28 @@ a {
 
 /* Full-Width Sections */
 
+.about {
+  background-color: lightyellow; /* Light grey background */
+  height: 70vh;
+  padding: 60px 30px;
+  border-radius: 10px;
+  margin: 50px auto;
+  max-width: 1200px; /* Maximum container width */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.text{
+
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%) translateY(-50%);
+}
+
 .skin-quiz {
   height: 90vh;
   display: flex;
@@ -140,8 +161,8 @@ a {
   gap: 20px;
   text-align: left; 
   background-color: linear-gradient(to right, #ff9a9e, #fad0c4); /* Colors fade from pink to peach */
-  /* background-color: #f0f8ff; Light blue background */
-  background-image: url('../1.jpg');
+  background-color: #f0f8ff; 
+  background-image: url('../img/1.jpg');
   background-size: 600px;
   background-repeat: no-repeat;
   background-position: right center;
@@ -149,21 +170,29 @@ a {
 
 
 .diy-remedies{
-  background-color: #fef9e4; /* Light yellow background */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Centers content vertically */
-  padding: 40px;
-  text-align: left;
-  height: 90vh;
-  border-radius: 10px;
-  gap: 20px;
-  
+   background-color: #fef9e4; /* Light yellow background */
+   height: 90vh;
+   display: flex;
+   align-items: right;
+   justify-content: center; /* Centers content vertically */
+   padding: 40px;
+   border-radius: 10px;
+   gap: 20px;
+   
   /* background-image: url('../2.jpg');
   background-size: 600px;
   background-repeat: no-repeat;
   background-position: right center; */
 }
+
+.diy{
+  text-align: left;
+  position: relative;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%) translateY(-50%);
+}
+
 
 .chat-forum {
   display: flex;
@@ -177,6 +206,44 @@ a {
   background-color: #e8f7ff; /* Light teal background */
 }
 
+
+.learn-and-glow{
+  background-color: lavender;
+  padding:40px;
+}
+
+.lg {
+  text-align: left;
+  position: relative;
+  top: 90%;
+  left: 50%;
+  transform: translate(-85%) translateY(0%);
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  grid-gap: 40px;
+}
+
+.card {
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  max-width: 1000px;
+  min-height: 50vh;
+  padding: 20px;
+  transition: all 0.5s ease; /* Smooth transition for hover and focus */
+}
+
+.card:hover {
+  transform: translateY(-7px);
+  background-color: rgb(117, 93, 211);  /*Hover background */
+}
+
+
+
 /* Section Content */
 .skin-quiz > div, .diy-remedies > div, .chat-forum > div {
   max-width: 600px;
@@ -188,6 +255,7 @@ a {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -224,5 +292,18 @@ a {
 
   .section {
     text-align: left; /* Ensures left-alignment for text in small screens */
+  }
+}
+
+
+@media only screen and (max-width: 1080px) {
+  .card-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .card {
+    min-height: 40vh;
   }
 }

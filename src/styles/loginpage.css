@@ -80,8 +80,8 @@ input {
   cursor: pointer;
 }
 
-.forgot-password-link:hover {
-  color: #0056b3; /* Darker color on hover for a visual effect */
+.forgot-password-link {
+  color: black; /* Darker color on hover for a visual effect */
 }
 
 /* Login button */

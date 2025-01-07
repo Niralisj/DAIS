@@ -1,24 +1,25 @@
 const express = require('express');
-const cors = require('cors');
 const app = express();
-const port = 5000;
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const authrouter = require('./routes/authrouter');
+const ProductRouter = require('./routes/productrouter');
 
-// Import routes
-const authRoutes = require('./routes/authRoutes');
+require('dotenv').config();
+require('./models/db');
+const PORT = process.env.PORT || 8080;
 
-// Middleware
-app.use(cors()); // Enable cross-origin requests
-app.use(express.json()); // Parse incoming JSON requests
-
-// Use auth routes
-app.use('/api/auth', authRoutes);
-
-// Test route
-app.get('/', (req, res) => {
-  res.send('Backend is working!');
+app.get('/ping', (req, res) => {
+    res.send('PONG');
 });
 
-// Start server
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+app.use(bodyParser.json());
+app.use(cors());
+//config objet allow specific sites to access the api
+app.use('/auth', authrouter);
+app.use('/products', ProductRouter);
+
+
+app.listen(PORT, () => {
+    console.log(`Server is running on ${PORT}`)
+})
