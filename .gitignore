@@ -12,6 +12,9 @@ node_modules
 # production
 /build
 
+# Ignore environment files
+.env
+
 # misc
 .DS_Store
 .env.local
