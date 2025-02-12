@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import { handleError, handleSuccess } from '../utils'; // Assuming you have utility functions for toast notifications
-import '../styles/signup.css'; // Ensure your CSS file path is correct
+import { handleError, handleSuccess } from '../utils';
+import '../signuppage/signup.css'; 
 
 function SignUpPage() {
   const [signupInfo, setSignupInfo] = useState({
     name: '',
     email: '',
     password: '',
+    confirmPassword: '',
   });
 
   const navigate = useNavigate();
@@ -20,18 +21,24 @@ function SignUpPage() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    const { name, email, password } = signupInfo;
+    const { name, email, password, confirmPassword } = signupInfo;
 
-    if (!email || !password || !name) {
+    if (!name  || !email || !password || !confirmPassword) {
       return handleError('All fields are required.');
     }
 
+    if (password !== confirmPassword) {
+      return handleError('Passwords do not match.');
+    }
+
     try {
+      const { name, email, password } = signupInfo; // ✅ Extract only necessary fields
       const response = await fetch('http://localhost:8080/auth/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(signupInfo),
+        body: JSON.stringify({ name, email, password }), // ✅ No `username`
       });
+      
 
       const result = await response.json();
       const { success, message, error } = result;
@@ -41,11 +48,8 @@ function SignUpPage() {
         setTimeout(() => {
           navigate('/login');
         }, 1000);
-      } else if (error) {
-        const details = error?.details[0]?.message || message;
-        handleError(details);
       } else {
-        handleError(message);
+        handleError(error?.details[0]?.message || message);
       }
     } catch (err) {
       handleError('An error occurred. Please try again.');
@@ -59,43 +63,29 @@ function SignUpPage() {
         <form onSubmit={handleSignup}>
           <div className="input-group">
             <label htmlFor="name">Name</label>
-            <input
-              onChange={handleChange}
-              type="text"
-              name="name"
-              placeholder="Enter your name..."
-              value={signupInfo.name}
-            />
+            <input onChange={handleChange} type="text" name="name" placeholder="Enter your name..." value={signupInfo.name} />
           </div>
+         
           <div className="input-group">
             <label htmlFor="email">Email</label>
-            <input
-              onChange={handleChange}
-              type="email"
-              name="email"
-              placeholder="Enter your email..."
-              value={signupInfo.email}
-            />
+            <input onChange={handleChange} type="email" name="email" placeholder="Enter your email..." value={signupInfo.email} />
           </div>
+          
           <div className="input-group">
             <label htmlFor="password">Password</label>
-            <input
-              onChange={handleChange}
-              type="password"
-              name="password"
-              placeholder="Enter your password..."
-              value={signupInfo.password}
-            />
+            <input onChange={handleChange} type="password" name="password" placeholder="Enter your password..." value={signupInfo.password} />
           </div>
-          <button type="submit" className="sign-up-button">
-            Sign Up
-          </button>
+          <div className="input-group">
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input onChange={handleChange} type="password" name="confirmPassword" placeholder="Re-enter your password..." value={signupInfo.confirmPassword} />
+          </div>
+          <button type="submit" className="sign-up-button">Sign Up</button>
         </form>
         <p className="redirect-message">
-          Already have an account?{' '}
-          <Link to="/login" className="login-link">
-            Log in
-          </Link>
+          Already have an account? <Link to="/login" className="login-link">Log in</Link>
+        </p>
+        <p className="forgot-password">
+          <Link to="/forgot-password" className="forgot-password-link">Forgot Password?</Link>
         </p>
       </div>
       <ToastContainer />

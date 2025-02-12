@@ -1,0 +1,83 @@
+/* Skin Quiz Styling */
+
+.quiz-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #ff758c, #ff7eb3);
+  padding: 20px;
+font-family:"poppins";}
+
+.quiz-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.quiz-question {
+  background: white;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.question-text {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #444;
+  font-weight: bold;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quiz-option {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #f8f8f8;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+  font-weight: bold;
+}
+
+.quiz-option:hover {
+  background: #ff9a9e;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.quiz-option.selected {
+  background: #ff4081;
+  color: white;
+}
+
+.final-button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background: #ff4081;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.final-button:hover {
+  background: #e91e63;
+  transform: scale(1.05);
+}

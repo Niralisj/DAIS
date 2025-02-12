@@ -1,0 +1,101 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5px 59px;
+  background: rgba(255, 255, 255, 0.2); /* Glassmorphism */
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 90%;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #7c3aed; /* Purple */
+}
+
+.navbar ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+/* Navbar Buttons */
+.navbar ul li button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 500;
+  color: #333;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar ul li button:hover {
+  color: #7c3aed;
+}
+
+.navbar ul li button::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #7c3aed;
+  transition: width 0.3s ease-in-out;
+  margin-top: 3px;
+}
+
+.navbar ul li button:hover::after {
+  width: 100%;
+}
+
+
+
+
+.user-icon {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  color:#e0aaff; 
+  background-color:azure;
+  border-radius: 50%;
+  transition: color 0.5s ease-in-out, transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.user-icon::before {
+  content: "";
+  position: absolute;
+  width: 56px; /* Slightly larger than the icon */
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.user-icon:hover::before {
+  opacity: 1;
+  border-color: #ff80b5; /* Soft pink */
+  box-shadow: 0 0 12px #ff80b5, 0 0 20px #e0aaff; /* Soft pink + lavender glow */
+}
+
+.user-icon:hover {
+  color: #ffb6c1; /* Soft pink */
+  transform: scale(1.1);
+}
+

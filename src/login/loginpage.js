@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { handleSuccess, handleError } from '../utils';
-import '../styles/loginpage.css';
+import '../login/loginpage.css';
 
 function LoginPage() {
   const [loginInfo, setLoginInfo] = useState({
@@ -106,10 +106,7 @@ function LoginPage() {
           <p>
             Don't have an account? <Link to="/sign-up">Create one</Link>
           </p>
-          <div className="social-icons">
-            <button className="social-btn facebook-btn">Facebook</button>
-            <button className="social-btn google-btn">Google</button>
-          </div>
+          
         </div>
       </div>
       <ToastContainer />

@@ -1,10 +1,12 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Homepage from './pages/Homepage';
-import LoginPage from './pages/loginpage';
-import SignUpPage from './pages/signup';
-import UserPanel from './pages/userpanel'; // Example of protected user panel page
+import Homepage from './Homepage/Homepage';
+import LoginPage from './login/loginpage';
+import SignUpPage from './signuppage/signup';
+import UserPanel from './userpanel/userpanel'; // Example of protected user panel page
 import ProtectedRoute from './components/ProtectedRoute'; // Import ProtectedRoute
+import SkinQuiz from './Quiz/skinquiz';
+
 
 function App() {
   return (
@@ -23,6 +25,9 @@ function App() {
           </ProtectedRoute>
         }
       />
+      <Route path="/skinquiz"
+        element={<SkinQuiz />} /> {/* Make sure SkinQuiz is properly imported */}
+    
     </Routes>
   );
 }

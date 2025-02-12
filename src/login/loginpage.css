@@ -9,9 +9,9 @@ html, body {
 .login-container {
   height: 100vh;
   display: flex;
-  justify-content: center; /* Center horizontally */
+  justify-content: center; 
   align-items: center; /* Center vertically */
-  background-image: url('../bg.jpg');
+  background-image: url('../login/bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -52,16 +52,41 @@ input {
 }
 
 /* Checkbox group */
+/* Checkbox Group Container */
 .checkbox-group {
   display: flex;
-  justify-content: space-between;
-  align-items: center; /* Align vertically */
-  margin-bottom: 1.5rem;
+  justify-content: space-between; /* Align items on opposite sides */
+  align-items: center; /* Vertically center items */
+  margin-bottom: 1rem; /* Add spacing below */
+}
+
+/* Remember Me Container */
+.remember-me {
+  display: flex;
+  align-items: center; /* Align checkbox and label vertically */
+  gap: 10px; /* Add spacing between checkbox and label */
+  height: 10px;
+}
+
+/* Checkbox */
+.remember-me input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0; /* Remove default margin */
+  cursor: pointer; /* Pointer cursor for better UX */
+}
+
+/* Label */
+.remember-label {
+  font-size: 0px; /* Readable font size */
+  color: #333; /* Consistent text color */
+  cursor: pointer; /* Pointer cursor for clickability */
 }
 
 .checkbox-group input[type="checkbox"] {
   margin: 0; /* Remove default checkbox spacing */
 }
+
 
 .checkbox-container {
   display: flex;
@@ -82,6 +107,7 @@ input {
 
 .forgot-password-link {
   color: black; /* Darker color on hover for a visual effect */
+
 }
 
 /* Login button */
