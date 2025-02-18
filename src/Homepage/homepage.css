@@ -425,73 +425,144 @@ body {
 }
 
 
-/* Chat Forum Section */
-#chat-forum {
-  background-color: #f4f4f9; /* Light background color */
-  height: 100vh;
+
+
+
+
+/* Center the entire section */
+#learn-and-glow {
   display: flex;
-  align-items: right;
-  padding: 4rem 2rem;
-  margin: 50px auto;
-  position: relative;
-  padding: 60px 30px;
-  animation: fadeInUp 1s ease-in-out;
-  border-radius: 10px;
-  gap: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
-}
-
-#chat-forum .chat {
-  text-align: left;
-}
-
-#chat-forum .chat h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #333; /* Dark text color for heading */
-}
-
-#chat-forum .chat p {
-  font-size: 1rem;
-  color: #666; /* Medium gray for description */
-  line-height: 2;
-  margin-bottom: 300px;
-
-}
-
-
-
-.learn-and-glow{
-  background-color: lavender;
-  padding:40px;
-}
-
-.lg {
-  text-align: left;
-  position: relative;
-  top: 90%;
-  left: 50%;
-  transform: translate(-85%) translateY(0%);
-}
-
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(300px, 1fr));
-  grid-gap: 40px;
-}
-
-.card {
-  background-color: white;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1400px;
+  padding: 60px 30px;
+  margin: 50px auto;
+  background-color: #f9f9f9; /* Light background for contrast */
+}
+
+/* Responsive card container */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Card styling */
+.card {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Improved content alignment */
+  align-items: center;
   border-radius: 20px;
-  max-width: 1000px;
-  min-height: 50vh;
+  width: 320px; /* Slightly larger width for better design */
+  min-height: 60vh;
   padding: 20px;
-  transition: all 0.5s ease; /* Smooth transition for hover and focus */
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; 
+  text-align: center;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Ensure images fit properly */
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  height: 400px; /* Set a fixed height for consistency */
+  object-fit: cover; /* Prevents image distortion */
+}
+
+/* Card content styling */
+.card-content {
+  padding: 15px;
+}
+
+.card-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.card-content p {
+  font-size: 1rem;
+  color: #666;
 }
 
 .card:hover {
   transform: translateY(-7px);
-  background-color: rgb(117, 93, 211);  /*Hover background */
+  background-color: #F4B6C2; /* Soft pastel pink */
+  color: white;
+  box-shadow: 0px 6px 20px rgba(244, 182, 194, 0.4); /* Softer glow */
+}
+
+.card:hover h3, 
+.card:hover p {
+  color: white;
+}
+
+/* Chat Forum Section */
+.chat-forum {
+  background: linear-gradient(135deg, #f9fafb, #e3e9f3); /* Soft gradient */
+  padding: 3rem 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  max-width: 1400px;
+  margin: 2rem auto;
+}
+
+.chat-forum:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Chat Content */
+.chat-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.chat-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937; /* Darker text for contrast */
+  letter-spacing: 1px;
+}
+
+.chat-description {
+  color: #6b7280;
+  font-size: 1.1rem;
+  margin-top: 0.8rem;
+  line-height: 1.6;
+}
+
+/* Button */
+.chat-button {
+  margin-top: 1.5rem;
+  background: linear-gradient(90deg, #3b82f6, #9333ea); /* Blue to Purple gradient */
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+}
+
+.chat-button:hover {
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+.chat-button:active {
+  transform: scale(0.98);
 }

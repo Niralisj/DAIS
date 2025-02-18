@@ -15,12 +15,25 @@
   z-index: 100;
 }
 
-/* Logo */
 .logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #7c3aed; /* Purple */
+  position: relative;
+  width: 80px;  /* Ensure enough space for both text & canvas */
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+  .logo-pattern {
+    position: absolute;
+    top: -20px; /* Move it slightly above */
+    left: -10px; /* Adjust left alignment */
+    width: 80px;
+    height: 80px;
+    z-index: -1; /* Move it behind text */
+    opacity: 1;
+  }
+  
 
 .navbar ul {
   display: flex;

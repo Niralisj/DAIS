@@ -11,16 +11,16 @@ const Navbar = ({ onUserIconClick }) => {
 
   return (
     <nav className="navbar">
-      {/* Logo */}
-      <div className="logo">Dais</div> {/* Add your brand name or image here */}
+     <div className="logo">
+</div>
 
       {/* Navigation Links */}
       <ul className="nav-links">
         <li><button onClick={() => scrollToSection("home")}>Home</button></li>
         <li><button onClick={() => scrollToSection("skin-quiz")}>Skin Quiz</button></li>
         <li><button onClick={() => scrollToSection("diy-remedies")}>DIY Remedies</button></li>
-        <li><button onClick={() => scrollToSection("chat-forum")}>Chat Forum</button></li>
         <li><button onClick={() => scrollToSection("learn-and-glow")}>Learn & Glow</button></li>
+        <li><button onClick={() => scrollToSection("chat-forum")}>Chat Forum</button></li>
       </ul>
 
       {/* User Icon */}

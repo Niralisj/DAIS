@@ -3,6 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from "../components/navbar/navbar";
 import Footer from "../components/footer";
 import "../Homepage/homepage.css";
+import img1 from "./blogimg/img1.jpg";
+import img2 from "./blogimg/img2.jpg";
+import img3 from "./blogimg/img3.jpg"; 
+import img4 from "./blogimg/img4.jpg";
+import img5 from "./blogimg/img5.jpg";
+import img6 from "./blogimg/img6.jpg";
 
 
 
@@ -65,11 +71,11 @@ const Homepage = () => {
       <p className="about-tagline"><strong></strong></p>
 
       <button 
-        className="hero-btn" 
-        onClick={() => document.getElementById("about").scrollIntoView({ behavior: "smooth" })}
-      >
-        Get Started
-      </button>
+      className="hero-btn" 
+      onClick={() => navigate("/")}
+    >
+      Get Started
+    </button>
     </div>
   </div>
       </section>
@@ -97,80 +103,93 @@ const Homepage = () => {
           </section>
 
 
-      {/* Chat Forum Section */}
-      <section id="chat-forum" className="chat-forum">
-        <div className="chat">
-          <h2>Chat Forum</h2>
-          <p>Join our community to discuss skincare tips and tricks with others.</p>
-        </div>
-      </section>
-
-       {/* Learn and Glow Section */}
-       <section id="learn-and-glow" className="section learn-and-glow">
-        <div className="lg">
-         
-          
-          <div className="card-container">
-            <div className="card">
-              <img src="/path-to-image1.jpg" alt="Winter Base Makeup Routine" />
-               <div class="card-content">
-              <h3>My Winter Base Makeup Routine</h3>
-                <p>Read more</p>
-            </div>    
-            </div>
-            <div class="card">
-    <img src="/path-to-image2.jpg" alt="Double Cleansing Guide" />
-    <div class="card-content">
-      <h3>The Ultimate Double Cleansing Guide For Every Skin Type</h3>
-      <p>Read more</p>
-    </div>   
-  </div>
-
-  <div class="card">
-    <img src="/path-to-image3.jpg" alt="Face Serum Benefits" />
-    <div class="card-content">
-      <h3>10 Benefits Of Using A Face Serum In Your Skincare Routine</h3>
-      <p>Read more</p>
-    </div>  
-  </div>
-
-  <div class="card">
-    <img src="/path-to-image4.jpg" alt="Blog Content" />
-    <div class="card-content">
-      <h3>Blog Content</h3>
-      <p>Read more</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="/path-to-image5.jpg" alt="Blog Content" />
-    <div class="card-content">
-      <h3>Blog Content</h3>
-      <p>Read more</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="/path-to-image6.jpg" alt="Blog Content" />
-    <div class="card-content">
-      <h3>Blog Content</h3>
-      <p>Read more</p>
-       </div>
+      
+      {/* Learn and Glow Section */}
+      <section id="learn-and-glow" className="section learn-and-glow">
+  <div className="card-container">
+  <div className="card">
+      <img src={img1} alt="Glowing Winter Skin Routine" />
+      <div className="card-content">
+        <h3>How to Achieve Glowing Skin in Winter</h3>
+        <p>Say goodbye to dull, dry skin! Discover the best products and techniques to keep your skin radiant all winter.</p>
+        <a href="https://www.nykaa.com/beauty-blog/tips-and-routines-to-get-glowing-skin-this-winter/" target="_blank" rel="noopener noreferrer" className="read-more">
+          <p>Read more</p>
+        </a>
+      </div>    
     </div>
 
+    <div className="card">
+      <img src={img2} alt="Double Cleansing Guide" />
+      <div className="card-content">
+        <h3>Mastering the Double Cleansing Method</h3>
+        <p>Is double cleansing really necessary? Learn how it helps remove sunscreen, makeup, and dirt effectively.</p>
+        <a href="https://www.nykaa.com/beauty-blog/how-to-double-clean-your-face/" target="_blank" rel="noopener noreferrer" className="read-more">
+          <p>Read more</p>
+        </a>
+      </div>   
+    </div>
 
+    <div className="card">
+      <img src={img3} alt="Face Serum Benefits" />
+      <div className="card-content">
+        <h3>10 Reasons Why Face Serums Are a Must-Have</h3>
+        <p>Not sure if serums are worth it? See how they transform your skin and which ones suit your needs.</p>
+        <a href="https://www.nykaa.com/beauty-blog/benefits-of-face-serum/" target="_blank" rel="noopener noreferrer" className="read-more">
+          <p>Read more</p>
+        </a>
+      </div>  
+    </div>
 
+    <div className="card">
+            <div className="card-content">
+            <img src={img4} alt="correct order" />
+    <h3>The Correct Order to Apply Skincare Products</h3>
+    <p>Ever wondered if moisturizer goes before or after serum? Get the ultimate layering guide.</p>
+    <a href="https://www.healthline.com/health/beauty-skin-care/order-of-skin-care#quick-guide" target="_blank" rel="noopener noreferrer" className="read-more">
+      <p>Read more</p>
+    </a>
+  </div>
+</div>
 
-            
-         
-            
-            
+<div className="card">
+            <div className="card-content">
+            <img src={img5} alt="Winter Base Makeup Routine" />
 
-          
-            
+    <h3>Why Sunscreen is the Most Important Skincare Product</h3>
+    <p>SPF is a must-have, but do you know which type is best for your skin? Find out here.</p>
+    <a href="https://www.garnier.in/skin-care-tips/why-is-spf-important" target="_blank" rel="noopener noreferrer" className="read-more">
+      <p>Read more</p>
+    </a>
+  </div>
+</div>
+
+<div className="card">
+            <div className="card-content">
+            <img src={img6} alt="Winter Base Makeup Routine" />
+
+    <h3>How to Prevent and Treat Hyperpigmentation</h3>
+    <p>Dark spots and uneven skin tone? Learn the best ways to fade them for good.</p>
+    <a href="https://olay.co.uk/skin-care-tips/dark-spots-and-hyperpigmentation/how-to-reduce-hyperpigmentation" target="_blank" rel="noopener noreferrer" className="read-more">
+      <p>Read more</p>
+    </a>
+  </div>
           </div>
         </div>
-      </section>
+</section>
+
+<section id="chat-forum" className="chat-forum">
+  <div className="chat-container">
+    <h2 className="chat-title">Join the Chat Forum</h2>
+    <p className="chat-description">
+      Connect with our community to share and explore skincare tips, tricks, and experiences.
+    </p>
+    <button className="chat-button" onClick={() => navigate("/chatforum")}>
+      Join Now
+    </button>
+  </div>
+</section>
+
+
 
 
       <Footer />

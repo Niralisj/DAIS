@@ -8,7 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute'; // Import ProtectedRou
 import SkinQuiz from './Quiz/welcometoquiz';
 import Quiz from './Quiz/quiz';
 import DIY from './DIY/diy';
-
+import Cf from './chatforum/cf';
 function App() {
   return (
     <Routes>
@@ -17,7 +17,10 @@ function App() {
       <Route path="/sign-up" element={<SignUpPage />} />
       <Route path="/" element={<Homepage />} />
       <Route path="/quiz" element={<Quiz />} />
-      <Route path="/diy" element={<DIY/>} />
+      <Route path="/diy" element={<DIY />} />
+      <Route path="/chatforum" element={<Cf/>} />
+      
+      
       {/* Protected routes */}
       <Route
         path="/user-panel"
