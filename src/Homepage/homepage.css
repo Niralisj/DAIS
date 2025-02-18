@@ -276,15 +276,23 @@ body {
 .skin-quiz h2 {
   font-size: 3rem;
   color: #632ec5;
-  margin-bottom: 1rem;
+  margin-bottom: 1rem; white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
   animation: slideIn 1s ease-in-out;
 }
 
-.skin-quiz p {
+.skin-quiz h3 {
   font-size: 1.2rem;
   color: #555;
   line-height: 1.6;
   animation: slideIn 1.2s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .text-content h2 {
+    font-size: 1.5rem;
+  }
 }
 
 
@@ -338,33 +346,82 @@ body {
   }
 }
 
-.diy-remedies{
-  background-color: #fef9e4; /* Light yellow background */
+
+
+
+/* DIY Remedies Section Styling */
+.diy-remedies {
+  text-align: center;
   height: 100vh;
   display: flex;
-  padding: 4rem 2rem;
-  position: relative;
-  align-items: right;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #fdf5ff, #e0c3fc); /* Soft pastel gradient */
   max-width: 1400px;
-  margin: 50px auto;
-  justify-content: center; /* Centers content vertically */
   padding: 60px 30px;
-  animation: fadeInUp 1s ease-in-out;
-  border-radius: 10px;
-  gap: 20px;
-  
- /* background-image: url('../2.jpg');
- background-size: 600px;
- background-repeat: no-repeat;
- background-position: right center; */
+  margin: 50px auto;
+  position: relative;
 }
 
-.diy{
- text-align: left;
- position: relative;
- top: 90%;
- left: 50%;
- transform: translate(-50%) translateY(-50%);
+
+
+.diy-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.diy-content h2 {
+  font-size: 2.5rem;
+  color: #4a235a; /* Deep plum */
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.diy-content p {
+  font-size: 1.2rem;
+  color: #6c3483; /* Soft purple */
+  margin-bottom: 20px;
+}
+
+.diy-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4); /* Pink gradient */
+  color: #fff;
+  padding: 14px 28px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(255, 99, 132, 0.3);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow Effect on Hover */
+.diy-btn:hover {
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(255, 99, 132, 0.5);
+}
+
+/* Add a Glow Effect */
+.diy-btn::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 10%, transparent 10%);
+  transform: rotate(25deg);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.diy-btn:hover::before {
+  opacity: 1;
 }
 
 

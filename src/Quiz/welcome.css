@@ -1,0 +1,169 @@
+.welcome-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background: url("./q2.jpg") no-repeat center center / cover;
+  position: relative;
+  padding: 20px;
+  overflow: hidden;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap');
+
+.welcome-screen h1 {
+  font-size: 3rem;
+  font-family: 'Cormorant Garamond', serif; /* Elegant luxury font */
+  font-weight: bold;
+  color: #ffffff; /* Pure white */
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.9),
+               0 0 25px rgba(255, 255, 255, 0.6);
+  margin-bottom: 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: flickerFadeIn 2s ease-out forwards, subtleGlow 3s infinite alternate;
+}
+
+/* Fade-in effect with slight movement */
+@keyframes flickerFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Soft glowing effect */
+@keyframes subtleGlow {
+  0% {
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+  }
+}
+
+
+
+.welcome-screen p {
+  font-size: 1.4rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeSlideIn 1.5s ease-in-out 0.5s forwards;
+}
+
+
+p {
+  font-size: 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.gender-selection {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.gender-selection button {
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.gender-selection button:nth-child(1) {
+  background: linear-gradient(135deg, #ffb6c1, #ff69b4); /* Light Pink to Hot Pink */
+}
+
+.gender-selection button:nth-child(1):hover {
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(255, 20, 147, 0.4);
+}
+
+.gender-selection button:nth-child(2) {
+  background: linear-gradient(135deg, #6a5acd, #1e90ff); /* Deep Purple to Sky Blue */
+}
+
+.gender-selection button:nth-child(2):hover {
+  background: linear-gradient(135deg, #1e90ff, #4682b4);
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(30, 144, 255, 0.4);
+}
+
+.gender-selection button.selected {
+  transform: scale(1.1);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.gender-selection button:nth-child(1).selected {
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
+}
+
+.gender-selection button:nth-child(2).selected {
+  background: linear-gradient(135deg, #1e90ff, #4682b4);
+}
+
+.start-button {
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #ff9a9e, #ff6f61);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-family: 'Poppins', sans-serif;
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in-out 1s forwards, floating 3s ease-in-out infinite;
+}
+
+
+.start-button:hover {
+  background: linear-gradient(135deg, #ff6f61, #ff1493);
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bounceIn {
+  0% { opacity: 0; transform: scale(0.9); }
+  60% { opacity: 1; transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+
+

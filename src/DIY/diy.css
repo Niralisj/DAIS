@@ -1,0 +1,49 @@
+.diy-container {
+    text-align: center;
+    padding: 50px 20px;
+    background: #fffaf0;
+  }
+  
+  .diy-container h2 {
+    font-size: 2rem;
+    color: #4a235a;
+    margin-bottom: 10px;
+  }
+  
+  .diy-container p {
+    font-size: 1.2rem;
+    color: #6c3483;
+    margin-bottom: 20px;
+  }
+  
+  .diy-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .diy-card {
+    background: #fff;
+    padding: 15px;
+    width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+  }
+  
+  .diy-card h3 {
+    font-size: 1.3rem;
+    color: #d63384;
+  }
+  
+  .diy-card p {
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .diy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  }
+  

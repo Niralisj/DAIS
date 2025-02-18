@@ -73,27 +73,29 @@ const Homepage = () => {
     </div>
   </div>
       </section>
-      
+     
       {/* Skin Quiz Section */}
-      <section id="skin-quiz" className="section skin-quiz">
-        <div className="text-content">
-          <h2>Skin Quiz</h2>
-          <p>Take our personalized skin quiz to find out what works best for your skin.</p>
-          <button className="b1" onClick={handleQuizButtonClick}>
-            Take the Quiz
-        </button>
-        </div>
-      </section>
+<section id="skin-quiz" className="section skin-quiz">
+  <div className="text-content">
+  <h2>Discover What’s Best for Your Skin!</h2>
+   <h3>Take our personalized skin quiz to find out what works best for your skin.</h3>
+    <button className="b1" onClick={handleQuizButtonClick}>
+      Take the Quiz
+    </button>
+  </div>
+</section>
 
 
 
       {/* DIY Remedies Section */}
-      <section id="diy-remedies" className="section diy-remedies">
-        <div className="diy">
-          <h2>DIY Remedies</h2>
-          <p>Explore easy-to-make remedies for healthy, glowing skin.</p>
-        </div>
-      </section>
+           <section id="diy-remedies" className="diy-remedies">
+          <div className="diy-content">
+          <h2>Mix, Glow, Repeat!🍯</h2>
+          <p>Explore easy-to-make remedies for healthy, glowing skin.Make skincare fun with easy, nourishing DIY beauty hacks</p>
+          <a href="/diy" className="diy-btn">Explore Remedies</a>
+          </div>
+          </section>
+
 
       {/* Chat Forum Section */}
       <section id="chat-forum" className="chat-forum">

@@ -5,8 +5,9 @@ import LoginPage from './login/loginpage';
 import SignUpPage from './signuppage/signup';
 import UserPanel from './userpanel/userpanel'; // Example of protected user panel page
 import ProtectedRoute from './components/ProtectedRoute'; // Import ProtectedRoute
-import SkinQuiz from './Quiz/skinquiz';
-
+import SkinQuiz from './Quiz/welcometoquiz';
+import Quiz from './Quiz/quiz';
+import DIY from './DIY/diy';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/sign-up" element={<SignUpPage />} />
       <Route path="/" element={<Homepage />} />
-
+      <Route path="/quiz" element={<Quiz />} />
+      <Route path="/diy" element={<DIY/>} />
       {/* Protected routes */}
       <Route
         path="/user-panel"
@@ -26,7 +28,7 @@ function App() {
         }
       />
       <Route path="/skinquiz"
-        element={<SkinQuiz />} /> {/* Make sure SkinQuiz is properly imported */}
+        element={<SkinQuiz />} /> 
     
     </Routes>
   );
