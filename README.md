@@ -1,11 +1,11 @@
 ````md
-**Dais - Your Virtual Skincare Friend**
+Dais - Your Virtual Skincare Friend
 
-Dais is your go-to virtual skincare companion, offering **personalized recommendations, educational resources, and a supportive community.** Whether you're new to skincare or looking to refine your routine, Dais helps you make informed decisions for healthier skin!
+Dais is your go-to virtual skincare companion, offering personalized recommendations, educational resources, and a supportive community.Whether you're new to skincare or looking to refine your routine, Dais helps you make informed decisions for healthier skin!
 
 ---
 
-**🌿 Table of Contents**
+Table of Contents
 
 1. [Features](#features)
 2. [Installation](#installation)
@@ -15,40 +15,40 @@ Dais is your go-to virtual skincare companion, offering **personalized recommend
 
 ---
 
-**✨ Features**
+Features
 
-- 🧑‍⚕ **AI Skin Type Assessment** – Get personalized skin analysis and recommendations.
-- 🛁 **Custom Skincare Tips** – Build routines tailored to your unique needs.
-- 📚 **Learn & Glow Module** – Access blogs, articles, and videos on skincare.
-- 🏡 **DIY Skincare Remedies** – Discover natural, homemade skincare solutions.
-- 💬 **Community Chat Forum** – Share tips and interact with fellow skincare lovers.
-- 🔔 **Reminders & Notifications** – Stay consistent with scheduled skincare reminders.
-- 🛍 **Product Recommendations** – Get suggestions for products suited to your skin type.
+- 🧑‍⚕ Skin Type Assessment – Get personalized skin analysis and recommendations.
+- 🛁 Custom Skincare Tips – Build routines tailored to your unique needs.
+- 📚 Learn & Glow Module– Access blogs, articles, and videos on skincare.
+- 🏡 DIY Skincare Remedies – Discover natural, homemade skincare solutions.
+- 💬 Community Chat Forum – Share tips and interact with fellow skincare lovers.
+- 🔔 Reminders & Notifications – Stay consistent with scheduled skincare reminders.
+- 🛍 Product Recommendations – Get suggestions for products suited to your skin type.
 
 ---
 
-**⚙️ Installation**
+Installation
 
-**1️⃣ Clone the Repository:**
+1️.Clone the Repository:
 
 ```sh
 git clone https://github.com/Niraljs/DAIS---Project.git
 ```
 ````
 
-**2️⃣ Navigate to the Project Directory:**
+2️.Navigate to the Project Directory:
 
 ```sh
 cd DAIS---Project
 ```
 
-**3️⃣ Install Dependencies:**
+3.Install Dependencies:
 
 ```sh
 npm install
 ```
 
-**4️⃣ Start the Application:**
+4️.Start the Application:
 
 ```sh
 npm start
@@ -56,7 +56,7 @@ npm start
 
 ---
 
-**🚀 Usage**
+🚀 Usage
 
 1. Sign Up or Log In\*\* – Create an account to unlock personalized features.
 2. Take the Skin Assessment Quiz\*\* – Identify your skin type and concerns.
@@ -70,20 +70,20 @@ npm start
 
 contribute:
 
-1. **Fork the repository** on GitHub.
-2. **Create a new branch** for your feature:
+1. Fork the repository on GitHub.
+2. Create a new branch for your feature:
    ```sh
    git checkout -b feature/your-feature-name
    ```
-3. **Make and commit your changes**:
+3. Make and commit your changes:
    ```sh
    git commit -m "Add new feature"
    ```
-4. **Push your branch to GitHub**:
+4. Push your branch to GitHub:
    ```sh
    git push origin feature/your-feature-name
    ```
-5. **Submit a Pull Request** for review.
+5. Submit a Pull Request** for review.
 
 📜 License
 
