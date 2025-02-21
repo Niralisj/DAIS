@@ -1,0 +1,159 @@
+.survey-heading {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.heading {
+    font-size: 28px;
+    font-weight: 600;
+    color: #444;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 7px;
+}
+
+.heading::after {
+    content: "";
+    width: 50px;
+    height: 3px;
+    background-color: #ff7eb3; /* Soft pink aesthetic */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.survey-container {
+    max-width: 700px; /* Wider container */
+    margin: 0 auto;
+    background: #fff5fa; /* Soft pinkish-white background */
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.survey-subtext {
+    font-size: 17px;
+    color: #444;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.survey-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.survey-form label {
+    width: 50%; 
+    text-align: left;
+    font-family: "Helvetica Neue",Helvetica,Arial;
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.survey-form select {
+    width: 100%;
+    max-width: 400px; /* Normal width for dropdowns */
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    background: #fff;
+    color: #444;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.survey-form select:focus {
+    outline: none;
+    border-color: #ff5e99; /* Vibrant pink accent */
+    box-shadow: 0 0 6px rgba(255, 94, 153, 0.4);
+}
+
+.error-message {
+    color: #d9534f;
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.survey-container .question {
+    text-align: left;
+    margin-bottom: 20px;
+    font-size: 17px;
+    font-weight: 500;
+    color: #333;
+}
+
+.survey-container .checkbox-group {
+    display: flex;
+    font-family: "Poppins", sans-serif;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+
+
+.survey-container .checkbox-group label:hover {
+    border-color: #ff5e99;
+}
+
+
+.survey-container .submit p {
+    margin-bottom: 10px;
+}
+
+.survey-container .submit a {
+    color: #ff5e99;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.survey-container .submit a:hover {
+    text-decoration: underline;
+}
+
+
+.survey-container .submit button {
+    background: linear-gradient(135deg, #ff5e99, #ff85b2); /* Soft gradient for depth */
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px; 
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(255, 94, 153, 0.2); /* Soft glow effect */
+}
+
+.survey-container .submit button:hover {
+    background: linear-gradient(135deg, #e94e87, #ff5e99); /* Slightly darker gradient */
+    box-shadow: 0 6px 14px rgba(255, 94, 153, 0.3);
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+.survey-container .submit button:active {
+    background: #d9477a;
+    transform: translateY(1px); /* Pressed effect */
+    box-shadow: 0 3px 8px rgba(255, 94, 153, 0.2);
+}
+
+.survey-container .survey-footer {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: #444;
+    margin-top: 20px;
+}
+

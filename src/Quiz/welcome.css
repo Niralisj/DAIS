@@ -124,7 +124,7 @@ p {
 }
 
 .start-button {
-  padding: 12px 24px;
+  padding: 12px 22px;
   font-size: 1.2rem;
   font-weight: bold;
   color: white;
@@ -165,5 +165,39 @@ p {
   50% { transform: translateY(-5px); }
 }
 
+.already-know {
+  margin-top: 0px;
+  font-size: 0.2rem;
+  color: #444;
+}
+
+.skip-button {
+  background: linear-gradient(135deg, #ff5c8a, #ff7fa4);
+  color: #fff;
+  border: none;
+  padding: 15px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+}
+
+.skip-button:hover {
+  background: linear-gradient(135deg, #ff7fa4, #ff5c8a);
+  transform: scale(1.05);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.info-text-p {
+  font-size: 0.85rem; /* Adjust this value as needed */
+  color: #000000;
+  margin-top: 5px;
+  max-width: 900px;
+  text-align: center;
+  line-height: 1.5;
+}
 
 
