@@ -1,9 +1,8 @@
-````md
+
 Dais - Your Virtual Skincare Friend
 
 Dais is your go-to virtual skincare companion, offering personalized recommendations, educational resources, and a supportive community.Whether you're new to skincare or looking to refine your routine, Dais helps you make informed decisions for healthier skin!
 
----
 
 Table of Contents
 
@@ -13,7 +12,7 @@ Table of Contents
 4. [Contributing](#contributing)
 5. [License](#license)
 
----
+
 
 Features
 
@@ -25,7 +24,7 @@ Features
 - 🔔 Reminders & Notifications – Stay consistent with scheduled skincare reminders.
 - 🛍 Product Recommendations – Get suggestions for products suited to your skin type.
 
----
+
 
 Installation
 
@@ -84,7 +83,3 @@ contribute:
    git push origin feature/your-feature-name
    ```
 5. Submit a Pull Request** for review.
-
-📜 License
-
-Dais is open-source and licensed under the [MIT License](LICENSE).
