@@ -1,12 +1,15 @@
+// server/index.js
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const authrouter = require('./routes/authrouter');
-const ProductRouter = require('./routes/productrouter');
-
 require('dotenv').config();
 require('./models/db');
+
+const authRouter = require('./routes/authrouter');
+const productRouter = require('./routes/productrouter');
+const postsRouter = require('./routes/PostRoute'); // Corrected line
+
 const PORT = process.env.PORT || 8080;
 
 app.get('/ping', (req, res) => {
@@ -15,11 +18,11 @@ app.get('/ping', (req, res) => {
 
 app.use(bodyParser.json());
 app.use(cors());
-//config objet allow specific sites to access the api
-app.use('/auth', authrouter);
-app.use('/products', ProductRouter);
 
+app.use('/auth', authRouter);
+app.use('/products', productRouter);
+app.use('/api/posts', postsRouter);
 
 app.listen(PORT, () => {
-    console.log(`Server is running on ${PORT}`)
-})
+    console.log(`Server is running on port ${PORT}`);
+});

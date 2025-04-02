@@ -22,13 +22,13 @@ function LoginPage() {
   const handleLogin = async (e) => {
     e.preventDefault();
     const { email, password } = loginInfo;
-
+  
     if (!email || !password) {
       return handleError('Email and password are required');
     }
-
+  
     try {
-      const url = `http://localhost:8080/auth/login`; // Use http for local development
+      const url = `http://localhost:8080/auth/login`; // Ensure this is correct
       const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -36,17 +36,18 @@ function LoginPage() {
         },
         body: JSON.stringify(loginInfo),
       });
-
+  
       const result = await response.json();
-      const { success, message, jwtToken, name, error } = result;
-
+      const { success, message, jwtToken, name, error, userId } = result;
+  
       if (success) {
         handleSuccess(message);
-        localStorage.setItem('token', jwtToken);
+        localStorage.setItem('jwtToken', jwtToken); // Use consistent key name
+        localStorage.setItem('userId', userId);
         localStorage.setItem('loggedInUser', name);
         setTimeout(() => {
-          navigate('/user-panel'); // Redirect to UserPanel
-        }, 1000); // Optional delay for UX
+          navigate('/user-panel');
+        }, 1000);
       } else if (error) {
         const details = error?.details?.[0]?.message || 'Login failed';
         handleError(details);
@@ -54,10 +55,10 @@ function LoginPage() {
         handleError(message);
       }
     } catch (err) {
+      console.error('Login error:', err); // Log the error for debugging
       handleError('Something went wrong. Please try again later.');
     }
   };
-
   return (
     <div className="login-container">
       <div className="login-box">

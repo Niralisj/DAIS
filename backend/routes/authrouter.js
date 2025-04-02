@@ -1,5 +1,4 @@
 
-
 const { signup, login } = require('../controllers/authcontroller');
 const { signupValidation, loginValidation } = require('../middleware/authvalidation');
 

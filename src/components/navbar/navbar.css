@@ -24,16 +24,15 @@
   justify-content: center;
 }
 
-  .logo-pattern {
-    position: absolute;
-    top: -20px; /* Move it slightly above */
-    left: -10px; /* Adjust left alignment */
-    width: 80px;
-    height: 80px;
-    z-index: -1; /* Move it behind text */
-    opacity: 1;
-  }
-  
+.logo-pattern {
+  position: absolute;
+  top: -20px; /* Move it slightly above */
+  left: -10px; /* Adjust left alignment */
+  width: 80px;
+  height: 80px;
+  z-index: -1; /* Move it behind text */
+  opacity: 1;
+}
 
 .navbar ul {
   display: flex;
@@ -72,10 +71,14 @@
   width: 100%;
 }
 
+.icon-container { /* New container for icons */
+  display: flex;
+  gap: 5px;
+  align-items: center; /* Vertically align icons */
+}
 
-
-
-.user-icon {
+.user-icon,
+.reminders-icon {
   position: relative;
   display: flex;
   justify-content: center;
@@ -83,17 +86,25 @@
   width: 50px;
   height: 50px;
   font-size: 1.5rem;
-  color:#e0aaff; 
-  background-color:azure;
+  color: #e0aaff;
+  background-color: azure;
   border-radius: 50%;
   transition: color 0.5s ease-in-out, transform 0.3s ease-in-out;
   cursor: pointer;
+  margin-left: 10px; /* Add margin to the left of *each* icon */
 }
 
-.user-icon::before {
+/* Remove margin-left from the first icon in the container */
+.icon-container > :first-child {
+  margin-left: 0;
+}
+
+
+.user-icon::before,
+.reminders-icon::before {
   content: "";
   position: absolute;
-  width: 56px; /* Slightly larger than the icon */
+  width: 56px;
   height: 56px;
   border-radius: 50%;
   border: 3px solid transparent;
@@ -101,14 +112,15 @@
   transition: opacity 0.4s ease-in-out;
 }
 
-.user-icon:hover::before {
+.user-icon:hover::before,
+.reminders-icon:hover::before {
   opacity: 1;
-  border-color: #ff80b5; /* Soft pink */
-  box-shadow: 0 0 12px #ff80b5, 0 0 20px #e0aaff; /* Soft pink + lavender glow */
+  border-color: #ff80b5;
+  box-shadow: 0 0 12px #ff80b5, 0 0 20px #e0aaff;
 }
 
-.user-icon:hover {
-  color: #ffb6c1; /* Soft pink */
+.user-icon:hover,
+.reminders-icon:hover {
+  color: #ffb6c1;
   transform: scale(1.1);
 }
-

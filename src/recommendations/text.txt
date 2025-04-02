@@ -1,0 +1,352 @@
+import React, { useState } from "react";
+import "./recs.css";
+import Routine from "./routine";
+
+const Recs = () => {
+    const [skinType, setSkinType] = useState("");
+    const [productType, setProductType] = useState("");
+    const [category, setCategory] = useState("");
+    const [concerns, setConcerns] = useState("");
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+    const [defaultRoutine, setDefaultRoutine] = useState(null);
+
+    const fetchData = async (url, isRoutine = false) => {
+        setLoading(true);
+        setError("");
+        try {
+            console.log("Fetching from:", url);
+            const response = await fetch(url);
+            if (!response.ok) throw new Error(`Status: ${response.status}, ${await response.text()}`);
+            const data = await response.json();
+            isRoutine ? setDefaultRoutine(data) : setProducts(data);
+        } catch (error) {
+            setError(`Error fetching data: ${error.message}`);
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const fetchRecommendations = () => {
+        if (!skinType) {
+            setError("Please select a skin type.");
+            return;
+        }
+
+        if (productType && category) {
+            const queryParams = new URLSearchParams({
+                skintype: skinType,
+                product_type: productType.toLowerCase(),
+                category: category.toLowerCase(),
+                ...(concerns && { concern: concerns })
+            });
+            fetchData(`http://127.0.0.1:8000/recommendations?${queryParams}`);
+        } else {
+            fetchData(`http://127.0.0.1:8000/default_routine?skintype=${skinType}`, true);
+        }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        fetchRecommendations();
+    };
+
+    return (
+        <div className="recs-container">
+            {/* Hero Section */}
+            <div className="hero-section">
+                <h1 className="hero-title">Thank You for Using Dais! 🌿</h1>
+                <p className="hero-subtitle">
+                    We are constantly improving to bring you the **best personalized skincare recommendations**.
+                </p>
+                <button className="hero-button" onClick={() => window.scrollTo({ top: 600, behavior: "smooth" })}>
+                    Get Your Recommendations
+                </button>
+            </div>
+
+            {/* Form Section */}
+            <h2 className="recs-title">Get Skincare Recommendations</h2>
+            <form onSubmit={handleSubmit} className="recs-form">
+                {[  
+                    { label: "Skin Type", id: "skinType", value: skinType, setter: setSkinType, required: true, options: ["Oily", "Dry", "Combination", "Sensitive", "Normal"] },
+                    { label: "Product Type", id: "productType", value: productType, setter: setProductType, options: ["Cleanser", "Serum", "Moisturizer", "Sunscreen"] },
+                    { label: "Category (Optional)", id: "category", value: category, setter: setCategory, options: ["Indian", "Global"] }
+                ].map(({ label, id, value, setter, required, options }) => (
+                    <div className="form-group" key={id}>
+                        <label htmlFor={id}>{label}:</label>
+                        <select id={id} value={value} onChange={(e) => setter(e.target.value)} required={required}>
+                            <option value="">{label}</option>
+                            {options.map((option) => (
+                                <option key={option} value={option.toLowerCase()}>{option}</option>
+                            ))}
+                        </select>
+                    </div>
+                ))}
+
+                <div className="form-group">
+                    <label htmlFor="concerns">Concerns (Optional):</label>
+                    <input
+                        type="text"
+                        id="concerns"
+                        value={concerns}
+                        onChange={(e) => setConcerns(e.target.value)}
+                        placeholder="Comma-separated concerns"
+                    />
+                </div>
+
+                <button type="submit" className="recs-button">Get Recommendations</button>
+            </form>
+
+            {loading && <p className="recs-loading">Fetching recommendations... 🔄</p>}
+            {error && <p className="recs-error">{error}</p>}
+
+            {skinType && (
+                <div className="recommendation-area">
+                    <Routine skinType={skinType} />
+                    {[{ title: "Top Skincare Picks ✨", data: products }].map(({ title, data }) =>
+                        data?.length > 0 && (
+                            <div className="recs-results" key={title}>
+                                <h3 className="recs-subtitle">{title}</h3>
+                                <ul className="product-list">
+                                    {data.map((product, index) => (
+                                        <li key={index} className="product-item">
+                                            <img src={product.product_image} alt={product.product_name} className="product-image" />
+                                            <div className="product-details">
+                                                <h3>{product.product_name}</h3>
+                                                <p><strong>Brand:</strong> {product.brand}</p>
+                                                <p><strong>Effect:</strong> {product.notable_effects}</p>
+                                                <a href={product.product_url} target="_blank" rel="noopener noreferrer">View Product</a>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )
+                    )}
+                </div>
+            )}
+
+            {!loading && !error && !defaultRoutine && products.length === 0 && (
+                <p className="recs-no-results">No recommendations found. Try different options! 🧴</p>
+            )}
+        </div>
+    );
+};
+
+export default Recs;
+
+
+
+.hero-section {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(to bottom, #f8e1eb, #ffffff); /* Soft pink gradient */
+  border-radius: 12px;
+  margin-bottom: 40px;
+}
+
+.hero-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hero-button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #ff85a2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: #ff6180;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.input-group input,
+.input-group select {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  font-size: 16px;
+  padding: 6px 4px;
+  outline: none;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  border-bottom: 2px solid #6A5ACD;
+}
+
+.recs-button {
+  background-color: #6A5ACD;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.recs-button:hover {
+  background-color: #4B0082;
+}
+
+
+.recs-title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2c3e50; /* Darker title color */
+  font-size: 28px;
+  font-weight: 600; /* Semi-bold title */
+}
+
+.recs-form {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 20px; /* Space between form and results */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: 500; /* Slightly lighter bold */
+  color: #555;
+}
+
+select,
+input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+  background-color: #f8f8f8; /* Light background for inputs */
+}
+
+.recs-button {
+  background-color: #e91e63;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  grid-column: 1 / 3;
+  transition: background-color 0.3s ease;
+}
+
+.recs-button:hover {
+  background-color: #d81b60;
+}
+
+.recs-loading,
+.recs-error,
+.recs-no-results {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.recs-loading {
+  color: #666;
+}
+
+.recs-error {
+  color: #d32f2f;
+}
+
+.recs-results {
+  margin-top: 30px; /* More space for results */
+}
+
+.recs-subtitle {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+  font-weight: 600;
+  color: #e91e63;
+}
+
+.product-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 0; /* Less padding, more vertical spacing */
+  border-bottom: 1px solid #eee; /* Light divider */
+}
+
+.product-item:last-child {
+  border-bottom: none; /* Remove border from last item */
+}
+
+.product-image {
+  max-width: 100px;
+  height: auto;
+  margin-right: 20px;
+  border-radius: 4px;
+}
+
+.product-details h3 {
+  margin-top: 0;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.product-details p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.product-details a {
+  color: #e91e63;
+  text-decoration: none;
+}
+
+.product-details a:hover {
+  text-decoration: underline;
+}

@@ -17,7 +17,7 @@
   font-size: 3rem;
   font-family: 'Cormorant Garamond', serif; /* Elegant luxury font */
   font-weight: bold;
-  color: #ffffff; /* Pure white */
+  color: #ab1b3d; /* Pure white */
   text-shadow: 0 0 15px rgba(255, 255, 255, 0.9),
                0 0 25px rgba(255, 255, 255, 0.6);
   margin-bottom: 10px;
@@ -201,3 +201,17 @@ p {
 }
 
 
+
+.loading-screen {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  padding: 10px;
+  animation: fade-in 0.5s ease-in-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

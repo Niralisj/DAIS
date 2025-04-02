@@ -1,0 +1,25 @@
+/* src/pages/routine.css */
+.skincare-routine-container {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .skincare-routine-container h2 {
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .skincare-routine-container ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+  }
+  
+  .skincare-routine-container li {
+    margin-bottom: 10px;
+  }
+  
+  .skincare-routine-container strong {
+    font-weight: bold;
+  }

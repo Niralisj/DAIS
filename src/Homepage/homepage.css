@@ -106,94 +106,75 @@ body {
   }
 }
 
-
-
-
-
-/* About Section */
-
-.about {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 4rem 2rem;
-  height: 110vh;
-  max-width: 1400px;
-  padding: 60px 30px;
-  margin: 50px auto;
-  border-radius: 0%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #fdf5ff;
-  opacity: 0;
-  animation: fadeInSlide 1s ease-in-out forwards;
-}
-
 .about-container {
   display: flex;
-  font-family: "Poppins", sans-serif;
-  gap: 2rem;
-  max-width: 900px;
+  align-items: center; /* Center video & text */
+  justify-content: space-between;
   width: 100%;
+  background: linear-gradient(135deg, #fbe4e6, #f8f3f6); /* Soft pastel gradient */
+  margin: 0 auto;
+  height: 100vh;
+  gap: 2rem; /* Space between video & text */
 }
 
-.about-image {
-  width: 300px;
-  height: auto;
-  border-radius: 20px;
-  box-shadow: 0 8px 16px rgba(255, 192, 203, 0.3);
-  transition: transform 0.3s ease-in-out;
-  animation: pulseGlow 2.5s infinite;
+.about-video-container {
+  width: 50%; /* Adjusts width */
+  height: 80vh; /* Taller video */
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 15px;
+  background: #000;
 }
 
-.about-image:hover {
-  transform: scale(1.05);
+.about-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures video fills container */
+  border-radius: 10px;
 }
 
-.about h2,
-.about p {
-  opacity: 0;
-  animation: fadeInSlide 1s ease-in-out forwards;
-  animation-delay: 0.5s;
+.about-text {
+  width: 50%;
+  padding: 2rem;
 }
 
-.about h2 {
-  font-size: 70px;
-  color: #632ec5;
-  margin-bottom: 2rem;
-  align-self: auto;
+.about-text h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  width: 100%;
+  text-align: center;
+  color: #d1117d;
 }
 
-.about p {
-  font-size: 1.3rem;
-  align-self: auto;
-  margin-left: 10px;
+.about-text p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  text-align: left;
   color: #555;
-  line-height: 1.6;
 }
 
-.hero-btn {
-  display: inline-block;
-  padding: 12px 24px;
-  font-size: 1rem;
+.abt-hero-btn {
+  display: block;  /* Makes button behave like a block element */
+  margin: 2rem auto; 
+  text-align: center; 
+  background: linear-gradient(135deg, #e91e63, #d81b60);
   color: white;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  padding: 0.6rem 2rem;
   border: none;
   border-radius: 30px;
-  border-top-right-radius: 0;
+  font-size: 1.3rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: 0.5s;
-  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
-  animation: buttonFloat 2s ease-in-out infinite;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.hero-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(255, 105, 180, 0.5);
-  border-top-right-radius: 30px;
+.abt-hero-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* Keyframes for fade-in and slide-up effect */
-@keyframes fadeInSlide {
+@keyframes fadeInUp {
   0% {
     opacity: 0;
     transform: translateY(50px);
@@ -204,74 +185,77 @@ body {
   }
 }
 
-/* Keyframes for soft pulse effect */
-@keyframes pulseGlow {
-  0% {
-    box-shadow: 0 8px 16px rgba(255, 192, 203, 0.3);
-  }
-  50% {
-    box-shadow: 0 12px 24px rgba(255, 192, 203, 0.5);
-  }
-  100% {
-    box-shadow: 0 8px 16px rgba(255, 192, 203, 0.3);
-  }
+.about-container {
+  animation: fadeInUp 1s ease-in-out;
 }
 
-/* Keyframes for button floating effect */
-@keyframes buttonFloat {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-  100% {
-    transform: translateY(0);
-  }
+.about-video {
+  animation: fadeInUp 1.2s ease-in-out;
 }
 
+.abt-hero-btn {
+  transition: transform 0.3s ease-in-out, background-color 0.3s;
+}
+
+.abt-hero-btn:hover {
+  transform: scale(1.05);
+  background-color: #ff5c8d; /* Slightly darker pink */
+}
+
+/* Responsive for smaller screens */
 @media (max-width: 768px) {
   .about-container {
     flex-direction: column;
     text-align: center;
   }
 
-  .about-image {
+  .about-video-container,
+  .about-text {
     width: 100%;
-    max-width: 300px;
+  }
+
+  .about-text {
+    padding: 1rem;
+    text-align: center;
   }
 }
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    padding: 0 2rem;
+  }
+}
+
 
 
 /* quiz Section */
 
 .skin-quiz {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: linear-gradient(135deg, #fdf5ff, #e0c3fc); /* Soft pastel gradient */
-  padding: 4rem 2rem;
-  max-width: 1400px;
-  padding: 60px 30px;
-  margin: 50px auto;
-  position: relative;
-  opacity: 0;
-  animation: fadeInUp 1s ease-in-out;
-  opacity: 1;
-  gap: 20px;
-  text-align: left; 
-  background-color: linear-gradient(to right, #ff9a9e, #fad0c4); /* Colors fade from pink to peach */ 
-  background-image: url('../Homepage/dais.jpg');
-  background-size: 1500px;
-  background-repeat: no-repeat;
-  background-position: right center;
   justify-content: space-between;
+  height: 100vh;
+  padding: 2rem 5%;
+  position: relative;
+  text-align: left;
   border-radius: 10px;
-
-
+  background-image: url('../Homepage/dais.jpg'), linear-gradient(135deg, #fdf5ff, #e0c3fc);
+  background-position: right center, 0 0;
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, auto; /* Using cover, change if needed */
 }
 
+.skin-quiz-content-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .skin-quiz h2 {
   font-size: 3rem;
@@ -352,15 +336,14 @@ body {
 /* DIY Remedies Section Styling */
 .diy-remedies {
   text-align: center;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   background: linear-gradient(135deg, #fdf5ff, #e0c3fc); /* Soft pastel gradient */
   max-width: 1400px;
-  padding: 60px 30px;
-  margin: 50px auto;
+  padding: 10rem 15%;
+  margin: 0px auto;
   position: relative;
 }
 
@@ -438,7 +421,7 @@ body {
   width: 100%;
   max-width: 1400px;
   padding: 60px 30px;
-  margin: 50px auto;
+  margin: 20px auto;
   background-color: #f9f9f9; /* Light background for contrast */
 }
 
@@ -508,7 +491,7 @@ body {
 /* Chat Forum Section */
 .chat-forum {
   background: linear-gradient(135deg, #f9fafb, #e3e9f3); /* Soft gradient */
-  padding: 3rem 1.5rem;
+  padding: 10rem 15%;
   border-radius: 1rem;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   text-align: center;

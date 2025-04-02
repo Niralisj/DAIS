@@ -1,0 +1,597 @@
+/* === recs.css - Enhanced Aesthetic & Maintainable Version === */
+
+/* --- Core Variables --- */
+:root {
+    
+    /* Minimal Aesthetic Color Palette */
+
+--primary: #7e57c2;        /* Softened purple, still dominant */
+--primary-light: #b39ddb;    /* Lighter, muted version */
+--primary-lighter: #e1bee7;   /* Even lighter, subtle tint */
+
+--secondary: #e57373;      /* Muted coral, less vibrant */
+--secondary-light: #ef9a9a; /* Lighter, less intense */
+
+--accent: #f44336;         /* Slightly less bright red for emphasis */
+
+--text-dark: #333333;       /* Deep, neutral gray */
+--text-medium: #666666;     /* Medium gray for general text */
+--text-light: #999999;      /* Light gray for subtle text */
+
+--bg-light: #f5f5f5;        /* Very light, warm gray */
+--bg-white: #ffffff;        /* Pure white for clean backgrounds */
+
+--border-light: #e0e0e0;     /* Light gray for subtle borders */
+
+--success: #4caf50;        /* Muted green for positive feedback */
+--error: #f44336;          /* Same as accent for consistency */
+--warning: #ffc107;        /* Softened yellow for warnings */
+  
+    /* Typography */
+    --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --line-height-base: 1.6;
+  
+    /* Spacing (adjust as needed) */
+    --spacing-xs: 0.4rem;
+    --spacing-sm: 0.8rem;
+    --spacing-md: 1.2rem;
+    --spacing-lg: 1.8rem;
+    --spacing-xl: 2.5rem;
+    --spacing-xxl: 3rem;
+  
+    /* Borders & Shadows */
+    --border-radius-sm: 0.5rem;  /* 8px */
+    --border-radius-md: 0.75rem; /* 12px */
+    --border-radius-lg: 1rem;    /* 16px */
+    --box-shadow-subtle: 0 4px 10px rgba(106, 76, 147, 0.06);
+    --box-shadow-medium: 0 8px 25px rgba(106, 76, 147, 0.1);
+    --box-shadow-large: 0 12px 40px rgba(106, 76, 147, 0.12);
+    --box-shadow-focus: 0 0 0 4px rgba(106, 76, 147, 0.15); /* For focus rings */
+  
+    /* Transitions */
+    --transition-duration: 0.3s;
+    --transition-timing: ease; /* Changed from cubic-bezier for simplicity, adjust if needed */
+  
+    /* Form Specific */
+    --form-element-padding: 1rem 1.2rem;
+    --form-border-width: 2px;
+  }
+  
+  /* --- Global Reset & Base Styles (Scoped) --- */
+  /* Apply basic reset only within the container */
+  .recs-container *,
+  .recs-container *::before,
+  .recs-container *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* --- Container Styles --- */
+  .recs-container {
+    max-width: 1200px;
+    margin: var(--spacing-xl) auto; /* Use variable */
+    padding: var(--spacing-xl) var(--spacing-xxl); /* Use variable */
+    font-family: var(--font-family-sans);
+    background-color: var(--bg-white);
+    border-radius: var(--border-radius-lg); /* Use variable */
+    box-shadow: var(--box-shadow-large); /* Use variable */
+    color: var(--text-medium);
+    line-height: var(--line-height-base);
+    position: relative;
+    overflow: hidden; /* Keep overflow hidden for ::before */
+  }
+  
+  /* Decorative top border */
+  .recs-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px; /* Keep fixed height or use variable */
+  }
+  
+  /* --- Headings --- */
+  .recs-title {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    color: black;
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    position: relative;
+    padding-bottom: var(--spacing-sm); /* Use variable */
+  }
+  
+  .recs-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px; /* Or use rem */
+    height: 4px; /* Or use rem */
+    background: linear-gradient(90deg, var(--secondary), var(--accent));
+    border-radius: 2px; /* Or use rem */
+  }
+  
+  .recs-subtitle {
+    margin-bottom: var(--spacing-xl);
+    color: var(--primary);
+    font-size: 1.8rem;
+    text-align: center;
+    font-weight: 600;
+    position: relative;
+  }
+  
+  .recs-subtitle::after {
+    content: '';
+    position: absolute;
+    bottom: calc(-1 * var(--spacing-sm)); /* Position relative to font */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px; /* Or use rem */
+    height: 3px; /* Or use rem */
+    background: linear-gradient(90deg, var(--secondary), var(--accent));
+    border-radius: 2px; /* Or use rem */
+  }
+  
+  
+  /* --- Form Styles --- */
+  .recs-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg); /* Use variable */
+    margin-bottom: var(--spacing-xxl);
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm); /* Use variable */
+  }
+  
+  .form-group label {
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    cursor: pointer; /* Add pointer cursor to labels */
+  }
+  
+  .recs-form select,
+  .recs-form input[type="text"] {
+    width: 100%;
+    padding: var(--form-element-padding);
+    border: var(--form-border-width) solid var(--border-light);
+    border-radius: var(--border-radius-md); /* Use variable */
+    font-size: 1rem;
+    font-family: inherit; /* Ensure form elements inherit font */
+    background-color: var(--bg-white);
+    color: var(--text-dark);
+    transition: border-color var(--transition-duration) var(--transition-timing),
+                box-shadow var(--transition-duration) var(--transition-timing);
+    appearance: none; /* Remove default appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  
+  /* Custom Select Arrow using Mask */
+  .recs-form select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236a4c93' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right var(--spacing-md) center;
+    background-size: 1rem; /* Adjust size as needed */
+    padding-right: calc(var(--spacing-md) * 2 + 1rem); /* Ensure text doesn't overlap arrow */
+  }
+  
+  /* Input specific styles */
+  .recs-form input[type="text"] {
+    background-image: none; /* Ensure text input has no arrow */
+  }
+  
+  .recs-form input[type="text"]::placeholder {
+    color: var(--text-light);
+    opacity: 1; /* Override default opacity */
+  }
+  
+  /* Focus States - Using :focus-visible for better accessibility */
+  .recs-form select:focus-visible,
+  .recs-form input[type="text"]:focus-visible {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: var(--box-shadow-focus);
+  }
+  /* Fallback for browsers not supporting :focus-visible (optional) */
+  .recs-form select:focus,
+  .recs-form input[type="text"]:focus {
+   outline: none;
+   border-color: var(--primary-light);
+   box-shadow: var(--box-shadow-focus);
+  }
+  /* Apply focus-visible polyfill if needed, or accept progressive enhancement */
+  
+  
+  /* --- Button Styles --- */
+  .recs-button {
+    padding: 1.1rem 2.2rem; /* Consider using variables */
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-md); /* Use variable */
+    font-family: inherit; /* Inherit font */
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform var(--transition-duration) var(--transition-timing),
+                box-shadow var(--transition-duration) var(--transition-timing),
+                opacity var(--transition-duration) var(--transition-timing); /* Transition specific properties */
+    align-self: center;
+    margin-top: var(--spacing-md); /* Use variable */
+    box-shadow: 0 4px 15px rgba(106, 76, 147, 0.3); /* Keep specific shadow for effect */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    text-decoration: none; /* In case it's ever used as a link */
+    line-height: 1.2; /* Prevent text wrapping issues */
+  }
+  
+  /* Button hover overlay effect */
+  .recs-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    opacity: 0;
+    z-index: -1;
+    transition: opacity var(--transition-duration) var(--transition-timing);
+  }
+  
+  .recs-button:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: var(--box-shadow-medium); /* Use variable */
+  }
+  
+  .recs-button:hover:not(:disabled)::before {
+    opacity: 1;
+  }
+  
+  /* Use :focus-visible for button focus state */
+  .recs-button:focus-visible {
+    outline: none;
+    box-shadow: var(--box-shadow-focus), var(--box-shadow-medium); /* Combine focus ring and hover shadow */
+  }
+  /* Fallback focus */
+  .recs-button:focus {
+    outline: none;
+    box-shadow: var(--box-shadow-focus), var(--box-shadow-medium);
+  }
+  
+  
+  .recs-button:active:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: var(--box-shadow-subtle); /* Slightly less shadow on active */
+  }
+  
+  .recs-button:disabled {
+    background: var(--text-light);
+    color: var(--bg-white); /* Ensure contrast on disabled */
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: 0.7; /* Visually indicate disabled state */
+  }
+  
+  /* --- Status Messages --- */
+  .recs-loading,
+  .recs-error,
+  .recs-no-results {
+    text-align: center;
+    margin: var(--spacing-xl) auto;
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    font-weight: 500;
+    max-width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    border-width: var(--form-border-width); /* Use variable for consistency */
+    border-style: dashed;
+  }
+  
+  .recs-loading {
+    color: var(--primary);
+    background-color: var(--primary-lighter);
+    border-color: var(--primary-light);
+    animation: float 2s ease-in-out infinite; /* Keep existing animation */
+  }
+  
+  .recs-error {
+    color: var(--error);
+    background-color: rgba(214, 48, 49, 0.08);
+    border-color: rgba(214, 48, 49, 0.3);
+  }
+  
+  .recs-no-results {
+    color: var(--text-medium);
+    background-color: var(--bg-light);
+    border-color: var(--border-light);
+  }
+  
+  /* --- Results Area --- */
+  /* Combined recommendation-area and recs-results styles if they always appear together */
+  .recommendation-area { /* Or directly style .recs-results if structure allows */
+    margin-top: var(--spacing-xxl);
+    padding-top: var(--spacing-xl);
+    border-top: var(--form-border-width) dashed var(--border-light);
+  }
+  
+  
+  
+
+ 
+  /* recs.css - Adjusted for Responsive Product Items */
+
+/* ... (rest of your CSS variables, reset, etc.) ... */
+
+/* --- Product List Styles --- */
+.product-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted min-width */
+    gap: var(--spacing-lg);
+}
+
+.product-item {
+    background-color: var(--bg-white);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--box-shadow-subtle);
+    transition: transform var(--transition-duration) var(--transition-timing),
+                box-shadow var(--transition-duration) var(--transition-timing),
+                border-color var(--transition-duration) var(--transition-timing);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border-light);
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-medium);
+    border-color: var(--primary-light);
+}
+
+/* Product Image - Consider aspect-ratio for stability */
+.product-image-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Adjust ratio as needed */
+    overflow: hidden;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.product-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Keep contain, good for product shots */
+    transition: transform var(--transition-duration) var(--transition-timing);
+}
+
+.product-item:hover .product-image {
+    transform: scale(1.03);
+}
+
+/* ... (rest of your product details styles) ... */
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .product-list {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Adjusted min-width */
+        gap: var(--spacing-md);
+    }
+}
+
+@media (max-width: 768px) {
+    .product-list {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Further adjusted min-width */
+        gap: var(--spacing-md);
+    }
+
+    /* Adjust image wrapper or image aspect-ratio/height if needed */
+    /* .product-image-wrapper { aspect-ratio: 1 / 1; } */
+    /* .product-image { height: 160px; } */ /* Less ideal than aspect-ratio */
+}
+
+@media (max-width: 480px) {
+    .product-list {
+        grid-template-columns: 1fr; /* Single column */
+        gap: var(--spacing-lg);
+    }
+
+    /* Adjust image wrapper or image aspect-ratio/height if needed */
+    /* .product-image-wrapper { aspect-ratio: 5 / 4; } */ /* Example: Wider image on mobile */
+
+    .product-item {
+        padding: var(--spacing-sm);
+    }
+}
+  
+  /* If not using a wrapper, apply aspect-ratio directly (might clip differently with 'contain') */
+  /*
+  .product-image {
+    width: 100%;
+    height: auto; // Let aspect-ratio control height
+    aspect-ratio: 1 / 1; // Or desired ratio
+    object-fit: contain;
+    margin-bottom: var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    transition: transform var(--transition-duration) ease;
+  }
+  */
+  
+  
+  .product-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs); /* Smaller gap for details */
+    flex-grow: 1; /* Allow details to fill space if needed */
+  }
+  
+  .product-details h3 {
+    margin: 0 0 var(--spacing-xs) 0; /* Bottom margin only */
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  
+  .product-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0 0 var(--spacing-xs) 0; /* Bottom margin */
+  }
+  
+  .product-brand,
+  .product-effect {
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    line-height: 1.5;
+    margin-bottom: var(--spacing-xs); /* Small margin between these lines */
+  }
+  
+  .product-link {
+    display: inline-block; /* Keep as inline-block */
+    margin-top: auto; /* Pushes link to bottom */
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--primary-lighter);
+    color: var(--primary);
+    text-decoration: none;
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color var(--transition-duration) var(--transition-timing),
+                color var(--transition-duration) var(--transition-timing);
+    text-align: center;
+  }
+  
+  .product-link:hover,
+  .product-link:focus-visible { /* Add focus state */
+    background-color: var(--primary-light);
+    color: white;
+    outline: none; /* Remove default outline if custom style is sufficient */
+  }
+  
+  /* --- Floating Animation --- */
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+  }
+  /* Animation already applied via .recs-loading class */
+  
+  /* --- Responsive Design --- */
+  @media (max-width: 992px) {
+    .recs-container {
+      padding: var(--spacing-xl) var(--spacing-lg); /* Adjust padding */
+    }
+  
+    .product-list {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--spacing-md); /* Adjust gap */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .recs-container {
+      padding: var(--spacing-lg);
+      margin: var(--spacing-md);
+      border-radius: var(--border-radius-md);
+    }
+  
+    .recs-title {
+      font-size: 2rem;
+    }
+  
+    .recs-subtitle {
+      font-size: 1.5rem;
+    }
+  
+    .product-list {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Slightly smaller min */
+      gap: var(--spacing-md);
+    }
+  
+    /* Adjust image wrapper or image aspect-ratio/height if needed */
+    /* .product-image-wrapper { aspect-ratio: 1 / 1; } */
+    /* .product-image { height: 160px; } */ /* Less ideal than aspect-ratio */
+  }
+  
+  @media (max-width: 480px) {
+    .recs-container {
+      padding: var(--spacing-lg) var(--spacing-md);
+      margin: var(--spacing-sm) 0; /* Less horizontal margin */
+      border-radius: 0; /* Keep original style */
+      box-shadow: none;   /* Keep original style */
+      border-top: none; /* Remove gradient border maybe? */
+    }
+  
+    .recs-container::before {
+        height: 6px; /* Slightly thinner top border */
+    }
+  
+    .recs-title {
+      font-size: 1.8rem;
+      margin-bottom: var(--spacing-lg);
+    }
+  
+    .recs-subtitle {
+      font-size: 1.4rem;
+      margin-bottom: var(--spacing-lg);
+    }
+  
+    .recs-form {
+      gap: var(--spacing-md);
+    }
+  
+    .recs-button {
+        background-color: #007bff; /* A nice blue */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease; /* Smooth hover effect */
+      }
+      
+      .recs-button:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+      }
+      
+      .recs-button:disabled {
+        background-color: #cccccc; /* Greyed out when disabled */
+        color: #666666;
+        cursor: not-allowed;
+      }
+    .product-list {
+      grid-template-columns: 1fr; /* Single column */
+      gap: var(--spacing-lg); /* Larger gap for single column */
+    }
+  
+     /* Adjust image wrapper or image aspect-ratio/height if needed */
+    /* .product-image-wrapper { aspect-ratio: 5 / 4; } */ /* Example: Wider image on mobile */
+  
+    .product-item {
+        padding: var(--spacing-sm);
+    }
+  }

@@ -1,7 +1,10 @@
 import React from "react";
 import "../navbar/navbar.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons'; // Import the user icon
+import { FaBell } from 'react-icons/fa';
 
-const Navbar = ({ onUserIconClick }) => {
+const Navbar = ({ onUserIconClick, onRemindersIconClick }) => {
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
@@ -11,8 +14,7 @@ const Navbar = ({ onUserIconClick }) => {
 
   return (
     <nav className="navbar">
-     <div className="logo">
-</div>
+      <div className="logo"></div>
 
       {/* Navigation Links */}
       <ul className="nav-links">
@@ -24,8 +26,13 @@ const Navbar = ({ onUserIconClick }) => {
       </ul>
 
       {/* User Icon */}
-      <div className="user-icon" onClick={onUserIconClick}>
-        👤 {/* Replace with an actual icon/image if needed */}
+      <div className="icon-container">
+        <div className="reminders-icon" onClick={onRemindersIconClick}>
+          <FaBell />
+        </div>
+        <div className="user-icon" onClick={onUserIconClick}>
+          <FontAwesomeIcon icon={faUser} />
+        </div>
       </div>
     </nav>
   );

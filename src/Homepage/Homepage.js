@@ -9,28 +9,34 @@ import img3 from "./blogimg/img3.jpg";
 import img4 from "./blogimg/img4.jpg";
 import img5 from "./blogimg/img5.jpg";
 import img6 from "./blogimg/img6.jpg";
+<source src="/one.mp4" type="video/mp4" />
+
 
 
 
 const Homepage = () => {
+  
   const navigate = useNavigate();
-  // Function to handle clicks on the user icon
   const handleUserIconClick = () => {
     console.log("User icon clicked!");
     navigate('/login'); // Redirects to login page
-    // Later, this can redirect to login/signup or open a dropdown menu
+    
     
   };
-    // Function to handle the skin quiz button click
     const handleQuizButtonClick = () => {
       console.log("Skin Quiz button clicked!");
       navigate('/skinquiz'); // Redirects to skin quiz page
-    };
+  };
+  const handleRemindersIconClick = () => {
+    console.log("Reminders icon clicked!");
+    navigate('/reminder')
+    
+  };
   return (
     <div className="homepage">
-      {/* Pass the handler function to Navbar */}
-      <Navbar onUserIconClick={handleUserIconClick} />
-       
+      <Navbar onUserIconClick={handleUserIconClick}
+      onRemindersIconClick={handleRemindersIconClick}
+       />
       
 
       {/* Hero Section */}
@@ -38,7 +44,7 @@ const Homepage = () => {
         <div className="title-1">
           <h1>Self-Care Starts With Skin Care</h1>
           <p>
-          Want to know how Dais works? Click below to learn more          </p>
+          Want to know how Dais works? Click below to learn more  </p>
           <button className="hero-button"
             onClick={() =>
             document.getElementById("about")
@@ -48,38 +54,31 @@ const Homepage = () => {
         </div>
       </section>
 
+
+
+
       {/* About Section */}
-<section id="about" className="about">
-  <div className="about-container">
-    
+         <section id="about" className="about">
+      <div className="about-container">
+          <div className="about-video-container">
+          <video autoPlay loop muted playsInline controls className="about-video">
+            <source src="/one.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div className="about-text">
+          <h2>About Dais</h2>
+          <p>
+            At <strong>Dais</strong>, we believe self-care starts with understanding your skin.
+            Whether you're dealing with breakouts, hyperpigmentation, or looking for the perfect skincare routine,
+            Dais provides expert-backed solutions tailored to your needs.
+          </p>
 
-    <div className="about-text">
-      <h2>About Dais</h2>
-      <p>
-        At <strong>Dais</strong>, we believe that self-care starts with understanding your skin.  
-        Whether you're dealing with breakouts, hyperpigmentation, or simply looking for the perfect skincare routine,  
-        Dais provides expert-backed solutions tailored to your needs.
-      </p>
-      
-      <ul className="about-features">
-        <li><strong>Personalized Skincare</strong> – Get recommendations based on your skin type and concerns.</li>
-        <li><strong>DIY Remedies</strong> – Explore natural and effective skincare solutions.</li>
-        <li><strong>Community & Chat Forum</strong> – Connect with others and share your skincare journey.</li>
-        <li><strong>Learn & Glow</strong> – Access skincare guides backed by science and expertise.</li>
-      </ul>
-      
-      <p className="about-tagline"><strong></strong></p>
-
-      <button 
-      className="hero-btn" 
-      onClick={() => navigate("/")}
-    >
-      Get Started
-    </button>
-    </div>
-  </div>
-      </section>
-     
+        </div>
+      </div>
+    </section>
+   
+         
       {/* Skin Quiz Section */}
 <section id="skin-quiz" className="section skin-quiz">
   <div className="text-content">
@@ -89,7 +88,10 @@ const Homepage = () => {
       Take the Quiz
     </button>
   </div>
-</section>
+      </section>
+      
+
+
 
 
 
@@ -183,9 +185,9 @@ const Homepage = () => {
     <p className="chat-description">
       Connect with our community to share and explore skincare tips, tricks, and experiences.
     </p>
-    <button className="chat-button" onClick={() => navigate("/chatforum")}>
-      Join Now
-    </button>
+    <button className="chat-button" onClick={() => navigate("/cf/pages/dashboard")}>
+  Join Now
+</button>
   </div>
 </section>
 
