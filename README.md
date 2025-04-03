@@ -1,4 +1,4 @@
-````md
+
 Dais - Your Virtual Skincare Friend
 
 Dais is your go-to virtual skincare companion, offering personalized recommendations, educational resources, and a supportive community.Whether you're new to skincare or looking to refine your routine, Dais helps you make informed decisions for healthier skin!
@@ -15,46 +15,6 @@ Table of Contents
 
 ---
 
-Features
-
-- 🧑‍⚕ Skin Type Assessment – Get personalized skin analysis and recommendations.
-- 🛁 Custom Skincare Tips – Build routines tailored to your unique needs.
-- 📚 Learn & Glow Module– Access blogs, articles, and videos on skincare.
-- 🏡 DIY Skincare Remedies – Discover natural, homemade skincare solutions.
-- 💬 Community Chat Forum – Share tips and interact with fellow skincare lovers.
-- 🔔 Reminders & Notifications – Stay consistent with scheduled skincare reminders.
-- 🛍 Product Recommendations – Get suggestions for products suited to your skin type.
-
----
-
-Installation
-
-1️.Clone the Repository:
-
-```sh
-git clone https://github.com/Niraljs/DAIS---Project.git
-```
-````
-
-2️.Navigate to the Project Directory:
-
-```sh
-cd DAIS---Project
-```
-
-3.Install Dependencies:
-
-```sh
-npm install
-```
-
-4️.Start the Application:
-
-```sh
-npm start
-```
-
----
 
 🚀 Usage
 
