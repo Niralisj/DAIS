@@ -79,6 +79,3 @@ Dais is your go-to virtual skincare companion, designed to provide personalized 
 ## 📜 License
 
 Dais is open-source and licensed under the [MIT License](LICENSE).
-
-Feel free to contribute and help us improve Dais! 🚀
-
