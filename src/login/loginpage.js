@@ -49,19 +49,16 @@ function LoginPage() {
             if (success && jwtToken && userData?.id && userData?.name) { // Access id and name from userData
                 handleSuccess(message || 'Login successful!');
 
-                // Use the login function from AuthContext
-                login(jwtToken, userData.id, userData.name); // Pass userData.id and userData.name
+                login(jwtToken, userData.id, userData.name); 
 
-                // Redirect to the page the user was trying to access, or the default
                 setTimeout(() => {
                     navigate(from, { replace: true });
-                }, 500); // Shorter delay might be fine
+                }, 500); 
 
             } else if (error) {
                 const details = error?.details?.[0]?.message || 'Login failed';
                 handleError(details);
             } else {
-                // Handle cases where success is false but no specific error object is returned
                 handleError(message || 'Invalid credentials or server error.');
             }
         } catch (err) {
@@ -75,7 +72,6 @@ function LoginPage() {
             <div className="login-box">
                 <h2>Login</h2>
                 <form onSubmit={handleLogin}>
-                    {/* Email Input */}
                     <div className="input-group">
                         <label htmlFor="email">Email</label>
                         <input
@@ -88,7 +84,6 @@ function LoginPage() {
                             required
                         />
                     </div>
-                    {/* Password Input */}
                     <div className="input-group">
                         <label htmlFor="password">Password</label>
                         <input
@@ -101,10 +96,8 @@ function LoginPage() {
                             required
                         />
                     </div>
-                     {/* Checkbox/Forgot Password (Keep UI if needed, functionality might change) */}
                     <div className="checkbox-group">
                         <div className="remember-me">
-                            {/* Note: "Remember me" needs backend implementation not covered here */}
                             <input type="checkbox" id="remember" />
                             <label htmlFor="remember" className="remember-label"> Remember me </label>
                         </div>
@@ -114,9 +107,9 @@ function LoginPage() {
                     <button type="submit" className="login-button">Login</button>
                 </form>
                  {/* Link to Sign Up */}
-                 <div className="social-login"> {/* Consider renaming this className if no social login */}
+                 <div className="social-login"> 
                     <p>
-                        Don't have an account? <Link to="/sign-up">Create one</Link> {/* Link to your OFFICIAL signup page */}
+                        Don't have an account? <Link to="/sign-up">Create one</Link> 
                     </p>
                 </div>
             </div>
