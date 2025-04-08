@@ -22,14 +22,14 @@ function UserPanel() {
         <button className="grid-button" onClick={() => navigate('/skinquiz')}>
           Find Your Skin Type
         </button>
-        <button className="grid-button" onClick={() => navigate('/products')}>
+        <button className="grid-button" onClick={() => navigate('/quiz')}>
           Recommended Products
         </button>
-        <button className="grid-button" onClick={() => navigate('/history')}>
-          View History
+        <button className="grid-button" onClick={() => navigate('/forum')}>
+          Join Community
         </button>
-        <button className="grid-button" onClick={() => navigate('/settings')}>
-          Account Settings
+        <button className="grid-button" onClick={() => navigate('/reminder')}>
+         reminders
         </button>
       </div>
 

@@ -1,0 +1,199 @@
+.space-y-3 > * + * {
+    margin-top: 0.75rem; /* 12px */
+  }
+  
+  .w-full {
+    width: 100%;
+  }
+  
+  .px-3 {
+    padding-left: 0.75rem; /* 12px */
+    padding-right: 0.75rem; /* 12px */
+  }
+  
+  .py-2 {
+    padding-top: 0.5rem; /* 8px */
+    padding-bottom: 0.5rem; /* 8px */
+  }
+  
+  .border {
+    border-width: 1px;
+  }
+  
+  .border-gray-300 {
+    border-color: rgb(209 213 219);
+  }
+  
+  .rounded-md {
+    border-radius: 0.375rem; /* 6px */
+  }
+  
+  .shadow-sm {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+  
+  .placeholder-gray-400::placeholder {
+    color: rgb(156 163 175);
+  }
+  
+  .focus\:outline-none:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+  
+  .focus\:ring-1:focus {
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+    --tw-ring-color: rgb(59 130 246);
+  }
+  
+  .focus\:ring-blue-500:focus {
+    --tw-ring-color: rgb(59 130 246);
+  }
+  
+  .focus\:border-blue-500:focus {
+    border-color: rgb(59 130 246);
+  }
+  
+  .sm\:text-sm {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .justify-end {
+    justify-content: flex-end;
+  }
+  
+  .inline-flex {
+    display: inline-flex;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+  
+  .px-4 {
+    padding-left: 1rem; /* 16px */
+    padding-right: 1rem; /* 16px */
+  }
+  
+  .py-2 {
+    padding-top: 0.5rem; /* 8px */
+    padding-bottom: 0.5rem; /* 8px */
+  }
+  
+  .border-transparent {
+    border-color: transparent;
+  }
+  
+  .text-sm {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.25rem; /* 20px */
+  }
+  
+  .font-medium {
+    font-weight: 500;
+  }
+  
+  .text-white {
+    color: rgb(255 255 255);
+  }
+  
+  .bg-blue-600 {
+    background-color: rgb(37 99 235);
+  }
+  
+  .hover\:bg-blue-700:hover {
+    background-color: rgb(29 78 216);
+  }
+  
+  .focus\:ring-2:focus {
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+  }
+  
+  .focus\:ring-offset-2:focus {
+    --tw-ring-offset-width: 2px;
+  }
+  
+  .disabled\:opacity-50:disabled {
+    opacity: 0.5;
+  }
+  
+  .disabled\:cursor-not-allowed:disabled {
+    cursor: not-allowed;
+  }
+
+  .comment-input-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; /* Equivalent to space-y-3 */
+  }
+  
+  .comment-input-textarea {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid rgb(209, 213, 219);
+    border-radius: 0.375rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    color: inherit; /* Inherit text color from parent */
+  }
+  
+  .comment-input-textarea::placeholder {
+    color: rgb(156, 163, 175);
+  }
+  
+  .comment-input-textarea:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    border-color: rgb(59, 130, 246);
+    box-shadow: 0 0 0 1px rgb(59, 130, 246); /* Replicating ring effect */
+  }
+  
+  .comment-input-button-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .comment-input-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    background-color: rgb(37, 99, 235);
+    border-radius: 0.375rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: background-color 0.2s ease-in-out; /* Add transition for hover effect */
+  }
+  
+  .comment-input-button:hover {
+    background-color: rgb(29, 78, 216);
+  }
+  
+  .comment-input-button:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px rgb(59, 130, 246); /* Replicating ring effect */
+  }
+  
+  .comment-input-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  /* Optional: Adjust font size for small screens */
+  @media (max-width: 640px) {
+    .comment-input-button,
+    .comment-input-textarea {
+      font-size: 0.875rem; /* Equivalent to sm:text-sm */
+    }
+  }

@@ -1,14 +1,19 @@
+// src/components/ProtectedRoute.js
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
-function ProtectedRoute({ children }) {
-  // Check if the user is authenticated by looking for a token in localStorage
-  const isAuthenticated = localStorage.getItem('token');
+const ProtectedRoute = ({ children }) => {
+    const { isAuthenticated } = useAuth();
+    const location = useLocation();
 
-  // If authenticated, render the children (i.e., the UserPanel or any protected component)
-  // If not authenticated, redirect to the login page
-  return isAuthenticated ? children : <Navigate to="/login" replace />;
-}
+    if (!isAuthenticated) {
+        // Redirect them to the /login page, but save the current location they were
+        // trying to go to. This allows us to send them back after login.
+        return <Navigate to="/login" state={{ from: location }} replace />;
+    }
+
+    return children;
+};
 
 export default ProtectedRoute;
-

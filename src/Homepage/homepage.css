@@ -242,6 +242,7 @@ body {
   position: relative;
   text-align: left;
   border-radius: 10px;
+  font-family: "Poppins", sans-serif;
   background-image: url('../Homepage/dais.jpg'), linear-gradient(135deg, #fdf5ff, #e0c3fc);
   background-position: right center, 0 0;
   background-repeat: no-repeat, no-repeat;
@@ -263,12 +264,14 @@ body {
   margin-bottom: 1rem; white-space: nowrap; 
   overflow: hidden;
   text-overflow: ellipsis;
+  font-family: "Poppins", sans-serif;
   animation: slideIn 1s ease-in-out;
 }
 
 .skin-quiz h3 {
   font-size: 1.2rem;
   color: #555;
+  font-family: "Poppins", sans-serif;
   line-height: 1.6;
   animation: slideIn 1.2s ease-in-out;
 }
@@ -341,7 +344,7 @@ body {
   align-items: center;
   height: 100vh;
   background: linear-gradient(135deg, #fdf5ff, #e0c3fc); /* Soft pastel gradient */
-  max-width: 1400px;
+  width: 100%;
   padding: 10rem 15%;
   margin: 0px auto;
   position: relative;
@@ -421,7 +424,7 @@ body {
   width: 100%;
   max-width: 1400px;
   padding: 60px 30px;
-  margin: 20px auto;
+  margin : 0px auto;
   background-color: #f9f9f9; /* Light background for contrast */
 }
 
@@ -492,11 +495,11 @@ body {
 .chat-forum {
   background: linear-gradient(135deg, #f9fafb, #e3e9f3); /* Soft gradient */
   padding: 10rem 15%;
+  width: 100%;
   border-radius: 1rem;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: all 0.3s ease-in-out;
-  max-width: 1400px;
   margin: 2rem auto;
 }
 

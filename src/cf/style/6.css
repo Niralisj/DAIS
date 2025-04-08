@@ -1,0 +1,118 @@
+.post-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .post-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .post-card-content {
+    padding: 1rem;
+  }
+  
+  .post-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .post-card-meta {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: rgb(107, 114, 128);
+  }
+  
+  .post-category {
+    padding: 0.25rem 0.5rem;
+    background-color: rgb(243, 244, 246);
+    border-radius: 9999px;
+  }
+  
+  .post-separator {
+    margin: 0 0.25rem;
+  }
+  
+  .post-title {
+    margin-top: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: rgb(17, 24, 39);
+  }
+  
+  .post-content {
+    margin-top: 0.5rem;
+    color: rgb(55, 65, 81);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .post-actions {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .post-upvote-button,
+  .post-comments-button {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    color: rgb(107, 114, 128);
+    border: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .post-upvote-button:hover,
+  .post-comments-button:hover {
+    color: rgb(37, 99, 235);
+  }
+  
+  .post-upvote-button.upvoted {
+    color: rgb(37, 99, 235);
+  }
+  
+  .upvote-icon.filled {
+    fill: currentColor;
+  }
+  
+  .post-upvote-button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .post-delete-button {
+    padding: 0.25rem;
+    color: rgb(239, 68, 68);
+    border-radius: 9999px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .post-delete-button:hover {
+    color: rgb(153, 27, 27);
+    background-color: rgb(254, 242, 242);
+  }
+  
+  .delete-icon{
+    height: 1.25rem;
+    width: 1.25rem;
+  }
+  
+  .comments-icon, .upvote-icon{
+    height: 1.25rem;
+    width: 1.25rem;
+  }

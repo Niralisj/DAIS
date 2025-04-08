@@ -1,0 +1,139 @@
+.create-post-modal-dialog {
+    position: relative;
+    z-index: 50;
+  }
+  
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal-container {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  
+  .modal-panel { 
+    max-width: 40rem;
+    width: 100%;
+    border-radius: 0.75rem;
+    background-color: white;
+    padding: 1.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .modal-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: rgb(17, 24, 39);
+  }
+  
+  .modal-close-button {
+    border-radius: 9999px;
+    padding: 0.25rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+  
+  .modal-close-button:hover {
+    background-color: rgb(243, 244, 246);
+  }
+  
+  .close-icon {
+    height: 1.25rem;
+    width: 1.25rem;
+    color: rgb(107, 114, 128);
+  }
+  
+  .modal-form {
+    margin-top: 1rem;
+  }
+  
+  .form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgb(55, 65, 81);
+  }
+  
+  .form-input,
+  .form-select,
+  .form-textarea {
+    margin-top: 0.25rem;
+    width: 100%;
+    border-radius: 0.375rem;
+    border: 1px solid rgb(209, 213, 219);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    border-color: rgb(59, 130, 246);
+    box-shadow: 0 0 0 3px rgb(59, 130, 246);
+    outline: none;
+  }
+  
+  .form-textarea {
+    resize: vertical;
+  }
+  
+  .modal-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+  }
+  
+  .cancel-button,
+  .create-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0.375rem;
+    border: 1px solid transparent;
+    outline: none;
+  }
+  
+  .cancel-button {
+    color: rgb(55, 65, 81);
+    background-color: white;
+    border-color: rgb(209, 213, 219);
+  }
+  
+  .cancel-button:hover {
+    background-color: rgb(249, 250, 251);
+  }
+  
+  .create-button {
+    color: white;
+    background-color: rgb(37, 99, 235);
+  }
+  
+  .create-button:hover {
+    background-color: rgb(29, 78, 216);
+  }

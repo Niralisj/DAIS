@@ -19,10 +19,10 @@ const Navbar = ({ onUserIconClick, onRemindersIconClick }) => {
       {/* Navigation Links */}
       <ul className="nav-links">
         <li><button onClick={() => scrollToSection("home")}>Home</button></li>
-        <li><button onClick={() => scrollToSection("skin-quiz")}>Skin Quiz</button></li>
-        <li><button onClick={() => scrollToSection("diy-remedies")}>DIY Remedies</button></li>
+        <li><button onClick={() => scrollToSection("skin-quiz")}>Take a quiz</button></li>
+        <li><button onClick={() => scrollToSection("diy-remedies")}>DIY</button></li>
         <li><button onClick={() => scrollToSection("learn-and-glow")}>Learn & Glow</button></li>
-        <li><button onClick={() => scrollToSection("chat-forum")}>Chat Forum</button></li>
+        <li><button onClick={() => scrollToSection("chat-forum")}>Community</button></li>
       </ul>
 
       {/* User Icon */}

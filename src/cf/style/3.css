@@ -1,0 +1,28 @@
+.create-post-button {
+    position: fixed;
+    bottom: 2rem; /* Equivalent to bottom-8 */
+    right: 2rem; /* Equivalent to right-8 */
+    background-color: rgb(37, 99, 235); /* Equivalent to bg-blue-600 */
+    color: rgb(255, 255, 255); /* Equivalent to text-white */
+    border-radius: 9999px; /* Equivalent to rounded-full */
+    padding: 1rem; /* Equivalent to p-4 */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Equivalent to shadow-lg */
+    transition: background-color 0.2s ease-in-out; /* Add transition for hover effect */
+    border: none;
+    outline: none;
+  }
+  
+  .create-post-button:hover {
+    background-color: rgb(29, 78, 216); /* Equivalent to hover:bg-blue-700 */
+  }
+  
+  .create-post-button:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 3px rgb(59, 130, 246); /* Equivalent to focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 */
+  }
+  
+  .plus-icon {
+    height: 1.5rem; /* Equivalent to h-6 */
+    width: 1.5rem; /* Equivalent to w-6 */
+  }

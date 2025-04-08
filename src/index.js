@@ -4,7 +4,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals'; 
 import { BrowserRouter } from 'react-router-dom';
 //import 'react-toastify/ReactToastify.css';
-import { MantineProvider } from '@mantine/core'; // Import MantineProvider
+import { AuthProvider } from './context/AuthContext'; // Adjust path
+
 
 
 
@@ -12,9 +13,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <MantineProvider withGlobalStyles withNormalizeCSS theme={{ colorScheme: 'light' }}> {/* Wrap App with MantineProvider */}
+      <AuthProvider> {/* AuthProvider wraps the App */}
         <App />
-      </MantineProvider>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

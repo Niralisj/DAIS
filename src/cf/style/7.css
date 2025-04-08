@@ -1,0 +1,190 @@
+.post-dialog {
+    position: relative;
+    z-index: 50;
+  }
+  
+  .post-dialog-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    aria-hidden: true;
+  }
+  
+  .post-dialog-container {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  
+  .post-dialog-panel {
+    max-width: 3xl;
+    width: 100%;
+    border-radius: 0.75rem;
+    background-color: white;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .post-dialog-content {
+    padding: 1.5rem;
+  }
+  
+  .post-dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  
+  .post-dialog-meta {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: rgb(107, 114, 128);
+  }
+  
+  .post-category {
+    padding: 0.25rem 0.5rem;
+    background-color: rgb(243, 244, 246);
+    border-radius: 9999px;
+  }
+  
+  .post-separator {
+    margin: 0 0.25rem;
+  }
+  
+  .post-dialog-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .post-delete-button {
+    padding: 0.25rem;
+    color: rgb(239, 68, 68);
+    border-radius: 9999px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .post-delete-button:hover {
+    color: rgb(153, 27, 27);
+    background-color: rgb(254, 242, 242);
+  }
+  
+  .post-close-button {
+    border-radius: 9999px;
+    padding: 0.25rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .close-icon,
+  .delete-icon {
+    height: 1.25rem;
+    width: 1.25rem;
+    color: rgb(107, 114, 128);
+  }
+  
+  .post-dialog-post-content {
+    margin-bottom: 1.5rem;
+  }
+  
+  .post-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgb(17, 24, 39);
+    margin-bottom: 1rem;
+  }
+  
+  .post-content {
+    color: rgb(55, 65, 81);
+    line-height: 1.5;
+    white-space: pre-wrap;
+  }
+  
+  .post-dialog-post-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgb(229, 231, 235);
+    padding-bottom: 1rem;
+  }
+  
+  .post-upvote-button {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    color: rgb(107, 114, 128);
+    border: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .post-upvote-button:hover {
+    color: rgb(37, 99, 235);
+  }
+  
+  .post-upvote-button.upvoted {
+    color: rgb(37, 99, 235);
+  }
+  
+  .upvote-icon {
+    height: 1.25rem;
+    width: 1.25rem;
+  }
+  
+  .post-comment-count {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    color: rgb(107, 114, 128);
+  }
+  
+  .comments-icon {
+    height: 1.25rem;
+    width: 1.25rem;
+  }
+  
+  .post-dialog-comment-input {
+    margin-bottom: 1.5rem;
+  }
+  
+  .post-dialog-sign-in-message {
+    padding: 1rem;
+    text-align: center;
+    color: rgb(107, 114, 128);
+    background-color: rgb(243, 244, 246);
+    border-radius: 0.5rem;
+  }
+  
+  
+  
+  .post-dialog-no-comments {
+    text-align: center;
+    color: rgb(107, 114, 128);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  .post-dialog-loading, .post-dialog-error{
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background-color: white;
+  }

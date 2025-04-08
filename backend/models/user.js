@@ -1,28 +1,31 @@
+// server/models/user.js
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
-// Define the schema
 const userSchema = new Schema({
     name: {
         type: String,
         required: true,
+        trim: true,
     },
     email: {
         type: String,
         required: true,
         unique: true,
+        lowercase: true,
+        trim: true,
+        match: [/\S+@\S+\.\S+/, 'is invalid'], // Basic email format validation
     },
     password: {
         type: String,
         required: true,
     },
-    
+    role: {
+        type: String,
+        enum: ['user', 'admin'], // Define possible roles
+        default: 'user',        // Default role for new users
+    },
+    // You might add other fields like createdAt, updatedAt, etc.
+}, { timestamps: true }); // Automatically adds createdAt and updatedAt
 
-    
-});
-
-// Register the model
-const UserModel = mongoose.model('users', userSchema);
-
-// Export the model
-module.exports = UserModel;
+module.exports = mongoose.model('User', userSchema);
