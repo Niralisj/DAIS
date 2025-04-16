@@ -1,4 +1,4 @@
-import { toast } from 'react-toastify'; // Correct import
+import { toast } from 'react-toastify'; 
 
 export const handleSuccess = (msg) => {
     toast.success(msg, {

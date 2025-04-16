@@ -32,11 +32,11 @@ function SignUpPage() {
     }
 
     try {
-      const { name, email, password } = signupInfo; // ✅ Extract only necessary fields
+      const { name, email, password } = signupInfo;
       const response = await fetch('http://localhost:8080/auth/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password }), // ✅ No `username`
+        body: JSON.stringify({ name, email, password }), 
       });
       
 

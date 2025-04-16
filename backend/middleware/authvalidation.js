@@ -17,13 +17,10 @@ const signupValidation = (req, res, next) => {
             'string.min': `"password" should have a minimum length of {#limit}`,
             'any.required': `"password" is a required field`
         })
-        // Optional: Add role validation if users can choose roles during signup
-        // role: Joi.string().valid('user', 'admin') // Example
     });
 
     const { error } = schema.validate(req.body, { abortEarly: false }); // Show all errors
     if (error) {
-        // Format Joi errors for better frontend display
         const errors = error.details.map(detail => ({
             message: detail.message,
             field: detail.context.key

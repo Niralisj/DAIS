@@ -4,7 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals'; 
 import { BrowserRouter } from 'react-router-dom';
 //import 'react-toastify/ReactToastify.css';
-import { AuthProvider } from './context/AuthContext'; // Adjust path
+import { AuthProvider } from './context/AuthContext'; 
 
 
 
@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <AuthProvider> {/* AuthProvider wraps the App */}
+      <AuthProvider> 
         <App />
       </AuthProvider>
     </BrowserRouter>
@@ -21,5 +21,5 @@ root.render(
 );
 // Report web vitals (log to console for now)
 reportWebVitals((metric) => {
-  console.log(metric); // You can replace this with custom logic to send metrics to an analytics service
+  console.log(metric); 
 });

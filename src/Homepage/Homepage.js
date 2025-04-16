@@ -1,4 +1,3 @@
-// Homepage.js (or Homepage.jsx)
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import Navbar from "../components/navbar/navbar";

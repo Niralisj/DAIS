@@ -1,11 +1,9 @@
-// server/middleware/authMiddleware.js
 const jwt = require('jsonwebtoken');
-require('dotenv').config({ path: '../.env' }); // Ensure JWT_SECRET is loaded
+require('dotenv').config({ path: '../.env' });
 
 const ensureAuthenticated = (req, res, next) => {
     const authHeader = req.headers.authorization;
 
-    // console.log("Auth Header Received:", authHeader); // Keep for debugging if needed
 
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
         // console.log("Middleware: No or incorrect Authorization header format.");
@@ -18,9 +16,7 @@ const ensureAuthenticated = (req, res, next) => {
         // Verify the token using the secret key
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        // Attach the decoded payload (which includes _id, email, role) to the request object
         req.user = decoded;
-        // console.log("Middleware: Decoded Token Payload:", decoded); // Keep for debugging if needed
         next(); // Proceed to the next middleware or route handler
     } catch (err) {
         console.error("Middleware: JWT verification failed:", err.message);

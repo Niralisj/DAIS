@@ -1,4 +1,3 @@
-/* Main Quiz Container */
 .quiz-container {
     display: flex;
     flex-direction: column;
@@ -11,7 +10,6 @@
     font-family: 'Poppins', sans-serif;
   }
   
-  /* Title (Outside the Box) */
   .quiz-title {
     font-size: 2.5rem;
     font-weight: bold;
@@ -79,7 +77,6 @@
     color: white;
   }
   
-  /* Navigation Buttons */
   .btn-group {
     display: flex;
     justify-content: space-between;
@@ -96,7 +93,6 @@
     transition: 0.3s ease;
   }
   
-  /* Previous Button */
   .prev-btn {
     background: #ffc2d1;
     color: #b52f6d;
@@ -107,7 +103,6 @@
     color: white;
   }
   
-  /* Next Button */
   .next-btn {
     background: #ff5c8a;
     color: white;

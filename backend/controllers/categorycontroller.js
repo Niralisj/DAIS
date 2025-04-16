@@ -1,4 +1,3 @@
-// server/controllers/categorycontroller.js
 const CategoryModel = require('../models/category'); // Adjust path if needed
 
 // Get all categories
@@ -7,8 +6,6 @@ const getAllCategories = async (req, res) => {
         // Fetch categories, sort alphabetically by name
         const categories = await CategoryModel.find({}).sort({ name: 1 });
 
-        // TODO: If frontend needs product counts per category,
-        // you'd need a more complex query here (e.g., using $lookup or separate counts).
         // For now, just sending the category list.
         res.status(200).json(categories);
 
@@ -18,13 +15,12 @@ const getAllCategories = async (req, res) => {
     }
 };
 
-// Add a new category (Requires Auth/Admin Role)
+// Add a new category 
 const addCategory = async (req, res) => {
     try {
         // Assumes Joi validation middleware has run (if implemented)
         const { name } = req.body;
 
-        // Trim whitespace from the name
         const trimmedName = name.trim();
         if (!trimmedName) {
              return res.status(400).json({ message: "Category name cannot be empty." });
@@ -54,7 +50,6 @@ const addCategory = async (req, res) => {
     }
 };
 
-// Delete a category (Requires Auth/Admin Role)
 const deleteCategory = async (req, res) => {
     try {
         const { id } = req.params;
@@ -64,14 +59,8 @@ const deleteCategory = async (req, res) => {
             return res.status(400).json({ message: "Invalid category ID format." });
         }
 
-        // Optional: Check if it's a default category before deleting
-        // const category = await CategoryModel.findById(id);
-        // if (category && category.isDefault) { // Assuming 'isDefault' field exists
-        //     return res.status(403).json({ message: "Default categories cannot be deleted." });
-        // }
-        // --- OR --- check by ID if you have known default IDs (like your frontend logic)
-        if (['1', '2', '3', '4', '5'].includes(id)) { // Check against known *string* IDs if that's the case
-             // Or convert `id` to Number if comparing with numbers, but IDs are usually strings
+        
+        if (['1', '2', '3', '4', '5'].includes(id)) { 
              return res.status(403).json({ message: "Default categories (ID <= 5) cannot be deleted." });
         }
 
@@ -87,11 +76,9 @@ const deleteCategory = async (req, res) => {
         const result = await CategoryModel.findByIdAndDelete(id);
 
         if (!result) {
-            // If result is null, the category with that ID was not found
             return res.status(404).json({ message: "Category not found." });
         }
 
-        // Successfully deleted
         res.status(200).json({ message: "Category deleted successfully." }); // Or use 204 No Content
 
     } catch (error) {

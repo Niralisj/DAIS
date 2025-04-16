@@ -15,47 +15,7 @@ import calendula from "./imgs/calendula.jpg";
 import fullersearth from "./imgs/fullersearth.jpg";
 import chamomile from "./imgs/chamomile.jpg";
 
-const DIYNavbar = () => {
-  const scrollToSection = (id, event) => {
-    event.preventDefault();
-    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
-  };
-
-  return (
-    <nav className="diy-navbar">
-      <h1 className="logo">DIY Remedies</h1>
-      <ul className="nav-links">
-        <li><a href="#oily-skin" onClick={(e) => scrollToSection("oily-skin", e)}>Oily Skin</a></li>
-        <li><a href="#dry-skin" onClick={(e) => scrollToSection("dry-skin", e)}>Dry Skin</a></li>
-        <li><a href="#combination-skin" onClick={(e) => scrollToSection("combination-skin", e)}>Combination Skin</a></li>
-        <li><a href="#sensitive-skin" onClick={(e) => scrollToSection("sensitive-skin", e)}>Sensitive Skin</a></li>
-      </ul>
-    </nav>
-  );
-};
-
-const HeroSection = () => (
-  <section className="About">
-    <div className="diy-hero-content">
-      <h2>🌿 Natural DIY Remedies</h2>
-      <p>
-        Welcome to our DIY skincare haven! Here, we believe that the best ingredients
-        for your skin come straight from nature. Whether you're dealing with dryness,
-        excess oil, or sensitivity, our carefully curated home remedies use simple,
-        effective ingredients to nourish and heal your skin.
-      </p>
-      <p>
-        From refreshing toners to exfoliating scrubs, discover a range of natural recipes
-        tailored to different skin types. Take control of your skincare with easy-to-make,
-        chemical-free solutions that leave your skin feeling fresh, glowing, and healthy.
-        Let’s get started on your journey to natural beauty! ✨
-      </p>
-    </div>
-    <div className="diy-hero-image"></div>
-  </section>
-);
-
-const recipesBySkinType = {
+const recipesData = {
   "oily-skin": [
     {
       title: "Green Tea & Honey Toner",
@@ -342,6 +302,78 @@ const recipesBySkinType = {
   ],
 };
 
+const DIYNavbar = () => {
+  const scrollToSection = (id, event) => {
+    event.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <nav className="diy-navbar">
+      <h1 className="logo">DIY Remedies</h1>
+      <ul className="nav-links">
+        <li><a href="#oily-skin" onClick={(e) => scrollToSection("oily-skin", e)}>Oily Skin</a></li>
+        <li><a href="#dry-skin" onClick={(e) => scrollToSection("dry-skin", e)}>Dry Skin</a></li>
+        <li><a href="#combination-skin" onClick={(e) => scrollToSection("combination-skin", e)}>Combination Skin</a></li>
+        <li><a href="#sensitive-skin" onClick={(e) => scrollToSection("sensitive-skin", e)}>Sensitive Skin</a></li>
+      </ul>
+    </nav>
+  );
+};
+
+const HeroSection = () => (
+  <section className="About">
+    <div className="diy-hero-content">
+      <h2>🌿 Natural DIY Remedies</h2>
+      <p>
+        Welcome to our DIY skincare haven! Here, we believe that the best ingredients
+        for your skin come straight from nature. Whether you're dealing with dryness,
+        excess oil, or sensitivity, our carefully curated home remedies use simple,
+        effective ingredients to nourish and heal your skin.
+      </p>
+      <p>
+        From refreshing toners to exfoliating scrubs, discover a range of natural recipes
+        tailored to different skin types. Take control of your skincare with easy-to-make,
+        chemical-free solutions that leave your skin feeling fresh, glowing, and healthy.
+        Let’s get started on your journey to natural beauty! ✨
+      </p>
+    </div>
+    <div className="diy-hero-image"></div>
+  </section>
+);
+
+const RecipeCard = ({ recipe, index, expandedRecipe, toggleRecipe, showImage }) => (
+  <div key={index} className="recipe-card">
+    {showImage && recipe.image && (
+      <img src={recipe.image} alt={recipe.title} className="recipe-image" />
+    )}
+    <h3 onClick={() => toggleRecipe(index)} className="recipe-title">
+      {recipe.title}
+    </h3>
+    <p>{recipe.description}</p>
+    {expandedRecipe === index && (
+      <div className="recipe-details">
+        <h4>Ingredients:</h4>
+        <ul>
+          {recipe.ingredients.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
+        </ul>
+        <h4>Instructions:</h4>
+        <ol>
+          {recipe.instructions.map((step, i) => (
+            <li key={i}>{step}</li>
+          ))}
+        </ol>
+      </div>
+    )}
+  </div>
+);
+
+
 const SkinTypeSection = ({ title, recipes, id, showImage = false }) => {
   const [expandedRecipe, setExpandedRecipe] = useState(null);
 
@@ -350,46 +382,44 @@ const SkinTypeSection = ({ title, recipes, id, showImage = false }) => {
   };
 
   return (
-    <section id={id} className={`${id}-section`}>
+    <section id={id} className="skin-type-section">
       <h2>{title}</h2>
       <div className="recipe-container">
         {recipes.map((recipe, index) => (
-          <div key={index} className="recipe-card">
-            {showImage && recipe.image && (<img src={recipe.image} alt={recipe.title} className="recipe-image" />)}
-            <h3 onClick={() => toggleRecipe(index)} className="recipe-title">
-              {recipe.title}
-            </h3>
-            <p>{recipe.description}</p>
-            {expandedRecipe === index && (
-              <div className="recipe-details">
-                <h4>Ingredients:</h4>
-                <ul>
-                  {recipe.ingredients.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-                <h4>Instructions:</h4>
-                <ol>
-                  {recipe.instructions.map((step, i) => (
-                    <li key={i}>{step}</li>
-                  ))}
-                </ol>
-              </div>
-            )}
-          </div>
+          <RecipeCard
+            key={index}
+            recipe={recipe}
+            index={index}
+            expandedRecipe={expandedRecipe}
+            toggleRecipe={toggleRecipe}
+            showImage={showImage}
+          />
         ))}
       </div>
     </section>
   );
 };
 
+const formatSkinTypeTitle = (skinType) => {
+    return skinType
+      .replace('-', ' ')
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ') + ' Remedies';
+};
+
 const DIY = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredRecipes, setFilteredRecipes] = useState(recipesBySkinType);
+  const [filteredRecipes, setFilteredRecipes] = useState(recipesData);
 
   const handleSearch = (event) => {
     const query = event.target.value.toLowerCase();
     setSearchQuery(query);
+
+    if (query === "") {
+        setFilteredRecipes(recipesData);
+        return;
+    }
 
     const filterRecipes = (recipes) => {
       return Object.keys(recipes).reduce((acc, skinType) => {
@@ -405,7 +435,7 @@ const DIY = () => {
       }, {});
     };
 
-    setFilteredRecipes(filterRecipes(recipesBySkinType));
+    setFilteredRecipes(filterRecipes(recipesData));
   };
 
   return (
@@ -416,22 +446,27 @@ const DIY = () => {
       <div className="search-filter">
         <input
           type="text"
-          placeholder="Search remedies..."
+          placeholder="Search remedies by title, description, or ingredient..."
           value={searchQuery}
           onChange={handleSearch}
           className="search-input"
         />
       </div>
 
-      {Object.keys(filteredRecipes).map(skinType => (
-        <SkinTypeSection
-          key={skinType}
-          title={`${skinType.replace('-', ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')} Remedies`}
-          recipes={filteredRecipes[skinType]}
-          id={skinType}
-          showImage={true}
-        />
-      ))}
+      {Object.keys(filteredRecipes).length > 0 ? (
+         Object.keys(filteredRecipes).map(skinType => (
+            <SkinTypeSection
+              key={skinType}
+              title={formatSkinTypeTitle(skinType)}
+              recipes={filteredRecipes[skinType]}
+              id={skinType}
+              showImage={true}
+            />
+          ))
+        ) : (
+          <div className="no-results">No matching recipes found.</div>
+        )
+      }
     </>
   );
 };

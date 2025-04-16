@@ -1,11 +1,9 @@
- /* Ensure full height and remove margins */
 html, body {
   height: 100%;
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: poppins;
 }
 
-/* Main container with background */
 .login-container {
   height: 100vh;
   display: flex;
@@ -17,9 +15,8 @@ html, body {
   background-repeat: no-repeat;
 }
 
-/* Login box */
 .login-box {
-  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  background: rgba(255, 255, 255, 0.9); 
   padding: 2rem;
   border-radius: 25px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -51,20 +48,18 @@ input {
   border-radius: 5px;
 }
 
-/* Checkbox group */
-/* Checkbox Group Container */
+
 .checkbox-group {
   display: flex;
-  justify-content: space-between; /* Align items on opposite sides */
-  align-items: center; /* Vertically center items */
-  margin-bottom: 1rem; /* Add spacing below */
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 1rem; 
 }
 
-/* Remember Me Container */
 .remember-me {
   display: flex;
-  align-items: center; /* Align checkbox and label vertically */
-  gap: 10px; /* Add spacing between checkbox and label */
+  align-items: center; 
+  gap: 10px; 
   height: 10px;
 }
 
@@ -72,41 +67,41 @@ input {
 .remember-me input[type="checkbox"] {
   width: 16px;
   height: 16px;
-  margin: 0; /* Remove default margin */
-  cursor: pointer; /* Pointer cursor for better UX */
+  margin: 0; 
+  cursor: pointer; 
 }
 
 /* Label */
 .remember-label {
-  font-size: 0px; /* Readable font size */
-  color: #333; /* Consistent text color */
-  cursor: pointer; /* Pointer cursor for clickability */
-}
+  font-size: 0px; 
+  color: #333; 
+  cursor: pointer; }
+
 
 .checkbox-group input[type="checkbox"] {
-  margin: 0; /* Remove default checkbox spacing */
+  margin: 0; 
 }
 
 
 .checkbox-container {
   display: flex;
-  align-items: center; /* Align checkbox and label on the same line */
+  align-items: center; 
 }
 .checkbox-group label {
-  margin-left: 0rem; /* Add spacing between checkbox and label */
+  margin-left: 0rem; 
   align-items: center;
-  font-weight: normal; /* Optional: Adjust font weight */
+  font-weight: normal; 
   font-size: 0.7rem;
 }
 
 .forgot-password-link {
-  color: #007bff; /* Adjust the color as needed */
-  text-decoration: underline; /* Always show underline */
+  color: #007bff; 
+  text-decoration: underline; 
   cursor: pointer;
 }
 
 .forgot-password-link {
-  color: black; /* Darker color on hover for a visual effect */
+  color: black; 
 
 }
 
@@ -162,7 +157,6 @@ input {
   background-color: #c23325;
 }
 
-/* Forgot password and create account links */
 .checkbox-group a {
   text-decoration: none;
   color: #007bff;

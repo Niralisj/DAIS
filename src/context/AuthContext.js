@@ -58,8 +58,7 @@ export const AuthProvider = ({ children }) => {
         setToken(null); // This will trigger the useEffect which clears user/auth state
         setUser(null);
         setIsAuthenticated(false);
-        // Optionally navigate to home or login page after logout
-        // navigate('/'); // Requires useNavigate hook, better done in the component calling logout
+  
     };
 
     const value = {
@@ -69,14 +68,10 @@ export const AuthProvider = ({ children }) => {
         isLoadingUser, // Provide loading status for initial auth check
         login,
         logout,
-        fetchUser // Expose fetchUser if needed externally (rare)
+        fetchUser 
     };
 
-    // Prevent rendering children until initial user check is complete
-    // Or show a loading spinner for the whole app
-    // if (isLoadingUser) {
-    //    return <div>Loading Application...</div>; // Or a proper spinner component
-    // }
+   
 
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

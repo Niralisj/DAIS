@@ -1,4 +1,3 @@
-// server/controllers/authcontroller.js
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const UserModel = require('../models/user'); // Adjust path if needed
@@ -14,14 +13,12 @@ function generateAccessToken(user) { // user should be an object { email, _id, r
     return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' }); // Consider slightly longer expiry? 15m is short.
 }
 
-// Function to generate refresh token (can also include role)
-function generateRefreshToken(user) { // user should be an object { email, _id, role }
+function generateRefreshToken(user) { 
      const payload = {
         email: user.email,
         _id: user._id,
         role: user.role // Consistent to include role here too
     };
-    // Use a longer expiry for refresh tokens
     return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '7d' });
 }
 
@@ -45,8 +42,6 @@ const signup = async (req, res) => {
         res.status(201).json({
             message: "Signup successful!",
             success: true
-            // Optionally send back some user data (excluding password)
-            // user: { id: newUser._id, name: newUser.name, email: newUser.email, role: newUser.role }
         });
 
     } catch (err) {

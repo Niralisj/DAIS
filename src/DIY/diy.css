@@ -1,10 +1,8 @@
-/* Global Styles */
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4; /* Light gray background for the whole page */
-  color: #333;
+  background-color: #f4f4f4;
   line-height: 1.6;
   box-sizing: border-box;
 }
@@ -14,23 +12,21 @@ h1, h2, h3, h4 {
   margin-bottom: 1rem;
 }
 
-/* Navbar Styles */
 .diy-navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(135deg, #8bc6ec, #a18cd1); /* Softer, more modern gradient */
-  padding: 20px 40px; /* Increased padding */
-  border-radius: 0; /* Removing border-radius for a cleaner look */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
-  position: sticky; /* Make the navbar stick to the top */
+  background: linear-gradient(135deg, #8bc6ec, #a18cd1);
+  padding: 20px 40px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  position: sticky;
   top: 0;
-  z-index: 100; /* Ensure it stays on top */
+  z-index: 100;
 }
 
 .diy-navbar .logo {
-  font-size: 2rem; /* Slightly larger logo */
-  font-weight: 700; /* More emphasis on the logo */
+  font-size: 2rem;
+  font-weight: 700;
   color: white;
   font-family: "Poppins", sans-serif;
 }
@@ -38,7 +34,7 @@ h1, h2, h3, h4 {
 .diy-navbar .nav-links {
   list-style: none;
   display: flex;
-  gap: 25px; /* Increased gap */
+  gap: 25px;
   margin: 0;
   padding: 0;
 }
@@ -50,46 +46,45 @@ h1, h2, h3, h4 {
 .diy-navbar .nav-links a {
   text-decoration: none;
   color: white;
-  font-size: 1.1rem; /* Slightly larger font for links */
+  font-size: 1.1rem;
   font-weight: 500;
-  padding: 10px 15px; /* Adjusted padding */
+  padding: 10px 15px;
   transition: background-color 0.3s ease-in-out;
-  border-radius: 8px; /* Slightly more rounded links */
+  border-radius: 8px;
 }
 
 .diy-navbar .nav-links a:hover {
-  background-color: rgba(255, 255, 255, 0.2); /* Slightly less opaque hover */
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Hero Section Styles */
 .About {
   width: 100%;
-  padding: 80px 20px; /* Increased vertical padding */
+  padding: 80px 20px;
   text-align: center;
-  background: linear-gradient(to right, #fcecfc, #f8f8f8); /* Lighter, more subtle gradient */
+  background: linear-gradient(to right, #fcecfc, #f8f8f8);
 }
 
 .diy-hero-content {
-  max-width: 700px; /* Wider content area */
-  margin: 0 auto; /* Center the content */
-  padding: 40px; /* Increased padding */
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px;
   border-radius: 15px;
-  background: rgba(255, 255, 255, 0.8); /* Slightly more opaque background */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* More prominent shadow */
-  backdrop-filter: blur(10px); /* Slightly stronger blur */
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
   animation: fadeIn 1s ease-in-out;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .diy-hero-content:hover {
-  transform: translateY(-8px); /* More pronounced hover effect */
+  transform: translateY(-8px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px); /* Slide in from bottom */
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -98,8 +93,8 @@ h1, h2, h3, h4 {
 }
 
 .diy-hero-content h2 {
-  font-size: 2.5rem; /* Larger heading */
-  color: #388e3c; /* Primary green color */
+  font-size: 2.5rem;
+  color: #388e3c;
   margin-bottom: 1.5rem;
 }
 
@@ -110,11 +105,10 @@ h1, h2, h3, h4 {
   margin-bottom: 1rem;
 }
 
-/* Search Filter Styles */
 .search-filter {
-  padding: 20px;
+  padding: 30px 20px;
   text-align: center;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   border-bottom: 1px solid #eee;
 }
 
@@ -127,28 +121,22 @@ h1, h2, h3, h4 {
   max-width: 500px;
   margin-bottom: 10px;
   box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .search-input:focus {
   outline: none;
-  border-color: #8bc6ec; /* Highlight color on focus */
-  box-shadow: 0 0 5px rgba(139, 198, 236, 0.5);
+  border-color: #8bc6ec;
+  box-shadow: 0 0 8px rgba(139, 198, 236, 0.5);
 }
 
-/* Skin Type Section Styles */
-.oily-skin-section,
-.dry-skin-section,
-.combination-skin-section,
-.sensitive-skin-section {
-  padding: 60px 20px; /* Increased padding */
+.skin-type-section {
+  padding: 60px 20px;
   text-align: center;
-  background-color: #f9f9f9; /* Consistent background */
+  background-color: #f9f9f9;
 }
 
-.oily-skin-section h2,
-.dry-skin-section h2,
-.combination-skin-section h2,
-.sensitive-skin-section h2 {
+.skin-type-section h2 {
   font-size: 2rem;
   color: #333;
   margin-bottom: 2rem;
@@ -156,46 +144,48 @@ h1, h2, h3, h4 {
 
 .recipe-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid layout */
-  gap: 30px; /* Increased gap */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
   margin-top: 30px;
-  padding: 0 20px; /* Add some padding on the sides */
+  padding: 0 20px;
 }
 
 .recipe-card {
   background: white;
   border-radius: 12px;
-  padding: 20px; /* Increased padding */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* More noticeable shadow */
-  transition: transform 0.3s ease-in-out;
-  text-align: left; /* Align text to the left for better readability */
-  cursor: pointer;
+  padding: 25px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
 }
 
 .recipe-card:hover {
-  transform: scale(1.03); /* Subtle scaling on hover */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .recipe-image {
   width: 100%;
-  height: auto;
+  height: 200px;
   border-radius: 10px;
   margin-bottom: 15px;
-  display: block; /* Prevent extra space below image */
-  object-fit: cover; /* Ensure images fill the container nicely */
+  display: block;
+  object-fit: cover;
 }
 
 .recipe-title {
-  color: #388e3c; /* Primary green color */
-  font-size: 1.3rem; /* Slightly larger title */
+  color: #388e3c;
+  font-size: 1.4rem;
   cursor: pointer;
-  margin-top: 0; /* Reset default margin */
+  margin-top: 0;
   margin-bottom: 0.8rem;
+  transition: color 0.3s ease;
 }
 
 .recipe-title:hover {
-  color: #5cb85c; /* Lighter shade of green on hover */
+  color: #5cb85c;
 }
 
 .recipe-card p {
@@ -203,19 +193,33 @@ h1, h2, h3, h4 {
   font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 1rem;
+  flex-grow: 1; /* Allows description to take up space */
 }
 
 .recipe-details {
   margin-top: 15px;
   text-align: left;
-  border-top: 1px solid #eee; /* Subtle separator */
+  border-top: 1px solid #eee;
   padding-top: 15px;
+  animation: slideDown 0.3s ease-out;
 }
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 .recipe-details h4 {
   margin-top: 1rem;
   font-size: 1.1rem;
-  color: #2e7d32; /* Darker green for headings */
+  color: #2e7d32;
   margin-bottom: 0.5rem;
 }
 
@@ -223,11 +227,20 @@ h1, h2, h3, h4 {
 .recipe-details ol {
   padding-left: 20px;
   margin-bottom: 1rem;
+  list-style-position: inside;
 }
 
 .recipe-details ul li,
 .recipe-details ol li {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #666;
   line-height: 1.6;
+  margin-bottom: 0.3rem;
+}
+
+.no-results {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 1.2rem;
+    color: #777;
 }

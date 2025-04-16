@@ -9,7 +9,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: linear-gradient(to right, #ffe4e6, #e0c3fc); /* Soft Pink to Lavender */
+  background: linear-gradient(to right, #ffe4e6, #e0c3fc); 
   text-align: center;
   position: relative;
 }
@@ -58,24 +58,21 @@ body {
   font-size: 1rem;
   font-weight: 600;
   background-color: antiquewhite;
-  color: #6b4226; /* Soft brown for a warm aesthetic */
+  color: #6b4226; 
   padding: 12px 24px;
-  border: 2px solid #d6b18b; /* Subtle border */
-  border-radius: 25px; /* Rounded edges */
-  cursor: pointer;
+  border: 2px solid #d6b18b; 
+  border-radius: 25px; 
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
-/* Button Hover Effect */
 .hero-button:hover {
-  background-color: #f7e1c3; /* Slightly darker shade */
-  transform: translateY(-3px); /* Floating effect */
+  background-color: #f7e1c3; 
+  transform: translateY(-3px); 
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Sparkle Effect */
 .hero-button::after {
   content: "";
   position: absolute;
@@ -111,10 +108,10 @@ body {
   align-items: center; /* Center video & text */
   justify-content: space-between;
   width: 100%;
-  background: linear-gradient(135deg, #fbe4e6, #f8f3f6); /* Soft pastel gradient */
+  background: linear-gradient(135deg, #fbe4e6, #f8f3f6); 
   margin: 0 auto;
   height: 100vh;
-  gap: 2rem; /* Space between video & text */
+  gap: 2rem; 
 }
 
 .about-video-container {
@@ -130,7 +127,7 @@ body {
 .about-video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures video fills container */
+  object-fit: cover; 
   border-radius: 10px;
 }
 
@@ -155,7 +152,7 @@ body {
 }
 
 .abt-hero-btn {
-  display: block;  /* Makes button behave like a block element */
+  display: block;  
   margin: 2rem auto; 
   text-align: center; 
   background: linear-gradient(135deg, #e91e63, #d81b60);
@@ -199,10 +196,10 @@ body {
 
 .abt-hero-btn:hover {
   transform: scale(1.05);
-  background-color: #ff5c8d; /* Slightly darker pink */
+  background-color: #ff5c8d; 
 }
 
-/* Responsive for smaller screens */
+
 @media (max-width: 768px) {
   .about-container {
     flex-direction: column;
@@ -221,7 +218,6 @@ body {
 }
 
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .about-container {
     grid-template-columns: 1fr;
@@ -231,7 +227,6 @@ body {
 
 
 
-/* quiz Section */
 
 .skin-quiz {
   display: flex;
@@ -336,7 +331,6 @@ body {
 
 
 
-/* DIY Remedies Section Styling */
 .diy-remedies {
   text-align: center;
   display: flex;
@@ -359,20 +353,20 @@ body {
 
 .diy-content h2 {
   font-size: 2.5rem;
-  color: #4a235a; /* Deep plum */
+  color: #4a235a; 
   font-weight: bold;
   margin-bottom: 10px;
 }
 
 .diy-content p {
   font-size: 1.2rem;
-  color: #6c3483; /* Soft purple */
+  color: #6c3483; 
   margin-bottom: 20px;
 }
 
 .diy-btn {
   display: inline-block;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4); /* Pink gradient */
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4); 
   color: #fff;
   padding: 14px 28px;
   font-size: 1.3rem;
@@ -385,14 +379,12 @@ body {
   overflow: hidden;
 }
 
-/* Glow Effect on Hover */
 .diy-btn:hover {
   background: linear-gradient(135deg, #ff758c, #ff7eb3);
   transform: translateY(-3px);
   box-shadow: 0 6px 15px rgba(255, 99, 132, 0.5);
 }
 
-/* Add a Glow Effect */
 .diy-btn::before {
   content: "";
   position: absolute;
@@ -415,7 +407,6 @@ body {
 
 
 
-/* Center the entire section */
 #learn-and-glow {
   display: flex;
   justify-content: center;
@@ -425,10 +416,9 @@ body {
   max-width: 1400px;
   padding: 60px 30px;
   margin : 0px auto;
-  background-color: #f9f9f9; /* Light background for contrast */
+  background-color: #f9f9f9; 
 }
 
-/* Responsive card container */
 .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -438,15 +428,14 @@ body {
   margin: 0 auto;
 }
 
-/* Card styling */
 .card {
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Improved content alignment */
+  justify-content: space-between; 
   align-items: center;
   border-radius: 20px;
-  width: 320px; /* Slightly larger width for better design */
+  width: 320px; 
   min-height: 60vh;
   padding: 20px;
   transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; 
@@ -455,15 +444,14 @@ body {
   overflow: hidden;
 }
 
-/* Ensure images fit properly */
 .card img {
   width: 100%;
   border-radius: 10px;
-  height: 400px; /* Set a fixed height for consistency */
-  object-fit: cover; /* Prevents image distortion */
+  height: 400px;
+  object-fit: cover; 
 }
 
-/* Card content styling */
+
 .card-content {
   padding: 15px;
 }
@@ -481,9 +469,9 @@ body {
 
 .card:hover {
   transform: translateY(-7px);
-  background-color: #F4B6C2; /* Soft pastel pink */
+  background-color: #F4B6C2; 
   color: white;
-  box-shadow: 0px 6px 20px rgba(244, 182, 194, 0.4); /* Softer glow */
+  box-shadow: 0px 6px 20px rgba(244, 182, 194, 0.4); 
 }
 
 .card:hover h3, 
@@ -491,9 +479,8 @@ body {
   color: white;
 }
 
-/* Chat Forum Section */
 .chat-forum {
-  background: linear-gradient(135deg, #f9fafb, #e3e9f3); /* Soft gradient */
+  background: linear-gradient(135deg, #f9fafb, #e3e9f3); 
   padding: 10rem 15%;
   width: 100%;
   border-radius: 1rem;
@@ -517,7 +504,7 @@ body {
 .chat-title {
   font-size: 2rem;
   font-weight: 700;
-  color: #1f2937; /* Darker text for contrast */
+  color: #1f2937; 
   letter-spacing: 1px;
 }
 
@@ -528,10 +515,9 @@ body {
   line-height: 1.6;
 }
 
-/* Button */
 .chat-button {
   margin-top: 1.5rem;
-  background: linear-gradient(90deg, #3b82f6, #9333ea); /* Blue to Purple gradient */
+  background: linear-gradient(90deg, #3b82f6, #9333ea); 
   color: white;
   padding: 0.75rem 2rem;
   border-radius: 2rem;

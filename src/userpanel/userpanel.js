@@ -29,7 +29,7 @@ function UserPanel() {
           Join Community
         </button>
         <button className="grid-button" onClick={() => navigate('/reminder')}>
-         reminders
+         History
         </button>
       </div>
 

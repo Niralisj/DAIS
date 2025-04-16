@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom'; // Import useLocation
+import { Link, useNavigate, useLocation } from 'react-router-dom'; 
 import { ToastContainer } from 'react-toastify';
 import { handleSuccess, handleError } from '../utils';
 import '../login/loginpage.css';
-import { useAuth } from '../context/AuthContext'; // Import useAuth
+import { useAuth } from '../context/AuthContext';
 
 function LoginPage() {
     const [loginInfo, setLoginInfo] = useState({
@@ -103,10 +103,8 @@ function LoginPage() {
                         </div>
                         <Link to="/forgot-password" className="forgot-password-link"> Forgot Password? </Link>
                     </div>
-                    {/* Login Button */}
                     <button type="submit" className="login-button">Login</button>
                 </form>
-                 {/* Link to Sign Up */}
                  <div className="social-login"> 
                     <p>
                         Don't have an account? <Link to="/sign-up">Create one</Link> 

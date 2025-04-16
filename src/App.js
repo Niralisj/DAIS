@@ -13,7 +13,6 @@ import Quiz from './Quiz/BeginQuiz';
 import DIY from './DIY/diy';
 import FindSkinType from "./Quiz/FindSkinType"; // Is this public or part of the quiz flow? Assuming public for now.
 import Recs from './recommendations/recs';
-import Reminder from './reminders/reminders';
 import  Forum from './cf/forum'; // Corrected path assuming it's forum.jsx or forum/index.jsx
 import 'react-toastify/dist/ReactToastify.css'; // Make sure this CSS is imported ONCE globally (e.g., in App.js or index.js)
 
@@ -69,14 +68,7 @@ function App() {
           </ProtectedRoute>
         }
       />
-      <Route
-        path="/reminder"
-        element={
-          <ProtectedRoute>
-            <Reminder />
-          </ProtectedRoute>
-        }
-      />
+      
       <Route
         path="/forum/*" // Protect the forum and any nested routes
         element={

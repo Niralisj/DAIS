@@ -1,8 +1,7 @@
 import React from "react";
 import "../navbar/navbar.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons'; // Import the user icon
-import { FaBell } from 'react-icons/fa';
+import { faUser } from '@fortawesome/free-solid-svg-icons'; 
 
 const Navbar = ({ onUserIconClick, onRemindersIconClick }) => {
   const scrollToSection = (id) => {
@@ -27,9 +26,7 @@ const Navbar = ({ onUserIconClick, onRemindersIconClick }) => {
 
       {/* User Icon */}
       <div className="icon-container">
-        <div className="reminders-icon" onClick={onRemindersIconClick}>
-          <FaBell />
-        </div>
+       
         <div className="user-icon" onClick={onUserIconClick}>
           <FontAwesomeIcon icon={faUser} />
         </div>

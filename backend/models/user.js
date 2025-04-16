@@ -1,4 +1,3 @@
-// server/models/user.js
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
@@ -25,7 +24,6 @@ const userSchema = new Schema({
         enum: ['user', 'admin'], // Define possible roles
         default: 'user',        // Default role for new users
     },
-    // You might add other fields like createdAt, updatedAt, etc.
 }, { timestamps: true }); // Automatically adds createdAt and updatedAt
 
 module.exports = mongoose.model('User', userSchema);

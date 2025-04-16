@@ -48,7 +48,6 @@ const getPostById = async (req, res) => {
     }
 };
 
-// Update a post (Requires authentication and authorization)
 const updatePost = async (req, res) => {
     try {
         const postId = req.params.postId;
@@ -79,7 +78,6 @@ const updatePost = async (req, res) => {
     }
 };
 
-// Delete a post (Requires authentication and authorization)
 const deletePost = async (req, res) => {
     try {
         const postId = req.params.postId;
@@ -106,7 +104,6 @@ const deletePost = async (req, res) => {
     }
 };
 
-// Like a post (Requires authentication)
 const likePost = async (req, res) => {
     try {
         const postId = req.params.postId;

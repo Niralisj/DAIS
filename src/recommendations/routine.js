@@ -1,6 +1,5 @@
-// src/pages/routine.js
 import React, { useState } from 'react';
-import './routine.css'; // Create a routine.css file for styling
+import './routine.css'; 
 
 const skincareRoutines = {
   "oily": [
@@ -36,7 +35,7 @@ const skincareRoutines = {
 };
 
 const Routine = () => {
-  const [skinType, setSkinType] = useState('oily'); // Default skin type (you can change this or get it from props/context)
+  const [skinType, setSkinType] = useState('oily'); 
 
   const renderSkincareRoutine = () => {
     const routine = skincareRoutines[skinType];
