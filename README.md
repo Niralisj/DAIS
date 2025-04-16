@@ -20,7 +20,6 @@ Dais is your go-to virtual skincare companion, designed to provide personalized 
 - **Skin Assessment Quiz** – Identify your skin type and concerns.
 - **Educational Articles & Tips** – Learn from curated skincare content.
 - **Community Forum** – Engage with other skincare enthusiasts and experts.
-- **Skincare Reminders** – Stay consistent with your routine.
 
 ---
 
