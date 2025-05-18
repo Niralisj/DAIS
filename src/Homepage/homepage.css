@@ -1,17 +1,41 @@
+/* Global Reset & Box Sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
+  font-family: "Poppins", sans-serif; /* Apply Poppins more broadly if it's the main font */
+  line-height: 1.6;
+  /* The following body styles are good if you want to center a single block of content vertically and horizontally.
+     If your page is a typical top-to-bottom scroll with multiple sections, you might not need these on the body.
+     Consider if .hero should be the one with display:flex and centering if it's a landing page.
+  */
+  /*
+  display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  */
 }
 
+/* Hero Section */
 .hero {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background: linear-gradient(to right, #ffe4e6, #e0c3fc); 
+  min-height: 100vh; /* Use min-height */
+  background: linear-gradient(to right, #ffe4e6, #e0c3fc);
   text-align: center;
   position: relative;
+  padding: 1rem; /* Add some padding for smaller screens */
 }
 
 .hero-content {
@@ -22,14 +46,14 @@ body {
 .hero h1 {
   font-family: "Poppins", sans-serif;
   font-size: 3rem;
-  font-style: bold;
-  font-weight: 300;
+  /* font-style: bold; /* font-weight is used for this */
+  font-weight: 700; /* Use a numerical value for bold */
   white-space: nowrap;
   overflow: hidden;
-  width: 0;
-  display: inline-block;
+  width: 0; /* For typing animation */
+  display: inline-block; /* Allows width animation */
   animation: typing 3s steps(30, end) forwards, blink 0.8s infinite;
-  
+  border-right: 3px solid black; /* Cursor for typing effect */
 }
 
 @keyframes typing {
@@ -40,7 +64,11 @@ body {
     width: 100%;
   }
 }
+
 @keyframes blink {
+  0%, 100% {
+    border-color: black;
+  }
   50% {
     border-color: transparent;
   }
@@ -58,21 +86,25 @@ body {
   font-size: 1rem;
   font-weight: 600;
   background-color: antiquewhite;
-  color: #6b4226; 
+  color: #6b4226;
   padding: 12px 24px;
-  border: 2px solid #d6b18b; 
-  border-radius: 25px; 
+  border: 2px solid #d6b18b;
+  border-radius: 25px;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px; /* Add some margin */
+  text-decoration: none; /* For anchor tags if used as a link */
+  display: inline-block; /* Ensures margin-top works */
 }
 
 .hero-button:hover {
-  background-color: #f7e1c3; 
-  transform: translateY(-3px); 
+  background-color: #f7e1c3;
+  transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Sparkle effect for hero-button (kept as is) */
 .hero-button::after {
   content: "";
   position: absolute;
@@ -80,8 +112,8 @@ body {
   left: 50%;
   width: 150%;
   height: 150%;
-  background-image: radial-gradient(star, rgba(255, 255, 255, 0.8) 10%, transparent 20%);
-  background-size: 12px 12px; /* Adjust sparkle size */
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.8) 10%, transparent 20%); /* Corrected 'star' to 'circle' for standard radial gradient */
+  background-size: 12px 12px;
   opacity: 0;
   pointer-events: none;
   transform: translate(-50%, -50%);
@@ -103,273 +135,192 @@ body {
   }
 }
 
+/* About Section */
 .about-container {
   display: flex;
-  align-items: center; /* Center video & text */
-  justify-content: space-between;
+  align-items: center;
+  justify-content: space-around; /* Use space-around or space-between */
   width: 100%;
-  background: linear-gradient(135deg, #fbe4e6, #f8f3f6); 
+  background: linear-gradient(135deg, #fbe4e6, #f8f3f6);
   margin: 0 auto;
-  height: 100vh;
-  gap: 2rem; 
+  min-height: 100vh; /* Use min-height */
+  padding: 2rem; /* Add overall padding */
+  gap: 2rem;
+  animation: fadeInUp 1s ease-in-out; /* Apply animation to the container */
 }
 
 .about-video-container {
-  width: 50%; /* Adjusts width */
-  height: 80vh; /* Taller video */
+  flex-basis: 50%; /* Use flex-basis for better control */
+  max-width: 50%;  /* Control max size */
+  height: 70vh; /* Adjust height as needed */
   display: flex;
   justify-content: center;
+  align-items: center; /* Center video if it's smaller than container */
   overflow: hidden;
   border-radius: 15px;
-  background: #000;
+  background: #000; /* Background for the video container */
+  animation: fadeInUp 1.2s ease-in-out; /* Apply animation to video */
 }
 
 .about-video {
   width: 100%;
   height: 100%;
-  object-fit: cover; 
-  border-radius: 10px;
+  object-fit: cover;
+  border-radius: 10px; /* Can be inherited or same as parent */
 }
 
 .about-text {
-  width: 50%;
+  flex-basis: 50%; /* Use flex-basis */
+  max-width: 50%; /* Control max size */
   padding: 2rem;
+  animation: fadeInUp 1.4s ease-in-out; /* Stagger animation */
 }
 
 .about-text h2 {
   font-size: 2.5rem;
   font-weight: 800;
-  width: 100%;
   text-align: center;
   color: #d1117d;
+  margin-bottom: 1rem;
 }
 
 .about-text p {
-  font-size: 1.2rem;
+  font-size: 1.1rem; /* Slightly adjusted */
   line-height: 1.8;
   text-align: left;
   color: #555;
 }
 
 .abt-hero-btn {
-  display: block;  
-  margin: 2rem auto; 
-  text-align: center; 
+  display: block;
+  margin: 2rem auto;
+  text-align: center;
   background: linear-gradient(135deg, #e91e63, #d81b60);
   color: white;
-  padding: 0.6rem 2rem;
+  padding: 0.8rem 2.2rem; /* Adjusted padding */
   border: none;
   border-radius: 30px;
-  font-size: 1.3rem;
+  font-size: 1.2rem; /* Adjusted font size */
   font-weight: 500;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.3s ease-in-out, background-color 0.3s, box-shadow 0.2s ease; /* Combined transitions */
+  text-decoration: none; /* If it's an anchor tag */
 }
 
 .abt-hero-btn:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.05); /* Combined transform */
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  background-color: #ff5c8d;
 }
 
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.about-container {
-  animation: fadeInUp 1s ease-in-out;
-}
-
-.about-video {
-  animation: fadeInUp 1.2s ease-in-out;
-}
-
-.abt-hero-btn {
-  transition: transform 0.3s ease-in-out, background-color 0.3s;
-}
-
-.abt-hero-btn:hover {
-  transform: scale(1.05);
-  background-color: #ff5c8d; 
-}
-
-
-@media (max-width: 768px) {
-  .about-container {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .about-video-container,
-  .about-text {
-    width: 100%;
-  }
-
-  .about-text {
-    padding: 1rem;
-    text-align: center;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .about-container {
-    grid-template-columns: 1fr;
-    padding: 0 2rem;
-  }
-}
-
-
-
-
+/* Skin Quiz Section */
 .skin-quiz {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100vh;
+  display: flex; /* Changed to flex for easier alignment */
+  flex-direction: column; /* Default to column for content stacking */
+  align-items: center; /* Center content */
+  justify-content: center; /* Center content vertically */
+  min-height: 100vh; /* Use min-height */
   padding: 2rem 5%;
+  text-align: center; /* Center text by default */
   position: relative;
-  text-align: left;
-  border-radius: 10px;
   font-family: "Poppins", sans-serif;
   background-image: url('../Homepage/dais.jpg'), linear-gradient(135deg, #fdf5ff, #e0c3fc);
-  background-position: right center, 0 0;
+  background-position: center center, 0 0; /* Center the image */
   background-repeat: no-repeat, no-repeat;
-  background-size: cover, auto; /* Using cover, change if needed */
+  background-size: cover, cover; /* Cover for both */
 }
 
-.skin-quiz-content-wrapper {
-  max-width: 1200px;
+.skin-quiz-content-wrapper { /* This can be the direct child that holds text */
+  max-width: 700px; /* Constrain content width */
   width: 100%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8); /* Optional: semi-transparent bg for text readability */
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .skin-quiz h2 {
-  font-size: 3rem;
+  font-size: 2.8rem; /* Slightly adjusted */
   color: #632ec5;
-  margin-bottom: 1rem; white-space: nowrap; 
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-family: "Poppins", sans-serif;
+  margin-bottom: 1rem;
+  white-space: normal; /* Allow wrapping */
+  font-family: "Poppins", sans-serif; /* Already inherited but can be explicit */
   animation: slideIn 1s ease-in-out;
 }
 
-.skin-quiz h3 {
+.skin-quiz h3 { /* Assuming this is a sub-heading or descriptive text */
   font-size: 1.2rem;
   color: #555;
   font-family: "Poppins", sans-serif;
   line-height: 1.6;
   animation: slideIn 1.2s ease-in-out;
+  margin-bottom: 1.5rem; /* Space before button */
 }
 
-@media (max-width: 768px) {
-  .text-content h2 {
-    font-size: 1.5rem;
-  }
-}
-
-
-.b1 {
+.b1 { /* Button styling for skin-quiz */
   display: inline-block;
-  padding: 12px 24px;
-  font-size: 16px;
+  padding: 12px 28px; /* Slightly more padding */
+  font-size: 1rem; /* Use rem */
   font-weight: 600;
   text-align: center;
   color: #ffffff;
-  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); /* Consolidated */
   border: none;
   border-radius: 30px;
-  box-shadow: 0 5px 15px rgba(255, 154, 158, 0.4);
+  box-shadow: 0 5px 15px rgba(255, 154, 158, 0.4); /* Consolidated */
   cursor: pointer;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
-.b1 {
-  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+.b1:hover {
+  background: linear-gradient(135deg, #ff758c 0%, #fecfef 100%); /* Example hover gradient */
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(255, 154, 158, 0.6);
 }
 
-.b1 :active {
-  transform: translateY(2px);
+.b1:active {
+  transform: translateY(1px); /* Adjusted active state */
   box-shadow: 0 3px 10px rgba(255, 154, 158, 0.3);
 }
 
-
-/* Keyframe Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-
-
+/* DIY Remedies Section */
 .diy-remedies {
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: linear-gradient(135deg, #fdf5ff, #e0c3fc); /* Soft pastel gradient */
+  min-height: 100vh; /* Use min-height */
+  background: linear-gradient(135deg, #fdf5ff, #e0c3fc);
   width: 100%;
-  padding: 10rem 15%;
-  margin: 0px auto;
+  padding: 4rem 1rem; /* Adjusted padding */
   position: relative;
 }
 
-
-
 .diy-content {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto; /* Should already be centered by parent flex */
 }
 
 .diy-content h2 {
   font-size: 2.5rem;
-  color: #4a235a; 
+  color: #4a235a;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 1rem; /* Increased margin */
 }
 
 .diy-content p {
   font-size: 1.2rem;
-  color: #6c3483; 
-  margin-bottom: 20px;
+  color: #6c3483;
+  margin-bottom: 2rem; /* Increased margin */
 }
 
 .diy-btn {
   display: inline-block;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4); 
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
   color: #fff;
   padding: 14px 28px;
-  font-size: 1.3rem;
+  font-size: 1.2rem; /* Adjusted */
   font-weight: bold;
   text-decoration: none;
   border-radius: 30px;
@@ -385,6 +336,7 @@ body {
   box-shadow: 0 6px 15px rgba(255, 99, 132, 0.5);
 }
 
+/* Shine effect for diy-btn (kept as is) */
 .diy-btn::before {
   content: "";
   position: absolute;
@@ -392,39 +344,41 @@ body {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 10%, transparent 10%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 10%, transparent 40%); /* Adjusted transparency end */
   transform: rotate(25deg);
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.4s ease-in-out; /* Slightly slower transition */
 }
 
 .diy-btn:hover::before {
   opacity: 1;
 }
 
-
-
-
-
-
+/* Learn and Glow (Cards Section) */
 #learn-and-glow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  display: flex; /* To center card-container if needed, or just for padding */
+  flex-direction: column; /* Stack title and cards */
+  align-items: center; /* Center title and card container */
   width: 100%;
-  max-width: 1400px;
-  padding: 60px 30px;
-  margin : 0px auto;
-  background-color: #f9f9f9; 
+  padding: 4rem 1rem; /* Responsive padding */
+  margin: 0 auto;
+  background-color: #f9f9f9;
+}
+
+/* Optional: Add a title for the "Learn and Glow" section */
+#learn-and-glow > h2 { /* Assuming you might add an H2 like "Learn & Glow" */
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
   gap: 30px;
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1200px; /* Max width for the grid */
   margin: 0 auto;
 }
 
@@ -432,62 +386,70 @@ body {
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; 
-  align-items: center;
+  justify-content: space-between;
+  align-items: center; /* Center content like text if it's not full width */
   border-radius: 20px;
-  width: 320px; 
-  min-height: 60vh;
+  /* Width is handled by grid-template-columns */
+  min-height: auto; /* Let content define height, or set a specific min-height if all cards must be same */
   padding: 20px;
-  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; 
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  overflow: hidden; /* Important for image border-radius */
 }
 
 .card img {
   width: 100%;
-  border-radius: 10px;
-  height: 400px;
-  object-fit: cover; 
+  height: 250px; /* Or use aspect-ratio: 16 / 9; object-fit: cover; */
+  object-fit: cover;
+  border-radius: 10px; /* Rounded corners for the image */
+  margin-bottom: 15px; /* Space between image and content */
 }
 
-
 .card-content {
-  padding: 15px;
+  padding: 0 10px 10px; /* Padding for text content if needed, but card has padding already */
+  flex-grow: 1; /* Allows content to fill space if cards have fixed height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes button to bottom if there's a button */
 }
 
 .card-content h3 {
-  font-size: 1.2rem;
+  font-size: 1.3rem; /* Adjusted */
   margin-bottom: 10px;
   color: #333;
+  font-weight: 600;
 }
 
 .card-content p {
-  font-size: 1rem;
+  font-size: 0.95rem; /* Adjusted */
   color: #666;
+  line-height: 1.5;
+  margin-bottom: 1rem; /* Space before a potential button */
 }
 
 .card:hover {
   transform: translateY(-7px);
-  background-color: #F4B6C2; 
-  color: white;
-  box-shadow: 0px 6px 20px rgba(244, 182, 194, 0.4); 
+  background-color: #F4B6C2;
+  box-shadow: 0px 6px 20px rgba(244, 182, 194, 0.4);
 }
 
-.card:hover h3, 
+.card:hover h3,
 .card:hover p {
   color: white;
 }
 
+/* Chat Forum Section */
 .chat-forum {
-  background: linear-gradient(135deg, #f9fafb, #e3e9f3); 
-  padding: 10rem 15%;
+  background: linear-gradient(135deg, #f9fafb, #e3e9f3);
+  padding: 4rem 1rem; /* Responsive padding */
   width: 100%;
+  max-width: 800px; /* Max width for the section */
   border-radius: 1rem;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: all 0.3s ease-in-out;
-  margin: 2rem auto;
+  margin: 3rem auto; /* More margin */
 }
 
 .chat-forum:hover {
@@ -495,38 +457,40 @@ body {
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Chat Content */
-.chat-container {
-  max-width: 500px;
-  margin: 0 auto;
+.chat-container { /* This class was in your original, good for inner content constraint */
+  max-width: 500px; /* Max width of text content within the forum section */
+  margin: 0 auto; /* Center it */
 }
 
 .chat-title {
-  font-size: 2rem;
+  font-size: 2.2rem; /* Use rem */
   font-weight: 700;
-  color: #1f2937; 
+  color: #1f2937;
   letter-spacing: 1px;
+  margin-bottom: 0.8rem; /* Added margin */
 }
 
 .chat-description {
   color: #6b7280;
-  font-size: 1.1rem;
-  margin-top: 0.8rem;
+  font-size: 1.1rem; /* Use rem */
+  margin-top: 0; /* Removed default margin, handled by title's margin-bottom */
   line-height: 1.6;
+  margin-bottom: 1.5rem; /* Space before button */
 }
 
 .chat-button {
   margin-top: 1.5rem;
-  background: linear-gradient(90deg, #3b82f6, #9333ea); 
+  background: linear-gradient(90deg, #3b82f6, #9333ea);
   color: white;
-  padding: 0.75rem 2rem;
+  padding: 0.8rem 2.2rem; /* Adjusted padding */
   border-radius: 2rem;
   border: none;
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: 1.1rem; /* Use rem */
   font-weight: 600;
   transition: all 0.3s ease-in-out;
   box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+  text-decoration: none; /* For anchor tags */
 }
 
 .chat-button:hover {
@@ -537,4 +501,198 @@ body {
 
 .chat-button:active {
   transform: scale(0.98);
+}
+
+/* Keyframe Animations (Consolidated) */
+@keyframes fadeInUp {
+  from { /* Changed from 0% */
+    opacity: 0;
+    transform: translateY(40px); /* Slightly more distance */
+  }
+  to { /* Changed from 100% */
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); /* Changed from translateY to translateX for variety, or keep Y */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Media Queries for Responsiveness */
+
+/* Tablets and Larger Phones */
+@media (max-width: 992px) {
+  .skin-quiz h2 {
+    font-size: 2.5rem;
+  }
+  .about-text h2 {
+    font-size: 2.2rem;
+  }
+  .diy-content h2 {
+    font-size: 2.2rem;
+  }
+  #learn-and-glow > h2 {
+    font-size: 2.2rem;
+  }
+  .chat-title {
+    font-size: 2rem;
+  }
+}
+
+/* Smaller Tablets and Landscape Phones */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem; /* Adjust hero title */
+    white-space: normal; /* Allow hero title to wrap if very long */
+    border-right: none; /* Remove cursor if it wraps badly */
+    animation: none; /* Optionally disable typing on small screens if it causes layout issues */
+    width: auto; /* Let it take natural width */
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+    min-height: auto; /* Adjust height based on content */
+    padding: 2rem 1rem;
+  }
+
+  .about-video-container,
+  .about-text {
+    flex-basis: 100%; /* Full width when stacked */
+    max-width: 100%;
+  }
+
+  .about-video-container {
+    height: 40vh; /* Adjust video height */
+    margin-bottom: 1.5rem;
+  }
+
+  .about-text {
+    padding: 1rem 0;
+  }
+  .about-text p {
+    text-align: center;
+  }
+
+  .skin-quiz {
+    padding: 2rem 1rem;
+  }
+  .skin-quiz h2 {
+    font-size: 2rem;
+  }
+  .skin-quiz h3 {
+    font-size: 1rem;
+  }
+
+  .diy-remedies {
+    padding: 3rem 1rem;
+  }
+  .diy-content h2 {
+    font-size: 2rem;
+  }
+  .diy-content p {
+    font-size: 1rem;
+  }
+
+  #learn-and-glow {
+    padding: 3rem 1rem;
+  }
+   #learn-and-glow > h2 {
+    font-size: 2rem;
+  }
+  .card-container {
+    gap: 20px; /* Reduce gap for cards */
+  }
+  .card img {
+    height: 200px; /* Adjust card image height */
+  }
+
+  .chat-forum {
+    padding: 3rem 1rem;
+    margin: 2rem auto;
+  }
+  .chat-title {
+    font-size: 1.8rem;
+  }
+  .chat-description {
+    font-size: 1rem;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.8rem;
+    /* Consider re-enabling typing animation if it looks okay, or keep it simpler */
+  }
+  .hero-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .about-text h2 {
+    font-size: 1.8rem;
+  }
+  .about-text p {
+    font-size: 0.9rem;
+  }
+  .abt-hero-btn {
+    padding: 0.7rem 1.8rem;
+    font-size: 1rem;
+  }
+
+  .skin-quiz h2 {
+    font-size: 1.6rem;
+  }
+  .skin-quiz h3 {
+    font-size: 0.9rem;
+  }
+  .skin-quiz-content-wrapper {
+    padding: 1.5rem;
+  }
+  .b1 {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .diy-content h2 {
+    font-size: 1.8rem;
+  }
+  .diy-btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+
+  #learn-and-glow {
+    padding: 2rem 1rem;
+  }
+   #learn-and-glow > h2 {
+    font-size: 1.8rem;
+  }
+  .card-content h3 {
+    font-size: 1.1rem;
+  }
+  .card-content p {
+    font-size: 0.85rem;
+  }
+
+  .chat-title {
+    font-size: 1.5rem;
+  }
+  .chat-button {
+    padding: 0.7rem 1.8rem;
+    font-size: 0.9rem;
+  }
 }
