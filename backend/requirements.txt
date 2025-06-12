@@ -1,1 +1,9 @@
-uvicorn
+fastapi
+uvicorn[standard]
+pymongo
+python-jose[cryptography] # For JWTs in authentication
+passlib[bcrypt]          # For password hashing
+python-multipart         # For form data handling in FastAPI (often needed with auth)
+numpy                    # Common for data manipulation in ML
+pandas                   # Common for data manipulation in ML
+scikit-learn             # For recommendation system algorithms
