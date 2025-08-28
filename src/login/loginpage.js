@@ -34,7 +34,7 @@ function LoginPage() {
         }
 
         try {
-            const url = `http://localhost:8080/auth/login`; // Your OFFICIAL endpoint
+            const url = `https://dais-backend.onrender.com/auth/login`;
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
