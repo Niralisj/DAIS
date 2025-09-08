@@ -10,7 +10,12 @@ const app = express();
 require('./models/db');
 
 // Enable CORS for all origins (adjust in production for security)
-app.use(cors());
+//app.use(cors());
+app.use(cors({
+    origin: 'https://<your-netlify-site>.netlify.app', // replace with your actual Netlify domain
+    credentials: true, // allows sending cookies or auth headers
+}));
+
 
 app.use(express.json());
 // If you need to handle URL-encoded data:

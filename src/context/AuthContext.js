@@ -19,6 +19,7 @@ export const AuthProvider = ({ children }) => {
         try {
             const API_BASE = import.meta.env.VITE_BACKEND_URL;
 
+
 const response = await fetch(`${API_BASE}/api/user/me`, {
     headers: { Authorization: `Bearer ${currentToken}` },
 });
