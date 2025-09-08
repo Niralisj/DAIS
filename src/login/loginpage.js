@@ -34,37 +34,35 @@ function LoginPage() {
         }
 
         try {
-            const url = `https://dais-backend.onrender.com/auth/login`;
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(loginInfo),
-            });
+  const url = `https://dais-backend.onrender.com/auth/login`;
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(loginInfo),
+  });
 
-            const result = await response.json();
-            const { success, message, jwtToken, userData, error } = result; // Get the userData object
+  const result = await response.json();
+  console.log("Login result:", result); // 👈 debug log
 
-            if (success && jwtToken && userData?.id && userData?.name) { // Access id and name from userData
-                handleSuccess(message || 'Login successful!');
+  const { success, message, jwtToken, userData, error } = result;
 
-                login(jwtToken, userData.id, userData.name); 
+  if (success && jwtToken && userData?.id && userData?.name) {
+    handleSuccess(message || 'Login successful!');
+    login(jwtToken, userData.id, userData.name);
 
-                setTimeout(() => {
-                    navigate(from, { replace: true });
-                }, 500); 
+    setTimeout(() => {
+      navigate(from, { replace: true });
+    }, 500);
+  } else if (error) {
+    handleError(error?.details?.[0]?.message || 'Login failed');
+  } else {
+    handleError(message || 'Invalid credentials or server error.');
+  }
+} catch (err) {
+  console.error('Login error:', err);
+  handleError('Something went wrong during login. Please try again later.');
+}
 
-            } else if (error) {
-                const details = error?.details?.[0]?.message || 'Login failed';
-                handleError(details);
-            } else {
-                handleError(message || 'Invalid credentials or server error.');
-            }
-        } catch (err) {
-            console.error('Login error:', err);
-            handleError('Something went wrong during login. Please try again later.');
-        }
     };
 
     return (

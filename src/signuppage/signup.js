@@ -23,7 +23,7 @@ function SignUpPage() {
     e.preventDefault();
     const { name, email, password, confirmPassword } = signupInfo;
 
-    if (!name  || !email || !password || !confirmPassword) {
+    if (!name || !email || !password || !confirmPassword) {
       return handleError('All fields are required.');
     }
 
@@ -32,16 +32,15 @@ function SignUpPage() {
     }
 
     try {
-      const { name, email, password } = signupInfo;
-      //const response = await fetch('http://localhost:8080/auth/signup', 
       const response = await fetch('https://dais-backend.onrender.com/auth/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password }), 
+        body: JSON.stringify({ name, email, password }),
       });
-      
 
       const result = await response.json();
+      console.log("Signup result:", result); // 👈 debug log
+
       const { success, message, error } = result;
 
       if (success) {
@@ -50,9 +49,10 @@ function SignUpPage() {
           navigate('/login');
         }, 1000);
       } else {
-        handleError(error?.details[0]?.message || message);
+        handleError(error?.details?.[0]?.message || message);
       }
     } catch (err) {
+      console.error("Signup error:", err);
       handleError('An error occurred. Please try again.');
     }
   };

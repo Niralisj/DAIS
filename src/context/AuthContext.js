@@ -17,9 +17,13 @@ export const AuthProvider = ({ children }) => {
         }
         setIsLoadingUser(true);
         try {
-            const response = await fetch('http://localhost:8080/api/user/me', {
-                headers: { Authorization: `Bearer ${currentToken}` },
-            });
+            const API_BASE = import.meta.env.VITE_BACKEND_URL;
+
+const response = await fetch(`${API_BASE}/api/user/me`, {
+    headers: { Authorization: `Bearer ${currentToken}` },
+});
+
+
             if (response.ok) {
                 const userData = await response.json();
                 setUser(userData);
