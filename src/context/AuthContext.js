@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import React, { createContext, useState, useEffect, useContext, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { handleSuccess, handleError } from '../utils';
 
@@ -11,12 +11,11 @@ export const AuthProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
-  // Get the backend URL from the environment variable.
-  // The 'VITE_BACKEND_URL' prefix is crucial for Vite to expose the variable.
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-  // Function to fetch the user's data from the backend
-  const fetchUser = async (userToken) => {
+  // Use useCallback to memoize the fetchUser function.
+  // This makes the function stable and satisfies the ESLint dependency rule.
+  const fetchUser = useCallback(async (userToken) => {
     if (!userToken || !BACKEND_URL) {
       setUser(null);
       setLoading(false);
@@ -36,7 +35,6 @@ export const AuthProvider = ({ children }) => {
         const userData = await response.json();
         setUser(userData);
       } else {
-        // If fetching user fails, clear the token and user state
         console.error("Failed to fetch user:", response.status, response.statusText);
         setToken(null);
         localStorage.removeItem('jwtToken');
@@ -52,14 +50,12 @@ export const AuthProvider = ({ children }) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [BACKEND_URL]); // Add BACKEND_URL as a dependency for the useCallback hook
 
-  // On component mount or token change, fetch user data
   useEffect(() => {
     fetchUser(token);
-  }, [token, BACKEND_URL]);
+  }, [token, fetchUser]); // Now we can safely add fetchUser as a dependency here.
 
-  // Login function that handles the API call
   const login = async (email, password) => {
     try {
       const response = await fetch(`${BACKEND_URL}/auth/login`, {
@@ -84,8 +80,7 @@ export const AuthProvider = ({ children }) => {
       throw error;
     }
   };
-  
-  // Signup function to handle the API call
+
   const signup = async (data) => {
     try {
       const response = await fetch(`${BACKEND_URL}/auth/signup`, {
