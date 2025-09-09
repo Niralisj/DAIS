@@ -1,87 +1,139 @@
-import React, { createContext, useState, useContext, useEffect, useCallback } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { handleSuccess, handleError } from '../utils';
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-    const [token, setToken] = useState(() => localStorage.getItem('jwtToken'));
-    const [user, setUser] = useState(null);
-    const [isLoadingUser, setIsLoadingUser] = useState(true); // Track initial user loading
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [token, setToken] = useState(localStorage.getItem('jwtToken'));
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    const fetchUser = useCallback(async (currentToken) => {
-        if (!currentToken) {
-            setUser(null);
-            setIsAuthenticated(false);
-            setIsLoadingUser(false); // Ensure loading stops even if no token
-            return;
-        }
-        setIsLoadingUser(true);
-        try {
-            // FIX IS HERE 
-            // Use process.env which is more universally supported by build tools
-            const API_BASE = process.env.VITE_BACKEND_URL;
+  const navigate = useNavigate();
 
-            const response = await fetch(`${API_BASE}/api/user/me`, {
-                headers: { Authorization: `Bearer ${currentToken}` },
-            });
+  // Get the backend URL from the environment variable.
+  // The 'VITE_BACKEND_URL' prefix is crucial for Vite to expose the variable.
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-            if (response.ok) {
-                const userData = await response.json();
-                setUser(userData);
-                setIsAuthenticated(true);
-            } else {
-                console.error('AuthContext: Failed to fetch user, clearing token');
-                localStorage.removeItem('jwtToken');
-                setToken(null); // Trigger re-render and clear state via useEffect
-                setUser(null);
-                setIsAuthenticated(false);
-            }
-        } catch (error) {
-            console.error('AuthContext: Error fetching user:', error);
-            setUser(null); // Clear user on error
-            setIsAuthenticated(false);
-        } finally {
-            setIsLoadingUser(false);
-        }
-    }, []);
+  // Function to fetch the user's data from the backend
+  const fetchUser = async (userToken) => {
+    if (!userToken || !BACKEND_URL) {
+      setUser(null);
+      setLoading(false);
+      return;
+    }
 
-    // Fetch user when token changes or on initial load
-    useEffect(() => {
-        console.log("AuthContext: Token changed or initial load, fetching user. Token:", token);
-        fetchUser(token);
-    }, [token, fetchUser]);
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/user/me`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${userToken}`,
+        },
+      });
 
-    const login = (newToken) => {
-        console.log("AuthContext: Login called");
-        localStorage.setItem('jwtToken', newToken);
-        setToken(newToken); // This will trigger the useEffect to fetch the user
-    };
-
-    const logout = () => {
-        console.log("AuthContext: Logout called");
+      if (response.ok) {
+        const userData = await response.json();
+        setUser(userData);
+      } else {
+        // If fetching user fails, clear the token and user state
+        console.error("Failed to fetch user:", response.status, response.statusText);
+        setToken(null);
         localStorage.removeItem('jwtToken');
-        setToken(null); // This will trigger the useEffect which clears user/auth state
         setUser(null);
-        setIsAuthenticated(false);
-    };
+        handleError('Session expired. Please log in again.');
+      }
+    } catch (error) {
+      console.error("Error fetching user:", error);
+      setToken(null);
+      localStorage.removeItem('jwtToken');
+      setUser(null);
+      handleError("An error occurred. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    const value = {
-        token,
-        user,
-        isAuthenticated,
-        isLoadingUser, // Provide loading status for initial auth check
-        login,
-        logout,
-        fetchUser 
-    };
+  // On component mount or token change, fetch user data
+  useEffect(() => {
+    fetchUser(token);
+  }, [token, BACKEND_URL]);
 
-    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  // Login function that handles the API call
+  const login = async (email, password) => {
+    try {
+      const response = await fetch(`${BACKEND_URL}/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const result = await response.json();
+
+      if (result.success && result.jwtToken) {
+        setToken(result.jwtToken);
+        localStorage.setItem('jwtToken', result.jwtToken);
+        handleSuccess(result.message || 'Login successful!');
+        return result;
+      } else {
+        throw new Error(result.message || 'Invalid credentials or server error.');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      handleError(error.message || 'Something went wrong during login. Please try again later.');
+      throw error;
+    }
+  };
+  
+  // Signup function to handle the API call
+  const signup = async (data) => {
+    try {
+      const response = await fetch(`${BACKEND_URL}/auth/signup`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.success && result.jwtToken) {
+        setToken(result.jwtToken);
+        localStorage.setItem('jwtToken', result.jwtToken);
+        handleSuccess(result.message || 'Account created successfully!');
+        return result;
+      } else {
+        throw new Error(result.message || 'Signup failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Signup error:', error);
+      handleError(error.message || 'Something went wrong during signup. Please try again later.');
+      throw error;
+    }
+  };
+
+  const logout = () => {
+    setToken(null);
+    localStorage.removeItem('jwtToken');
+    setUser(null);
+    navigate('/login');
+  };
+
+  const value = {
+    token,
+    user,
+    loading,
+    login,
+    logout,
+    signup
+  };
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
 export const useAuth = () => {
-    const context = useContext(AuthContext);
-    if (context === null) {
-        throw new Error('useAuth must be used within an AuthProvider');
-    }
-    return context;
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
 };
