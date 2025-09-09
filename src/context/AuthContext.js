@@ -11,10 +11,9 @@ export const AuthProvider = ({ children }) => {
 
   const navigate = useNavigate();
 
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  // FIX: Change to REACT_APP_BACKEND_URL for Create React App compatibility
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
-  // Use useCallback to memoize the fetchUser function.
-  // This makes the function stable and satisfies the ESLint dependency rule.
   const fetchUser = useCallback(async (userToken) => {
     if (!userToken || !BACKEND_URL) {
       setUser(null);
@@ -50,11 +49,11 @@ export const AuthProvider = ({ children }) => {
     } finally {
       setLoading(false);
     }
-  }, [BACKEND_URL]); // Add BACKEND_URL as a dependency for the useCallback hook
+  }, [BACKEND_URL]);
 
   useEffect(() => {
     fetchUser(token);
-  }, [token, fetchUser]); // Now we can safely add fetchUser as a dependency here.
+  }, [token, fetchUser]);
 
   const login = async (email, password) => {
     try {
