@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Plus, Trash2 } from 'lucide-react';
 import { useAuth } from "../../context/AuthContext"; // Correct relative path
 import "../style/8.css"; // Assuming path is correct
-
+import { useMemo } from 'react';
 export default function Sidebar({ selectedCategory, onSelectCategory }) {
     const { isAuthenticated, user, token } = useAuth(); // Get data from context
     const [categories, setCategories] = useState([]);
@@ -12,15 +12,13 @@ export default function Sidebar({ selectedCategory, onSelectCategory }) {
     const [isLoadingCategories, setIsLoadingCategories] = useState(true);
     const [fetchCategoriesError, setFetchCategoriesError] = useState(null);
 
-    // Default categories (ensure IDs don't clash with potential fetched IDs if possible)
-    const defaultCategories = [
-        { id: 'default-1', name: 'Announcements' },
-        { id: 'default-2', name: 'General Discussion' },
-        { id: 'default-3', name: 'Questions & Help' },
-        { id: 'default-4', name: 'Off-Topic' },
-        { id: 'default-5', name: 'Feedback' },
-    ];
-
+const defaultCategories = useMemo(() => [
+  { id: 'default-1', name: 'Announcements' },
+  { id: 'default-2', name: 'General Discussion' },
+  { id: 'default-3', name: 'Questions & Help' },
+  { id: 'default-4', name: 'Off-Topic' },
+  { id: 'default-5', name: 'Feedback' },
+], []);
     // Determine isAdmin based on the user object from context
     const isAdmin = isAuthenticated && user?.role === 'admin';
 
