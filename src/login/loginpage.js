@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom'; 
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import { handleSuccess, handleError } from '../utils';
-import '../login/loginpage.css';
 import { useAuth } from '../context/AuthContext';
+import '../login/loginpage.css';
 
 function LoginPage() {
     const [loginInfo, setLoginInfo] = useState({
@@ -11,11 +10,10 @@ function LoginPage() {
         password: '',
     });
     const navigate = useNavigate();
-    const location = useLocation(); // Get location object
-    const { login } = useAuth(); // Get the login function from context
+    const location = useLocation();
+    const { login } = useAuth();
 
-    // Determine where to redirect after login
-    const from = location.state?.from?.pathname || '/user-panel'; // Default to /user-panel if no previous location
+    const from = location.state?.from?.pathname || '/user-panel';
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -29,40 +27,17 @@ function LoginPage() {
         e.preventDefault();
         const { email, password } = loginInfo;
 
-        if (!email || !password) {
-            return handleError('Email and password are required');
-        }
-
+        // The 'login' function in AuthContext handles all validation and API calls.
         try {
-  const url = `https://dais-backend.onrender.com/auth/login`;
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(loginInfo),
-  });
-
-  const result = await response.json();
-  console.log("Login result:", result); // 👈 debug log
-
-  const { success, message, jwtToken, userData, error } = result;
-
-  if (success && jwtToken && userData?.id && userData?.name) {
-    handleSuccess(message || 'Login successful!');
-    login(jwtToken, userData.id, userData.name);
-
-    setTimeout(() => {
-      navigate(from, { replace: true });
-    }, 500);
-  } else if (error) {
-    handleError(error?.details?.[0]?.message || 'Login failed');
-  } else {
-    handleError(message || 'Invalid credentials or server error.');
-  }
-} catch (err) {
-  console.error('Login error:', err);
-  handleError('Something went wrong during login. Please try again later.');
-}
-
+            await login(email, password);
+            // If the login is successful, AuthContext will update the token,
+            // and the app will redirect automatically.
+            navigate(from, { replace: true });
+        } catch (error) {
+            // The AuthContext.js already handles displaying the error toast,
+            // so we don't need to do anything here.
+            console.error('Login error:', error);
+        }
     };
 
     return (
@@ -103,9 +78,9 @@ function LoginPage() {
                     </div>
                     <button type="submit" className="login-button">Login</button>
                 </form>
-                 <div className="social-login"> 
+                <div className="social-login">
                     <p>
-                        Don't have an account? <Link to="/sign-up">Create one</Link> 
+                        Don't have an account? <Link to="/sign-up">Create one</Link>
                     </p>
                 </div>
             </div>
