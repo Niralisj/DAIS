@@ -84,7 +84,7 @@ const storePosts = (posts) => {
 
 function ForumPage() {
     // *** Use AuthContext instead of local user state ***
-    const { user, isAuthenticated, isLoadingUser, token } = useAuth();
+    const { user, isAuthenticated, isLoadingUser} = useAuth();
 
     const [showWelcome, setShowWelcome] = useState(false);
     const [showCreatePost, setShowCreatePost] = useState(false);

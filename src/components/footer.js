@@ -23,13 +23,7 @@ const Footer = () => {
         </div>
 
         {/* Social Media */}
-        <div className="footer-section">
-          <h3>Follow</h3>
-          <div className="footer-icons">
-            <a href="#"><FaInstagram /></a>
-            <a href="#"><FaTwitter /></a>
-            <a href="#"><FaPinterest /></a>
-          </div>
+        <div className="footer-section">          
         </div>
       </div>
 

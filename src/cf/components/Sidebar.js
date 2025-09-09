@@ -83,7 +83,7 @@ export default function Sidebar({ selectedCategory, onSelectCategory }) {
         loadCategories();
         // Cleanup function
         return () => { isMounted = false; };
-    }, []); // Run only once on mount
+    }, [defaultCategories]); // Run only once on mount
 
     // --- Add Category (Admin Only) ---
     const handleAddCategory = async (e) => {
