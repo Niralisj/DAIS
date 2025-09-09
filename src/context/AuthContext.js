@@ -17,13 +17,13 @@ export const AuthProvider = ({ children }) => {
         }
         setIsLoadingUser(true);
         try {
-            const API_BASE = import.meta.env.VITE_BACKEND_URL;
+            // FIX IS HERE 
+            // Use process.env which is more universally supported by build tools
+            const API_BASE = process.env.VITE_BACKEND_URL;
 
-
-const response = await fetch(`${API_BASE}/api/user/me`, {
-    headers: { Authorization: `Bearer ${currentToken}` },
-});
-
+            const response = await fetch(`${API_BASE}/api/user/me`, {
+                headers: { Authorization: `Bearer ${currentToken}` },
+            });
 
             if (response.ok) {
                 const userData = await response.json();
@@ -63,7 +63,6 @@ const response = await fetch(`${API_BASE}/api/user/me`, {
         setToken(null); // This will trigger the useEffect which clears user/auth state
         setUser(null);
         setIsAuthenticated(false);
-  
     };
 
     const value = {
@@ -75,9 +74,6 @@ const response = await fetch(`${API_BASE}/api/user/me`, {
         logout,
         fetchUser 
     };
-
-   
-
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
