@@ -3,17 +3,15 @@ const cors = require('cors');
 const path = require('path');
 require('dotenv').config({ path: '../.env' }); 
 
-// Initialize Express app
 const app = express();
 
-// The require statement executes the connection logic in db.js
 require('./models/db');
 
 // Enable CORS for all origins (adjust in production for security)
 //app.use(cors());
 app.use(cors({
-    origin: 'https://<your-netlify-site>.netlify.app', // replace with your actual Netlify domain
-    credentials: true, // allows sending cookies or auth headers
+    origin: 'https://daiis.netlify.app',
+    credentials: true, 
 }));
 
 
