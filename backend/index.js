@@ -7,23 +7,34 @@ const app = express();
 
 require('./models/db');
 
-// Enable CORS to handle multiple origins
-const allowedOrigins = [
-  'https://daiis.netlify.app',
-  'https://68c01a6b3dfa647cf0b6e788--daiis.netlify.app'
-];
-
-app.use(cors({
+// --- START: Updated CORS Configuration ---
+// This is a more robust CORS configuration to handle Netlify's dynamic preview URLs.
+// It will allow your main production domain and any temporary domain ending in .netlify.app.
+const corsOptions = {
   origin: function (origin, callback) {
-    // If the origin is not on the allowed list, or if there is no origin (e.g. from Postman or a mobile app)
-    if (!origin || allowedOrigins.includes(origin)) {
+    // Allow requests with no origin (like mobile apps or curl)
+    // and from your main production domain
+    if (!origin || origin === 'https://daiis.netlify.app') {
       callback(null, true);
-    } else {
+    } 
+    // Dynamically allow any Netlify preview URL
+    else if (/\.netlify\.app$/.test(origin)) {
+      callback(null, true);
+    }
+    // Block all other origins
+    else {
       callback(new Error('Not allowed by CORS'));
     }
   },
   credentials: true,
-}));
+};
+
+app.use(cors(corsOptions));
+// --- END: Updated CORS Configuration ---
+
+app.use(express.json());
+// If you need to handle URL-encoded data:
+// app.use(express.urlencoded({ extended: true }));
 
 const authRouter = require('./routes/authrouter');
 const categoryRouter = require('./routes/categoryrouter');
