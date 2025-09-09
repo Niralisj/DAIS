@@ -7,17 +7,23 @@ const app = express();
 
 require('./models/db');
 
-// Enable CORS for all origins (adjust in production for security)
-//app.use(cors());
+// Enable CORS to handle multiple origins
+const allowedOrigins = [
+  'https://daiis.netlify.app',
+  'https://68c01a6b3dfa647cf0b6e788--daiis.netlify.app'
+];
+
 app.use(cors({
-    origin: 'https://daiis.netlify.app',
-    credentials: true, 
+  origin: function (origin, callback) {
+    // If the origin is not on the allowed list, or if there is no origin (e.g. from Postman or a mobile app)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
 }));
-
-
-app.use(express.json());
-// If you need to handle URL-encoded data:
-// app.use(express.urlencoded({ extended: true }));
 
 const authRouter = require('./routes/authrouter');
 const categoryRouter = require('./routes/categoryrouter');
