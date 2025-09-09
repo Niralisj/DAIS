@@ -7,30 +7,11 @@ const app = express();
 
 require('./models/db');
 
-// --- START: Updated CORS Configuration ---
-// This is a more robust CORS configuration to handle Netlify's dynamic preview URLs.
-// It will allow your main production domain and any temporary domain ending in .netlify.app.
-const corsOptions = {
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl)
-    // and from your main production domain
-    if (!origin || origin === 'https://daiis.netlify.app') {
-      callback(null, true);
-    } 
-    // Dynamically allow any Netlify preview URL
-    else if (/\.netlify\.app$/.test(origin)) {
-      callback(null, true);
-    }
-    // Block all other origins
-    else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
-// --- END: Updated CORS Configuration ---
+// --- START: New CORS Configuration ---
+// This is a simplified, non-secure CORS policy for debugging purposes.
+// It allows all origins to confirm if the CORS middleware is working.
+app.use(cors());
+// --- END: New CORS Configuration ---
 
 app.use(express.json());
 // If you need to handle URL-encoded data:
