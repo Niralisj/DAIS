@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom'; 
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { handleSuccess, handleError } from '../utils';
 import '../login/loginpage.css';
@@ -12,8 +12,9 @@ function LoginPage() {
     });
     const navigate = useNavigate();
     const location = useLocation();
-    const { login } = useAuth(); 
+    const { login } = useAuth();
 
+    // The 'from' path is a robust way to handle redirects. It defaults to '/user-panel'.
     const from = location.state?.from?.pathname || '/user-panel';
 
     const handleChange = (e) => {
@@ -33,11 +34,22 @@ function LoginPage() {
         }
 
         try {
-            await login(email, password);
-            // The AuthContext now sets the user, so we can navigate immediately.
-            navigate(from, { replace: true });
+            const loginResult = await login(email, password);
+            
+            // Check if the login function returned a successful result
+            if (loginResult && loginResult.success) {
+                console.log('Login successful! Attempting to navigate...');
+                navigate(from, { replace: true });
+                console.log(`Navigation triggered to: ${from}`);
+            } else {
+                // This block should only be hit if login() resolves but returns a non-success state
+                console.log('Login failed as per result from AuthContext.');
+                handleError(loginResult?.message || 'Login failed. Please check your credentials.');
+            }
         } catch (err) {
-            console.error('Login process failed:', err);
+            // This block is for network errors or other unexpected issues
+            console.error('Login process failed with an error:', err);
+            handleError(err.message || 'An unexpected error occurred during login.');
         }
     };
 
@@ -79,9 +91,9 @@ function LoginPage() {
                     </div>
                     <button type="submit" className="login-button">Login</button>
                 </form>
-                <div className="social-login"> 
+                <div className="social-login">
                     <p>
-                        Don't have an account? <Link to="/sign-up">Create one</Link> 
+                        Don't have an account? <Link to="/sign-up">Create one</Link>
                     </p>
                 </div>
             </div>
