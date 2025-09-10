@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom'; 
 import { ToastContainer } from 'react-toastify';
-import { useAuth } from '../context/AuthContext';
+import { handleSuccess, handleError } from '../utils';
 import '../login/loginpage.css';
+import { useAuth } from '../context/AuthContext';
 
 function LoginPage() {
     const [loginInfo, setLoginInfo] = useState({
@@ -11,7 +12,7 @@ function LoginPage() {
     });
     const navigate = useNavigate();
     const location = useLocation();
-    const { login } = useAuth();
+    const { login } = useAuth(); 
 
     const from = location.state?.from?.pathname || '/user-panel';
 
@@ -27,16 +28,16 @@ function LoginPage() {
         e.preventDefault();
         const { email, password } = loginInfo;
 
-        // The 'login' function in AuthContext handles all validation and API calls.
+        if (!email || !password) {
+            return handleError('Email and password are required');
+        }
+
         try {
             await login(email, password);
-            // If the login is successful, AuthContext will update the token,
-            // and the app will redirect automatically.
+            // The AuthContext now sets the user, so we can navigate immediately.
             navigate(from, { replace: true });
-        } catch (error) {
-            // The AuthContext.js already handles displaying the error toast,
-            // so we don't need to do anything here.
-            console.error('Login error:', error);
+        } catch (err) {
+            console.error('Login process failed:', err);
         }
     };
 
@@ -78,9 +79,9 @@ function LoginPage() {
                     </div>
                     <button type="submit" className="login-button">Login</button>
                 </form>
-                <div className="social-login">
+                <div className="social-login"> 
                     <p>
-                        Don't have an account? <Link to="/sign-up">Create one</Link>
+                        Don't have an account? <Link to="/sign-up">Create one</Link> 
                     </p>
                 </div>
             </div>
