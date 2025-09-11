@@ -24,7 +24,6 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/sign-up" element={<SignUpPage />} />
       <Route path="/" element={<Homepage />} />
-      {/* Assuming FindSkinType is a general info page, otherwise protect it */}
       <Route path="/FindSkinType" element={<FindSkinType />} />
 
       {/* Protected Routes */}
@@ -77,7 +76,6 @@ function App() {
           </ProtectedRoute>
         }
       />
-       {/* Add any other routes that need protection here */}
       
     </Routes>
   );

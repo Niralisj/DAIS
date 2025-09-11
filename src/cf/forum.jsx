@@ -8,7 +8,6 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import PostCard from './components/PostCard';
 import CreatePostButton from './components/CreatePostButton';
-import WelcomeModal from './components/WelcomeModal';
 import CreatePostModal from './components/CreatePostModal';
 import PostDialog from './components/PostDialog';
 
