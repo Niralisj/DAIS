@@ -27,11 +27,16 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "https://your-frontend-domain.netlify.app"],  # Add your frontend domain
+    allow_origins=[
+        "http://localhost:3000",
+        "https://dais.vercel.app",           # Your main Vercel domain
+        "https://*.vercel.app"               # Allow all Vercel deployments
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # Enhanced CSV loading with detailed logging
 def load_data():
@@ -265,3 +270,21 @@ def get_history(request: Request):
         return recommendation_history[session_id]
     else:
         return []
+    
+    
+    
+@app.get("/test")
+def test_endpoint():
+    return {"message": "Backend is working!", "status": "success"}
+
+@app.get("/debug-routes")
+def debug_routes():
+    from fastapi.routing import APIRoute
+    routes = []
+    for route in app.routes:
+        if isinstance(route, APIRoute):
+            routes.append({
+                "path": route.path,
+                "methods": list(route.methods)
+            })
+    return {"routes": routes}
