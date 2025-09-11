@@ -6,7 +6,6 @@ import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import PostCard from '../components/PostCard';
 import CreatePostButton from '../components/CreatePostButton';
-import WelcomeModal from '../components/WelcomeModal';
 import CreatePostModal from '../components/CreatePostModal';
 import PostDialog from '../components/PostDialog';
 
@@ -86,7 +85,6 @@ function ForumPage() {
     // *** Use AuthContext instead of local user state ***
     const { user, isAuthenticated, isLoadingUser} = useAuth();
 
-    const [showWelcome, setShowWelcome] = useState(false);
     const [showCreatePost, setShowCreatePost] = useState(false);
     const [selectedPost, setSelectedPost] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
@@ -95,13 +93,7 @@ function ForumPage() {
 
     // --- Remove local fetchUser useEffect, AuthContext handles it ---
 
-    // --- Welcome Modal Logic (Keep as before) ---
-    useEffect(() => {
-        const hasSeenWelcome = localStorage.getItem('hasSeenWelcome');
-        if (!hasSeenWelcome) {
-            setShowWelcome(true);
-        }
-    }, []);
+   
 
     // --- Listener for 'postsUpdated' (Keep as before) ---
     useEffect(() => {
@@ -123,12 +115,7 @@ function ForumPage() {
         return () => window.removeEventListener('postsUpdated', handlePostUpdate);
     }, [selectedPost]);
 
-    // --- Close Welcome Modal (Keep as before) ---
-    const handleCloseWelcome = () => {
-        localStorage.setItem('hasSeenWelcome', 'true');
-        setShowWelcome(false);
-    };
-
+  
     // --- Create Post (Use user from context) ---
     const handleCreatePost = (newPostData) => {
         if (!isAuthenticated || !user) { // Use context state
@@ -278,7 +265,6 @@ function ForumPage() {
              {/* Show create button only if authenticated */}
             {isAuthenticated && <CreatePostButton onClick={() => setShowCreatePost(true)} />}
 
-            <WelcomeModal isOpen={showWelcome} onClose={handleCloseWelcome} />
 
              {/* Ensure CreatePostModal uses useAuth if needed for its category fetch */}
             <CreatePostModal
