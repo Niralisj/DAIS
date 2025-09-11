@@ -29,7 +29,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",
-        "https://dais.vercel.app",           # Your main Vercel domain
+        "https://dais.vercel.app",           # main Vercel domain
         "https://*.vercel.app"               # Allow all Vercel deployments
     ],
     allow_credentials=True,
