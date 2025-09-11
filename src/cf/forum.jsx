@@ -1,3 +1,4 @@
+
 // src/pages/ForumPage.js
 import { useEffect, useState, useCallback } from 'react';
 import { useAuth } from '../context/AuthContext'; // Adjust path if needed
@@ -85,7 +86,6 @@ function ForumPage() {
     const { user, isAuthenticated, isLoadingUser } = useAuth(); // Removed token as it wasn't directly used here
 
     // State variables
-    const [showWelcome, setShowWelcome] = useState(false);
     const [showCreatePost, setShowCreatePost] = useState(false);
     const [selectedPost, setSelectedPost] = useState(null); // Post object or null
     const [searchQuery, setSearchQuery] = useState('');
@@ -93,14 +93,6 @@ function ForumPage() {
     const [posts, setPosts] = useState(getStoredPosts); // Use lazy initialization
 
     // --- Effects ---
-
-    // Welcome Modal Logic (Runs once on mount)
-    useEffect(() => {
-        const hasSeenWelcome = localStorage.getItem('hasSeenWelcome');
-        if (!hasSeenWelcome) {
-            setShowWelcome(true);
-        }
-    }, []);
 
     // Listener for storage changes (other tabs) and custom 'postsUpdated' event (this tab)
     useEffect(() => {
@@ -139,11 +131,6 @@ function ForumPage() {
 
 
     // --- Handlers wrapped in useCallback for stable references ---
-
-    const handleCloseWelcome = useCallback(() => {
-        localStorage.setItem('hasSeenWelcome', 'true');
-        setShowWelcome(false);
-    }, []);
 
     const handleCreatePost = useCallback((newPostData) => {
         // Auth check
@@ -423,10 +410,7 @@ function ForumPage() {
             </main>
 
             {/* Floating Action Button for creating posts */}
-            {isAuthenticated && <CreatePostButton onClick={() => setShowCreatePost(true)} />}
-
-            {/* Modals - Rendered at the end, managed by state */}
-            <WelcomeModal isOpen={showWelcome} onClose={handleCloseWelcome} />
+            {isAuthenticated && <CreatePostButton onClick={() => setShowCreatePost(true)} />
 
             <CreatePostModal
                 isOpen={showCreatePost}
