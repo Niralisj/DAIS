@@ -113,11 +113,11 @@ function ForumPage() {
         };
 
         const handleStorageChange = (event) => {
-             if (event.key === 'forumPosts') {
-                 console.log("ForumPage: 'storage' event detected.");
-                 refreshPostsAndSelection();
-             }
-         };
+            if (event.key === 'forumPosts') {
+                console.log("ForumPage: 'storage' event detected.");
+                refreshPostsAndSelection();
+            }
+        };
 
         window.addEventListener('storage', handleStorageChange);
         window.addEventListener('postsUpdated', refreshPostsAndSelection); // Listen to our custom event
@@ -192,8 +192,8 @@ function ForumPage() {
 
     const handleDeletePost = useCallback((postIdToDelete) => {
         if (!isAuthenticated || !user) {
-             alert("You must be logged in to delete posts.");
-             return;
+            alert("You must be logged in to delete posts.");
+            return;
         }
         console.log(`ForumPage: handleDeletePost called for ${postIdToDelete}`);
 
@@ -310,30 +310,30 @@ function ForumPage() {
             }
             return updatedPosts;
         });
-         // We removed the immediate setSelectedPost update here.
-         // The useEffect listener will catch the 'postsUpdated' event and refresh the dialog data.
+        // We removed the immediate setSelectedPost update here.
+        // The useEffect listener will catch the 'postsUpdated' event and refresh the dialog data.
     }, [isAuthenticated, user]); // Dependencies: only need auth state
 
-     // Memoized filtering logic
-     const filteredPosts = useCallback(() => {
+    // Memoized filtering logic
+    const filteredPosts = useCallback(() => {
         return posts.filter((post) => {
             // Basic check if post object is valid
             if (!post || typeof post.title !== 'string' || typeof post.content !== 'string') {
-                 console.warn("Filtering invalid post object:", post);
-                 return false;
+                console.warn("Filtering invalid post object:", post);
+                return false;
             }
             const lowerSearchQuery = searchQuery.toLowerCase();
             const matchesSearch = searchQuery
                 ? (post.title.toLowerCase().includes(lowerSearchQuery) ||
-                   post.content.toLowerCase().includes(lowerSearchQuery) ||
-                   post.author?.toLowerCase().includes(lowerSearchQuery)) // Optional chaining for author
+                    post.content.toLowerCase().includes(lowerSearchQuery) ||
+                    post.author?.toLowerCase().includes(lowerSearchQuery)) // Optional chaining for author
                 : true;
             const matchesCategory = selectedCategory
                 ? (Array.isArray(post.categories) && post.categories.includes(selectedCategory))
                 : true;
             return matchesSearch && matchesCategory;
         });
-     }, [posts, searchQuery, selectedCategory]); // Dependencies for filtering
+    }, [posts, searchQuery, selectedCategory]); // Dependencies for filtering
 
 
     // --- Render Logic ---
@@ -344,30 +344,26 @@ function ForumPage() {
     // Get the filtered list for rendering
     const postsToDisplay = filteredPosts();
 
+ 
     return (
-         <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-             <Header
+        <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+            <Header
                 searchQuery={searchQuery}
                 onSearchChange={setSearchQuery}
-                // Header uses useAuth internally, no need to pass user/auth props
             />
 
             <main className="max-w-8xl mx-auto px-2 sm:px-4 lg:px-8 py-6">
-                 {/* Use CSS Grid for responsive layout */}
                 <div className="grid grid-cols-12 gap-4 lg:gap-8">
                     {/* Sidebar */}
                     <aside className="col-span-12 lg:col-span-3 xl:col-span-2 mb-4 lg:mb-0">
-                         <Sidebar
+                        <Sidebar
                             selectedCategory={selectedCategory}
                             onSelectCategory={setSelectedCategory}
-                            // Consider passing unique categories if needed by Sidebar
-                            // availableCategories={[...new Set(posts.flatMap(p => p.categories || []).filter(Boolean))]}
                         />
                     </aside>
 
                     {/* Main Content Area */}
                     <section className="col-span-12 lg:col-span-9 xl:col-span-10 min-w-0">
-                        {/* Category Filter Display */}
                         {selectedCategory && (
                             <div className="mb-4 flex items-center justify-between p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
                                 <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100">
@@ -375,7 +371,7 @@ function ForumPage() {
                                 </h2>
                                 <button
                                     onClick={() => setSelectedCategory(null)}
-                                    className="text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 focus:outline-none focus:ring-1 focus:ring-blue-500 rounded" // Added focus style
+                                    className="text-sm font-medium text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 focus:outline-none focus:ring-1 focus:ring-blue-500 rounded"
                                 >
                                     Clear filter
                                 </button>
@@ -387,15 +383,14 @@ function ForumPage() {
                             {postsToDisplay.length > 0 ? (
                                 postsToDisplay.map((post) => (
                                     <PostCard
-                                        key={post.id} // Key is crucial for React updates
+                                        key={post.id}
                                         post={post}
                                         currentUser={user}
-                                        onClick={() => setSelectedPost(post)} // Set the post to open in dialog
-                                        onUpvote={() => handleUpvotePost(post.id)} // Pass stable handler
+                                        onClick={() => setSelectedPost(post)}
+                                        onUpvote={() => handleUpvotePost(post.id)}
                                     />
                                 ))
                             ) : (
-                                 // Display when no posts match filters or no posts exist
                                 <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-lg shadow">
                                     <p className="text-gray-500 dark:text-gray-400">
                                         {searchQuery || selectedCategory
@@ -409,23 +404,22 @@ function ForumPage() {
                 </div>
             </main>
 
-            {/* Floating Action Button for creating posts */}
-            {isAuthenticated && <CreatePostButton onClick={() => setShowCreatePost(true)} />
+            {isAuthenticated && (
+                <CreatePostButton onClick={() => setShowCreatePost(true)} />
+            )}
 
             <CreatePostModal
                 isOpen={showCreatePost}
                 onClose={() => setShowCreatePost(false)}
-                onCreatePost={handleCreatePost} // Pass stable handler
+                onCreatePost={handleCreatePost}
             />
 
-            {/* Post Dialog - Conditionally rendered based on selectedPost state */}
             {selectedPost && (
                 <PostDialog
-                    key={selectedPost.id} // Force re-mount on post change
+                    key={selectedPost.id}
                     post={selectedPost}
                     currentUser={user}
-                    onClose={() => setSelectedPost(null)} // Handler to close the dialog
-                    // Pass stable handlers for actions within the dialog
+                    onClose={() => setSelectedPost(null)}
                     onUpvotePost={handleUpvotePost}
                     onDeletePost={handleDeletePost}
                     onAddComment={handleAddComment}
@@ -435,5 +429,4 @@ function ForumPage() {
         </div>
     );
 }
-
 export default ForumPage;
