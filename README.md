@@ -4,7 +4,7 @@ Dais is your go-to virtual skincare companion, designed to provide personalized 
 
 ---
 
-## Table of Contents
+# Table of Contents
 
 1. [Features](#features)
 2. [Installation](#installation)
