@@ -1,6 +1,9 @@
 # Dais - Your Virtual Skincare Friend
 
+<img width="1326" height="825" alt="download" src="https://github.com/user-attachments/assets/0d358ebf-2dd0-45ff-a645-132b12448f31" />
+
 Dais is your go-to virtual skincare companion, designed to provide personalized recommendations, educational resources, and a supportive community. Whether you're just starting your skincare journey or looking to refine your routine, Dais helps you make informed decisions for healthier skin!
+
 
 ---
 
@@ -13,6 +16,7 @@ Dais is your go-to virtual skincare companion, designed to provide personalized 
 5. [License](#license)
 
 ---
+
 
 # Features
 
