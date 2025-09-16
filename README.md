@@ -14,7 +14,7 @@ Dais is your go-to virtual skincare companion, designed to provide personalized 
 
 ---
 
-##Features
+# Features
 
 - **Personalized Skincare Recommendations** – Get tailored product and routine suggestions based on your skin type.
 - **Skin Assessment Quiz** – Identify your skin type and concerns.
