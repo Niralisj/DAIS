@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import { handleSuccess, handleError } from '../utils';
+import {  handleError } from '../utils';
 import '../login/loginpage.css';
 import { useAuth } from '../context/AuthContext';
 
@@ -103,3 +103,4 @@ function LoginPage() {
 }
 
 export default LoginPage;
+
