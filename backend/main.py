@@ -1,5 +1,7 @@
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.middleware.base import BaseHTTPMiddleware
+from starlette.responses import Response
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -16,8 +18,8 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.StreamHandler(sys.stdout),  # Ensure logs go to stdout for Render
-        logging.StreamHandler(sys.stderr)   # Also to stderr for errors
+        logging.StreamHandler(sys.stdout),
+        logging.StreamHandler(sys.stderr)
     ]
 )
 
@@ -25,17 +27,35 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "https://dais.vercel.app",           # main Vercel domain
-        "https://*.vercel.app"               # Allow all Vercel deployments
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# Custom CORS middleware to support Vercel wildcard domains
+class DynamicCORSMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        origin = request.headers.get("origin", "")
+        
+        allowed = (
+            origin == "http://localhost:3000" or
+            origin.endswith(".vercel.app") or
+            origin == "https://dais.vercel.app"
+        )
+
+        if request.method == "OPTIONS":
+            response = Response()
+            if allowed:
+                response.headers["Access-Control-Allow-Origin"] = origin
+                response.headers["Access-Control-Allow-Credentials"] = "true"
+                response.headers["Access-Control-Allow-Methods"] = "*"
+                response.headers["Access-Control-Allow-Headers"] = "*"
+            return response
+
+        response = await call_next(request)
+        if allowed:
+            response.headers["Access-Control-Allow-Origin"] = origin
+            response.headers["Access-Control-Allow-Credentials"] = "true"
+            response.headers["Access-Control-Allow-Methods"] = "*"
+            response.headers["Access-Control-Allow-Headers"] = "*"
+        return response
+
+app.add_middleware(DynamicCORSMiddleware)
 
 
 # Enhanced CSV loading with detailed logging
@@ -53,7 +73,6 @@ def load_data():
             return df
         else:
             logger.error("❌ dais.csv not found!")
-            # Look for any CSV files
             csv_files = [f for f in os.listdir('.') if f.endswith('.csv')]
             logger.error(f"Available CSV files: {csv_files}")
             raise FileNotFoundError("dais.csv not found")
@@ -62,18 +81,15 @@ def load_data():
         logger.error(f"❌ Error loading CSV: {str(e)}")
         raise e
 
-# Load data with enhanced error handling
 try:
     logger.info("🚀 Starting application...")
     df = load_data()
     logger.info("✅ Data loaded successfully!")
 except Exception as e:
     logger.error(f"💥 CRITICAL: Failed to load data: {str(e)}")
-    # Create a dummy DataFrame to prevent app from crashing
     df = pd.DataFrame()
     logger.error("⚠️ Running with empty DataFrame - app will return errors for requests")
 
-# Rest of your configuration
 skin_columns = ["oily", "dry", "combination", "sensitive", "normal"]
 product_types = ["moisturizer", "cleanser", "serum", "toner", "sunscreen", "mask", "treatment", "exfoliator", "face wash"]
 categories = ["indian", "global"]
@@ -85,7 +101,6 @@ if not df.empty:
     df["combined_features"] = df["notable_effects"].fillna("")
     logger.info("✅ Data preprocessing completed")
 
-# TF-IDF setup with logging
 tfidf_cache_file = "tfidf_cache.pkl"
 tfidf_cache = None
 
@@ -127,7 +142,6 @@ async def add_process_time_header(request: Request, call_next):
     if not session_id:
         session_id = str(uuid.uuid4())
     
-    # Log incoming requests
     logger.info(f"📥 REQUEST: {request.method} {request.url}")
     
     response = await call_next(request)
@@ -170,7 +184,6 @@ def get_recommendations(
     logger.info(f"   Category: {category}")
     logger.info(f"   Concern: {concern}")
     
-    # Check if data is loaded
     if df.empty:
         logger.error("❌ No data loaded - cannot process recommendations")
         raise HTTPException(status_code=500, detail="Server data not loaded properly")
@@ -186,7 +199,6 @@ def get_recommendations(
         
         df.columns = df.columns.str.lower()
 
-        # Validation
         if skintype not in skin_columns:
             logger.error(f"❌ Invalid skin type: {skintype}")
             raise HTTPException(status_code=400, detail="Invalid skin type")
@@ -197,7 +209,6 @@ def get_recommendations(
             logger.error(f"❌ Invalid category: {category}")
             raise HTTPException(status_code=400, detail="Invalid category")
 
-        # Filter step by step with logging
         logger.info(f"📊 Starting with {len(df)} total products")
         
         filtered_df = df[df[skintype] == 1].copy()
@@ -217,12 +228,10 @@ def get_recommendations(
 
         if filtered_df.empty:
             logger.error("❌ No products found after filtering")
-            # Debug info
             available_combos = df.groupby(['category', 'product_type']).size().reset_index(name='count')
             logger.error(f"Available combinations: {available_combos.to_dict('records')}")
             raise HTTPException(status_code=404, detail="No products found matching your criteria.")
 
-        # Process recommendations
         concern_list = []
         if concern:
             concern_list.extend(concern.lower().split(','))
@@ -270,9 +279,7 @@ def get_history(request: Request):
         return recommendation_history[session_id]
     else:
         return []
-    
-    
-    
+
 @app.get("/test")
 def test_endpoint():
     return {"message": "Backend is working!", "status": "success"}
